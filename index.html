@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Digital - Administración de Servicios Sociales</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2b6cb0;
+            --accent: #d69e2e;
+            --text: #2d3748;
+            --bg: #f7fafc;
+            --white: #ffffff;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+        }
+
+        .usac-badge {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header h2 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .student-info {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .intro-manifesto {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+            border-left: 5px solid var(--secondary);
+        }
+
+        .intro-manifesto h3 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-node {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-node::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 2.5rem;
+            width: 40px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+
+        .node-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--secondary);
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h3.node-title {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .node-meta {
+            font-style: italic;
+            color: #718096;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .evidence-box {
+            background-color: #edf2f7;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 1.5rem;
+        }
+
+        .evidence-box h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-link {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .btn-link:hover {
+            background-color: var(--primary);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-top: 1rem;
+            border-radius: 6px;
+            background: #000;
+        }
+
+        .video-container iframe, .video-container object, .video-container embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--accent);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .docente-credit {
+            font-weight: bold;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="usac-badge">USAC - CUNOC / Trabajo Social</span>
+        <h1>Administración de Servicios Sociales</h1>
+        <h2>Portafolio Digital Académico (Landing Web)</h2>
+        <div class="student-info">
+            Estudiante: Denisse Odete Parada Villlatori | Décimo Semestre - Sección A
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="intro-manifesto">
+            <h3>Bitácora Conectivista y Constructivista</h3>
+            <p>Bienvenido/a a este espacio digital de aprendizaje. Basado en el enfoque pedagógico del curso, este portafolio no es solo un almacén estático de documentos, sino una red viva de reflexiones institucionales y metodológicas. Aquí se articula el conocimiento teórico con la práctica transformadora del Trabajo Social en la gestión y optimización de los servicios sociales.</p>
+        </div>
+
+        <!-- NODO 1 -->
+        <div class="section-node">
+            <span class="node-tag">Unidad I: Enfoque de la Administración</span>
+            <h3 class="node-title">1. Pensamiento y Proceso Administrativo</h3>
+            <p>Análisis de las principales teorías y corrientes del pensamiento administrativo aplicadas al ámbito institucional. Comprensión profunda de las etapas del proceso organizativo: planeación, organización, dirección y evaluación, reconociendo la administración en sus variantes pública, privada y mixta.</p>
+            
+            <div class="evidence-box">
+                <h4>📚 Evidencia: Glosario Colaborativo de Administración</h4>
+                <p>Construcción grupal de términos clave del pensamiento administrativo para unificar criterios conceptuales y terminología técnica.</p>
+                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn-link">Ver Glosario en Drive ↗</a>
+            </div>
+            
+            <div class="evidence-box">
+                <h4>📝 Primer Examen Parcial</h4>
+                <p class="node-meta">Evaluación individual del dominio conceptual de las corrientes administrativas y su pertinencia en los servicios sociales.</p>
+            </div>
+        </div>
+
+        <!-- NODO 2 -->
+        <div class="section-node">
+            <span class="node-tag">Unidad I: Nuevas Técnicas de Personal</span>
+            <h3 class="node-title">2. El Factor Humano y Liderazgo Adaptativo</h3>
+            <p>Exploración de la administración de personal desde una mirada humana y relacional. Estudio de las dinámicas de equipo mediante la inteligencia emocional, el trabajo colaborativo, cooperativo y el abordaje proactivo de las problemáticas de desgaste laboral en los equipos de intervención.</p>
+            
+            <div class="evidence-box">
+                <h4>🔥 Caso Práctico: Gestión del "Burnout" en Equipos Sociales</h4>
+                <p>Estudio de caso desarrollado en parejas y defendido en foro de debate, analizando estrategias críticas para prevenir y mitigar el síndrome de Burnout en entornos de alta exigencia social.</p>
+                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn-link">Ver Estudio de Caso ↗</a>
+            </div>
+
+            <div class="evidence-box">
+                <h4>🎥 Video Ensayo: Liderazgo Adaptativo</h4>
+                <p>Producción individual analizando la importancia del liderazgo flexible frente a la incertidumbre y la complejidad de los entornos institucionales modernos.</p>
+                <!-- Reemplazar src con el enlace de inserción de YouTube o Drive si aplica, o mantener el botón -->
+                <a href="[ENLACE_DE_TU_VIDEO_O_DRIVE]" target="_blank" class="btn-link">Ver Video Ensayo ↗</a>
+            </div>
+        </div>
+
+        <!-- NODO 3 -->
+        <div class="section-node">
+            <span class="node-tag">Unidades II y III: Servicios Sociales y Gerencia Social</span>
+            <h3 class="node-title">3. Realidad Nacional y Fortalecimiento Institucional</h3>
+            <p>Análisis crítico del contexto de los servicios sociales en Guatemala, diagnosticando debilidades, fortalezas y articulando la Gerencia Social con el diseño, manejo y ejecución efectiva de las Políticas Sociales del país.</p>
+            
+            <div class="evidence-box">
+                <h4>🇬🇹 Diagnóstico de los Servicios Sociales en Guatemala</h4>
+                <p>Investigación en tríos que fundamentó el Segundo Examen Parcial, consolidando una lectura diagnóstica sobre la infraestructura y cobertura de la asistencia social a nivel nacional.</p>
+                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn-link">Ver Informe de Diagnóstico ↗</a>
+            </div>
+
+            <div class="evidence-box">
+                <h4>🛠️ Plan de Fortalecimiento Institucional</h4>
+                <p>Propuesta técnica integradora elaborada en tríos para optimizar la gestión, transparencia y el impacto de un servicio social específico desde las competencias de la gerencia social.</p>
+                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn-link">Ver Plan de Fortalecimiento ↗</a>
+            </div>
+            
+            <div class="evidence-box">
+                <h4>🔍 Auditoría Social en los Servicios Sociales</h4>
+                <p>Proyecto grupal de autoformación y campo enfocado en la transparencia, rendición de cuentas y la fiscalización ciudadana de las prestaciones sociales.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Curso: Administración de Servicios Sociales (Código: 2145) — Año 2026</p>
+        <p>Docente: <span class="docente-credit">Dra. Luisa Fernanda de León Alvarado</span></p>
+        <p>División de Humanidades y Ciencias Sociales — Carrera de Trabajo Social</p>
+        <p>Centro Universitario de Occidente (CUNOC) — Universidad de San Carlos de Guatemala</p>
+    </footer>
+
+</body>
+</html>
