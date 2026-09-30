@@ -1,282 +1,512 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Digital | Administración de Servicios Sociales</title>
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-canvas: #f7f5f9;
-            --bg-card: #ffffff;
-            --pastel-primary: #e8def8; /* Lavanda Pastel */
-            --pastel-secondary: #e6f4f1; /* Menta Pastel */
-            --pastel-accent: #fce8e6; /* Rosa Pastel */
-            --text-main: #2b2930;
-            --text-muted: #605d64;
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --shadow-sm: 0 4px 12px rgba(142, 131, 156, 0.05);
-            --shadow-md: 0 12px 32px rgba(142, 131, 156, 0.08);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio Digital | Administración de Servicios Sociales</title>
+  <meta name="description" content="Portafolio digital colectivo de Gerencia Social de Denisse Odete Parada Villatoro, estudiante de Trabajo Social en el CUNOC - USAC.">
+  <meta name="theme-color" content="#FBF8FF">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-canvas);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 20px;
-        }
+  <style>
+    /* ---------- Tokens ---------- */
+    :root {
+      color-scheme: light;
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+      --bg: #FBF8FF;
+      --ink: #2C2848;
+      --ink-2: #5B5777;
+      --line: #E4DCF3;
+      --white: #FFFFFF;
 
-        /* Cabecera Moderna */
-        header {
-            background-color: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 30px;
-            border: 1px solid rgba(232, 222, 248, 0.5);
-        }
+      --lav: #D9CCF5;   --lav-soft: #F0EAFC;
+      --rose: #FAD0DC;  --rose-soft: #FEEBF0;
+      --mint: #C2EAD6;  --mint-soft: #E8F7EF;
+      --butter: #FFF0B8;
+      --sky: #CBE6F7;
 
-        .profile-badge {
-            background-color: var(--pastel-primary);
-            color: #4f378b;
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: 0.5px;
-        }
+      --btn: #4A3C8C;
+      --btn-hover: #382D72;
 
-        header h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            line-height: 1.2;
-            color: #1d1b20;
-            margin-bottom: 8px;
-        }
+      --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, -apple-system, sans-serif;
+      --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
 
-        header h2 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
+      --rail: 72px;
+    }
 
-        .meta-info {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            border-top: 1px dashed var(--pastel-primary);
-            padding-top: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+    *, *::before, *::after { box-sizing: border-box; }
 
-        /* Nodos Metodológicos (Secciones) */
-        .node {
-            background-color: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 35px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            transition: var(--transition);
-        }
+    html { scroll-behavior: smooth; }
 
-        .node:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        .node-tag {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: var(--radius-md);
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      text-wrap: balance;
+      margin: 0;
+    }
 
-        .tag-u1 { background-color: var(--pastel-primary); color: #4f378b; }
-        .tag-u2 { background-color: var(--pastel-secondary); color: #1d4d4f; }
-        .tag-u3 { background-color: var(--pastel-accent); color: #601410; }
+    p { margin: 0; }
 
-        .node h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1d1b20;
-        }
+    .wrap {
+      width: min(1120px, 100% - 2.5rem);
+      margin-inline: auto;
+    }
 
-        .node p {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-            margin-bottom: 20px;
-        }
+    :focus-visible {
+      outline: 3px solid var(--btn);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
 
-        /* Bloques de Evidencias Internas */
-        .evidence-card {
-            background: #faf8fc;
-            border-left: 4px solid var(--pastel-primary);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            margin-top: 15px;
-        }
+    .skip {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      background: var(--btn);
+      color: #fff;
+      padding: .6rem 1rem;
+      border-radius: 10px;
+      z-index: 10;
+      text-decoration: none;
+    }
+    .skip:focus { top: 1rem; }
 
-        .evidence-card.secondary { border-left-color: var(--pastel-secondary); background: #f4fbf9; }
-        .evidence-card.accent { border-left-color: var(--pastel-accent); background: #fffbfa; }
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(3.5rem, 9vw, 6.5rem) 0 clamp(3rem, 7vw, 5rem);
+      isolation: isolate;
+    }
 
-        .evidence-card h4 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
+    /* Formas planas que evocan nodos, sin degradados */
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+    }
+    .hero::before {
+      width: clamp(260px, 42vw, 520px);
+      aspect-ratio: 1;
+      background: var(--lav-soft);
+      top: -14%;
+      right: -8%;
+    }
+    .hero::after {
+      width: clamp(140px, 20vw, 260px);
+      aspect-ratio: 1;
+      background: var(--mint-soft);
+      bottom: -6%;
+      left: -4%;
+    }
 
-        /* Botones Estilo Minimalista */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--bg-card);
-            color: var(--text-main);
-            padding: 10px 20px;
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            transition: var(--transition);
-            margin-top: 10px;
-            cursor: pointer;
-        }
+    .hero-grid {
+      display: grid;
+      gap: clamp(2.5rem, 6vw, 4rem);
+      align-items: center;
+    }
 
-        .btn:hover {
-            background-color: var(--text-main);
-            color: #ffffff;
-            border-color: var(--text-main);
-        }
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: 1.25fr .75fr; }
+    }
 
-        /* Video Contenedor Responsivo */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: var(--radius-md);
-            background: #000;
-            margin-top: 15px;
-            box-shadow: var(--shadow-sm);
-        }
+    .badge {
+      display: inline-block;
+      background: var(--butter);
+      color: var(--ink);
+      font-weight: 600;
+      font-size: .9rem;
+      padding: .35rem .95rem;
+      border-radius: 999px;
+      margin-bottom: 1.4rem;
+    }
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+    h1 {
+      font-size: clamp(2.5rem, 6.2vw, 4.7rem);
+      line-height: 1.02;
+      font-weight: 750;
+      letter-spacing: -0.025em;
+    }
 
-        /* Pie de Página / Metacognición */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
+    .lead {
+      margin-top: 1.4rem;
+      font-size: clamp(1.15rem, 2vw, 1.4rem);
+      color: var(--ink-2);
+      max-width: 34ch;
+      line-height: 1.45;
+    }
 
-        footer hr {
-            border: none;
-            border-top: 1px dashed var(--pastel-primary);
-            margin-bottom: 20px;
-        }
+    .chips {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      padding: 0;
+      margin: 2rem 0 0;
+    }
+    .chips li {
+      padding: .4rem 1rem;
+      border-radius: 999px;
+      font-size: .95rem;
+      font-weight: 500;
+    }
+    .chips li:nth-child(1) { background: var(--lav); }
+    .chips li:nth-child(2) { background: var(--rose); }
+    .chips li:nth-child(3) { background: var(--mint); }
+    .chips li:nth-child(4) { background: var(--sky); }
 
-        @media (max-width: 600px) {
-            header { padding: 30px 20px; }
-            header h1 { font-size: 1.8rem; }
-            .node { padding: 25px; }
-        }
-    </style>
+    /* ---------- Recorrido (nav + mapa de nodos) ---------- */
+    .route {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 1.6rem 1.5rem 1.7rem;
+    }
+    .route h2 {
+      font-size: 1.15rem;
+      margin-bottom: 1.3rem;
+    }
+    .route ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      display: grid;
+      gap: 1.25rem;
+    }
+    /* Hilo que une los nodos */
+    .route ol::before {
+      content: "";
+      position: absolute;
+      left: 21px;
+      top: 22px;
+      bottom: 22px;
+      width: 2px;
+      background: var(--line);
+      transform-origin: top;
+    }
+    .route a {
+      position: relative;
+      display: flex;
+      gap: .9rem;
+      align-items: center;
+      color: inherit;
+      text-decoration: none;
+    }
+    .route .dot {
+      flex: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--c);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      box-shadow: 0 0 0 5px var(--white);
+      transition: box-shadow .2s ease;
+    }
+    .route a:hover .dot,
+    .route a:focus-visible .dot { box-shadow: 0 0 0 5px var(--white), 0 0 0 8px var(--c); }
+    .route .t { display: block; font-weight: 600; line-height: 1.25; }
+    .route small { display: block; color: var(--ink-2); font-size: .88rem; line-height: 1.35; margin-top: .15rem; }
+
+    /* Único momento animado: el hilo se traza y los nodos aparecen */
+    @media (prefers-reduced-motion: no-preference) {
+      .route ol::before { animation: draw 1s .15s cubic-bezier(.2,.7,.2,1) both; }
+      .route li { animation: pop .55s cubic-bezier(.2,.7,.2,1) both; }
+      .route li:nth-child(1) { animation-delay: .25s; }
+      .route li:nth-child(2) { animation-delay: .55s; }
+      .route li:nth-child(3) { animation-delay: .85s; }
+    }
+    @keyframes draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+    @keyframes pop  { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+
+    /* ---------- Nodos ---------- */
+    main { padding-bottom: 2rem; }
+
+    .node {
+      display: grid;
+      grid-template-columns: var(--rail) 1fr;
+      padding-bottom: 2.5rem;
+      scroll-margin-top: 1.5rem;
+    }
+
+    .rail { position: relative; }
+    .rail::after {
+      content: "";
+      position: absolute;
+      left: 24px;
+      top: 58px;
+      bottom: 0;
+      width: 2px;
+      background: var(--line);
+    }
+    .node:last-child .rail::after { display: none; }
+
+    .marker {
+      position: relative;
+      z-index: 1;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--c);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 0 0 6px var(--bg);
+    }
+
+    .panel {
+      background: var(--c-soft);
+      border: 1px solid rgba(44, 40, 72, .06);
+      border-radius: 28px;
+      padding: clamp(1.4rem, 3.2vw, 2.4rem);
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--c);
+      font-weight: 600;
+      font-size: .9rem;
+      padding: .3rem .9rem;
+      border-radius: 999px;
+    }
+
+    .panel h2 {
+      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      line-height: 1.08;
+      margin: 1rem 0 .8rem;
+      max-width: 20ch;
+    }
+
+    .desc {
+      color: var(--ink-2);
+      max-width: 62ch;
+      line-height: 1.7;
+    }
+
+    .resources {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+    .resources.two { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+    .resource {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 1.15rem 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 1.1rem;
+    }
+
+    .ico {
+      flex: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      background: var(--c);
+      display: grid;
+      place-items: center;
+    }
+    .ico svg { width: 22px; height: 22px; }
+
+    .resource .body { flex: 1 1 220px; min-width: 0; }
+    .resource h3 { font-size: 1.12rem; line-height: 1.25; }
+    .resource p { color: var(--ink-2); font-size: .97rem; line-height: 1.5; margin-top: .3rem; }
+
+    .btn {
+      display: inline-block;
+      background: var(--btn);
+      color: #fff;
+      font-weight: 600;
+      font-size: .95rem;
+      text-decoration: none;
+      padding: .6rem 1.2rem;
+      border-radius: 999px;
+      transition: background-color .2s ease;
+    }
+    .btn:hover { background: var(--btn-hover); }
+
+    /* ---------- Pie ---------- */
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 1rem;
+      padding: 2rem 0 3rem;
+      color: var(--ink-2);
+      font-size: .95rem;
+      text-align: center;
+    }
+
+    /* ---------- Móvil ---------- */
+    @media (max-width: 640px) {
+      :root { --rail: 46px; }
+      body { font-size: 1rem; }
+      .marker { width: 40px; height: 40px; font-size: 1.05rem; box-shadow: 0 0 0 5px var(--bg); }
+      .rail::after { left: 19px; top: 48px; }
+      .panel { border-radius: 22px; }
+      .btn { width: 100%; text-align: center; }
+    }
+  </style>
 </head>
+
 <body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
 
-    <div class="container">
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="badge">Estudiante colaborador</p>
+        <h1>Denisse Odete Parada Villatoro</h1>
+        <p class="lead">Portafolio digital colectivo: Gerencia Social</p>
+        <ul class="chips" aria-label="Datos académicos">
+          <li>CUNOC - USAC</li>
+          <li>Trabajo Social</li>
+          <li>10.º semestre</li>
+          <li>Año 2026</li>
+        </ul>
+      </div>
 
-        <!-- Cabecera -->
-        <header>
-            <span class="profile-badge">Estudiante Colaborador</span>
-            <h1>Denisse Odete Parada Villatoro</h1>
-            <h2>Portafolio Digital Colectivo: Gerencia Social</h2>
-            <div class="meta-info">
-                <span>📍 CUNOC - USAC</span>
-                <span>🎓 Trabajo Social (10° Semestre)</span>
-                <span>🗓️ Año 2026</span>
+      <nav class="route" aria-label="Recorrido del portafolio">
+        <h2>Recorrido del portafolio</h2>
+        <ol>
+          <li>
+            <a href="#nodo-1" style="--c: var(--lav)">
+              <span class="dot" aria-hidden="true">I</span>
+              <span><span class="t">Proceso administrativo</span><small>Fundamentos y corrientes del pensamiento</small></span>
+            </a>
+          </li>
+          <li>
+            <a href="#nodo-2" style="--c: var(--rose)">
+              <span class="dot" aria-hidden="true">II</span>
+              <span><span class="t">El factor humano</span><small>Liderazgo adaptativo y salud laboral</small></span>
+            </a>
+          </li>
+          <li>
+            <a href="#nodo-3" style="--c: var(--mint)">
+              <span class="dot" aria-hidden="true">III</span>
+              <span><span class="t">Intervención estratégica</span><small>Realidad nacional y planes de fortalecimiento</small></span>
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="wrap">
+
+    <!-- ============ NODO I ============ -->
+    <section class="node" id="nodo-1" style="--c: var(--lav); --c-soft: var(--lav-soft)" aria-labelledby="t1">
+      <div class="rail"><span class="marker" aria-hidden="true">I</span></div>
+      <div class="panel">
+        <p class="tag">Nodo I: Proceso administrativo</p>
+        <h2 id="t1">Fundamentos y corrientes del pensamiento</h2>
+        <p class="desc">Un espacio de deconstrucción conceptual donde conectamos las teorías clásicas de la administración con las demandas técnicas y éticas que exigen los servicios sociales contemporáneos.</p>
+
+        <div class="resources">
+          <article class="resource">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h7M9 17h5"/></svg>
+            </span>
+            <div class="body">
+              <h3>Glosario colectivo de administración</h3>
+              <p>Construcción colaborativa de conceptos clave y principios de Fayol adaptados al quehacer institucional.</p>
             </div>
-        </header>
+            <!-- TODO: reemplazar "#" por el enlace real de Drive y agregar target="_blank" rel="noopener" -->
+            <a class="btn" href="#">Ver glosario</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <!-- Nodo 1 -->
-        <section class="node">
-            <span class="node-tag tag-u1">Nodo I: Proceso Administrativo</span>
-            <h3>Fundamentos y Corrientes del Pensamiento</h3>
-            <p>Un espacio de deconstrucción conceptual donde conectamos las teorías clásicas de la administración con las demandas técnicas y éticas que exigen los servicios sociales contemporáneos.</p>
-            
-            <div class="evidence-card">
-                <h4>Glosario Colectivo de Administración</h4>
-                <p>Construcción colaborativa de conceptos clave y principios de Fayol adaptados al quehacer institucional.</p>
-                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn">Visualizar Glosario ↗</a>
+    <!-- ============ NODO II ============ -->
+    <section class="node" id="nodo-2" style="--c: var(--rose); --c-soft: var(--rose-soft)" aria-labelledby="t2">
+      <div class="rail"><span class="marker" aria-hidden="true">II</span></div>
+      <div class="panel">
+        <p class="tag">Nodo II: El factor humano</p>
+        <h2 id="t2">Liderazgo adaptativo y salud laboral</h2>
+        <p class="desc">Análisis crítico de los procesos internos de los equipos de trabajo, el desarrollo de la inteligencia emocional y el abordaje de riesgos psicosociales en el ejercicio del Trabajo Social.</p>
+
+        <div class="resources two">
+          <article class="resource">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>
+            </span>
+            <div class="body">
+              <h3>Foro de debate: gestión del "burnout"</h3>
+              <p>Análisis de casos reales sobre el desgaste profesional en equipos sociales y estrategias gerenciales de contención.</p>
             </div>
-        </section>
+            <!-- TODO: reemplazar "#" por el enlace real de Drive y agregar target="_blank" rel="noopener" -->
+            <a class="btn" href="#">Leer conclusiones</a>
+          </article>
 
-        <!-- Nodo 2 -->
-        <section class="node">
-            <span class="node-tag tag-u2">Nodo II: El Factor Humano</span>
-            <h3>Liderazgo Adaptativo y Salud Laboral</h3>
-            <p>Análisis crítico de los procesos internos de los equipos de trabajo, el desarrollo de la inteligencia emocional y el abordaje de riesgos psicosociales en el ejercicio del Trabajo Social.</p>
-            
-            <div class="evidence-card secondary">
-                <h4>Foro de Debate: Gestión del "Burnout"</h4>
-                <p>Análisis de casos reales sobre el desgaste profesional en equipos sociales y estrategias gerenciales de contención.</p>
-                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn">Leer Conclusiones ↗</a>
+          <article class="resource">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>
+            </span>
+            <div class="body">
+              <h3>Video ensayo: liderazgo adaptativo</h3>
+              <p>Producción audiovisual individual sobre las competencias del gerente social ante entornos de incertidumbre.</p>
             </div>
+            <!-- TODO: reemplazar por la URL del video en YouTube -->
+            <a class="btn" href="https://youtube.com" target="_blank" rel="noopener">Ver video</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            <div class="evidence-card secondary" style="margin-top: 20px;">
-                <h4>Video Ensayo: Liderazgo Adaptativo</h4>
-                <p>Producción audiovisual individual sobre las competencias del gerente social ante entornos de incertidumbre.</p>
-                <!-- Reemplazar el src por tu enlace embebido de youtube o drive si aplica -->
-                <div class="video-container">
-                    <iframe src="https://youtube.com" allowfullscreen></iframe>
-                </div>
+    <!-- ============ NODO III ============ -->
+    <section class="node" id="nodo-3" style="--c: var(--mint); --c-soft: var(--mint-soft)" aria-labelledby="t3">
+      <div class="rail"><span class="marker" aria-hidden="true">III</span></div>
+      <div class="panel">
+        <p class="tag">Nodo III: Intervención estratégica</p>
+        <h2 id="t3">Realidad nacional y planes de fortalecimiento</h2>
+        <p class="desc">Articulación pragmática del portafolio. Diagnóstico situacional de las políticas públicas y propuestas de transformación estructural en las instituciones del contexto guatemalteco.</p>
+
+        <div class="resources">
+          <article class="resource">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7.5 11 12 15.5 16.5 11"/><path d="M5 19h14"/></svg>
+            </span>
+            <div class="body">
+              <h3>Diagnóstico de servicios sociales en Guatemala</h3>
+              <p>Investigación aplicada en tríos académicos que evalúa la cobertura y eficiencia de las prestaciones sociales nacionales.</p>
             </div>
-        </section>
+            <!-- TODO: reemplazar "#" por el enlace real de Drive y agregar target="_blank" rel="noopener" -->
+            <a class="btn" href="#">Descargar diagnóstico</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <!-- Nodo 3 -->
-        <section class="node">
-            <span class="node-tag tag-u3">Nodo III: Intervención Estratégica</span>
-            <h3>Realidad Nacional y Planes de Fortalecimiento</h3>
-            <p>Articulación pragmática del portafolio. Diagnóstico situacional de las políticas públicas y propuestas de transformación estructural en las instituciones del contexto guatemalteco.</p>
-            
-            <div class="evidence-card accent">
-                <h4>Diagnóstico de Servicios Sociales en Guatemala</h4>
-                <p>Investigación aplicada en tríos académicos que evalúa la cobertura y eficiencia de las prestaciones sociales nacionales.</p>
-                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn">Descargar Diagnóstico ↗</a>
-            </div>
+  </main>
 
+  <footer>
+    <div class="wrap">
+      Portafolio digital colectivo de Gerencia Social. Administración de Servicios Sociales, CUNOC - USAC, 2026.
+    </div>
+  </footer>
+</body>
+</html>
