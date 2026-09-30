@@ -3,288 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Digital - Administración de Servicios Sociales</title>
+    <title>Portafolio Digital | Administración de Servicios Sociales</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a365d;
-            --secondary: #2b6cb0;
-            --accent: #d69e2e;
-            --text: #2d3748;
-            --bg: #f7fafc;
-            --white: #ffffff;
+            --bg-canvas: #f7f5f9;
+            --bg-card: #ffffff;
+            --pastel-primary: #e8def8; /* Lavanda Pastel */
+            --pastel-secondary: #e6f4f1; /* Menta Pastel */
+            --pastel-accent: #fce8e6; /* Rosa Pastel */
+            --text-main: #2b2930;
+            --text-muted: #605d64;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow-sm: 0 4px 12px rgba(142, 131, 156, 0.05);
+            --shadow-md: 0 12px 32px rgba(142, 131, 156, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
             line-height: 1.6;
+            padding: 20px;
         }
 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Cabecera Moderna */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 3rem 1.5rem;
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
             text-align: center;
-            border-bottom: 5px solid var(--accent);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 30px;
+            border: 1px solid rgba(232, 222, 248, 0.5);
         }
 
-        .usac-badge {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background-color: rgba(255,255,255,0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+        .profile-badge {
+            background-color: var(--pastel-primary);
+            color: #4f378b;
             display: inline-block;
-            margin-bottom: 1rem;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
         }
 
         header h1 {
             font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #1d1b20;
+            margin-bottom: 8px;
         }
 
         header h2 {
-            font-size: 1.3rem;
-            font-weight: 400;
-            opacity: 0.9;
-        }
-
-        .student-info {
-            margin-top: 1.5rem;
             font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--accent);
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 20px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+        .meta-info {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px dashed var(--pastel-primary);
+            padding-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .intro-manifesto {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 2.5rem;
-            border-left: 5px solid var(--secondary);
+        /* Nodos Metodológicos (Secciones) */
+        .node {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
         }
 
-        .intro-manifesto h3 {
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-        }
-
-        .section-node {
-            background-color: var(--white);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 2.5rem;
-            position: relative;
-        }
-
-        .section-node::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 2.5rem;
-            width: 40px;
-            height: 4px;
-            background-color: var(--accent);
+        .node:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
         }
 
         .node-tag {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: var(--secondary);
-            font-weight: bold;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        h3.node-title {
-            color: var(--primary);
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .node-meta {
-            font-style: italic;
-            color: #718096;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .evidence-box {
-            background-color: #edf2f7;
-            padding: 1.5rem;
-            border-radius: 6px;
-            margin-top: 1.5rem;
-        }
-
-        .evidence-box h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-link {
             display: inline-block;
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
+            padding: 6px 12px;
+            border-radius: var(--radius-md);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .tag-u1 { background-color: var(--pastel-primary); color: #4f378b; }
+        .tag-u2 { background-color: var(--pastel-secondary); color: #1d4d4f; }
+        .tag-u3 { background-color: var(--pastel-accent); color: #601410; }
+
+        .node h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1d1b20;
+        }
+
+        .node p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            margin-bottom: 20px;
+        }
+
+        /* Bloques de Evidencias Internas */
+        .evidence-card {
+            background: #faf8fc;
+            border-left: 4px solid var(--pastel-primary);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .evidence-card.secondary { border-left-color: var(--pastel-secondary); background: #f4fbf9; }
+        .evidence-card.accent { border-left-color: var(--pastel-accent); background: #fffbfa; }
+
+        .evidence-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        /* Botones Estilo Minimalista */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
             text-decoration: none;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: background-color 0.2s;
             font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: var(--transition);
+            margin-top: 10px;
+            cursor: pointer;
         }
 
-        .btn-link:hover {
-            background-color: var(--primary);
+        .btn:hover {
+            background-color: var(--text-main);
+            color: #ffffff;
+            border-color: var(--text-main);
         }
 
+        /* Video Contenedor Responsivo */
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            margin-top: 1rem;
-            border-radius: 6px;
+            border-radius: var(--radius-md);
             background: #000;
+            margin-top: 15px;
+            box-shadow: var(--shadow-sm);
         }
 
-        .video-container iframe, .video-container object, .video-container embed {
+        .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            border: 0;
         }
 
+        /* Pie de Página / Metacognición */
         footer {
-            background-color: var(--primary);
-            color: var(--white);
             text-align: center;
-            padding: 2rem 1.5rem;
-            margin-top: 4rem;
+            padding: 40px 20px;
+            color: var(--text-muted);
             font-size: 0.9rem;
-            border-top: 4px solid var(--accent);
         }
 
-        footer p {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
+        footer hr {
+            border: none;
+            border-top: 1px dashed var(--pastel-primary);
+            margin-bottom: 20px;
         }
 
-        .docente-credit {
-            font-weight: bold;
-            color: var(--accent);
+        @media (max-width: 600px) {
+            header { padding: 30px 20px; }
+            header h1 { font-size: 1.8rem; }
+            .node { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <span class="usac-badge">USAC - CUNOC / Trabajo Social</span>
-        <h1>Administración de Servicios Sociales</h1>
-        <h2>Portafolio Digital Académico (Landing Web)</h2>
-        <div class="student-info">
-            Estudiante: Denisse Odete Parada Villlatoro | Décimo Semestre - Sección A
-        </div>
-    </header>
-
     <div class="container">
-        
-        <div class="intro-manifesto">
-            <h3>Bitácora Conectivista y Constructivista</h3>
-            <p>Bienvenido/a a este espacio digital de aprendizaje. Basado en el enfoque pedagógico del curso, este portafolio no es solo un almacén estático de documentos, sino una red viva de reflexiones institucionales y metodológicas. Aquí se articula el conocimiento teórico con la práctica transformadora del Trabajo Social en la gestión y optimización de los servicios sociales.</p>
-        </div>
 
-        <!-- NODO 1 -->
-        <div class="section-node">
-            <span class="node-tag">Unidad I: Enfoque de la Administración</span>
-            <h3 class="node-title">1. Pensamiento y Proceso Administrativo</h3>
-            <p>Análisis de las principales teorías y corrientes del pensamiento administrativo aplicadas al ámbito institucional. Comprensión profunda de las etapas del proceso organizativo: planeación, organización, dirección y evaluación, reconociendo la administración en sus variantes pública, privada y mixta.</p>
+        <!-- Cabecera -->
+        <header>
+            <span class="profile-badge">Estudiante Colaborador</span>
+            <h1>Denisse Odete Parada Villatoro</h1>
+            <h2>Portafolio Digital Colectivo: Gerencia Social</h2>
+            <div class="meta-info">
+                <span>📍 CUNOC - USAC</span>
+                <span>🎓 Trabajo Social (10° Semestre)</span>
+                <span>🗓️ Año 2026</span>
+            </div>
+        </header>
+
+        <!-- Nodo 1 -->
+        <section class="node">
+            <span class="node-tag tag-u1">Nodo I: Proceso Administrativo</span>
+            <h3>Fundamentos y Corrientes del Pensamiento</h3>
+            <p>Un espacio de deconstrucción conceptual donde conectamos las teorías clásicas de la administración con las demandas técnicas y éticas que exigen los servicios sociales contemporáneos.</p>
             
-            <div class="evidence-box">
-                <h4>📚 Evidencia: Glosario Colaborativo de Administración</h4>
-                <p>Construcción grupal de términos clave del pensamiento administrativo para unificar criterios conceptuales y terminología técnica.</p>
-                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn-link">Ver Glosario en Drive ↗</a>
+            <div class="evidence-card">
+                <h4>Glosario Colectivo de Administración</h4>
+                <p>Construcción colaborativa de conceptos clave y principios de Fayol adaptados al quehacer institucional.</p>
+                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn">Visualizar Glosario ↗</a>
             </div>
+        </section>
+
+        <!-- Nodo 2 -->
+        <section class="node">
+            <span class="node-tag tag-u2">Nodo II: El Factor Humano</span>
+            <h3>Liderazgo Adaptativo y Salud Laboral</h3>
+            <p>Análisis crítico de los procesos internos de los equipos de trabajo, el desarrollo de la inteligencia emocional y el abordaje de riesgos psicosociales en el ejercicio del Trabajo Social.</p>
             
-            <div class="evidence-box">
-                <h4>📝 Primer Examen Parcial</h4>
-                <p class="node-meta">Evaluación individual del dominio conceptual de las corrientes administrativas y su pertinencia en los servicios sociales.</p>
+            <div class="evidence-card secondary">
+                <h4>Foro de Debate: Gestión del "Burnout"</h4>
+                <p>Análisis de casos reales sobre el desgaste profesional en equipos sociales y estrategias gerenciales de contención.</p>
+                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn">Leer Conclusiones ↗</a>
             </div>
-        </div>
 
-        <!-- NODO 2 -->
-        <div class="section-node">
-            <span class="node-tag">Unidad I: Nuevas Técnicas de Personal</span>
-            <h3 class="node-title">2. El Factor Humano y Liderazgo Adaptativo</h3>
-            <p>Exploración de la administración de personal desde una mirada humana y relacional. Estudio de las dinámicas de equipo mediante la inteligencia emocional, el trabajo colaborativo, cooperativo y el abordaje proactivo de las problemáticas de desgaste laboral en los equipos de intervención.</p>
+            <div class="evidence-card secondary" style="margin-top: 20px;">
+                <h4>Video Ensayo: Liderazgo Adaptativo</h4>
+                <p>Producción audiovisual individual sobre las competencias del gerente social ante entornos de incertidumbre.</p>
+                <!-- Reemplazar el src por tu enlace embebido de youtube o drive si aplica -->
+                <div class="video-container">
+                    <iframe src="https://youtube.com" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nodo 3 -->
+        <section class="node">
+            <span class="node-tag tag-u3">Nodo III: Intervención Estratégica</span>
+            <h3>Realidad Nacional y Planes de Fortalecimiento</h3>
+            <p>Articulación pragmática del portafolio. Diagnóstico situacional de las políticas públicas y propuestas de transformación estructural en las instituciones del contexto guatemalteco.</p>
             
-            <div class="evidence-box">
-                <h4>🔥 Caso Práctico: Gestión del "Burnout" en Equipos Sociales</h4>
-                <p>Estudio de caso desarrollado en parejas y defendido en foro de debate, analizando estrategias críticas para prevenir y mitigar el síndrome de Burnout en entornos de alta exigencia social.</p>
-                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn-link">Ver Estudio de Caso ↗</a>
+            <div class="evidence-card accent">
+                <h4>Diagnóstico de Servicios Sociales en Guatemala</h4>
+                <p>Investigación aplicada en tríos académicos que evalúa la cobertura y eficiencia de las prestaciones sociales nacionales.</p>
+                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn">Descargar Diagnóstico ↗</a>
             </div>
 
-            <div class="evidence-box">
-                <h4>🎥 Video Ensayo: Liderazgo Adaptativo</h4>
-                <p>Producción individual analizando la importancia del liderazgo flexible frente a la incertidumbre y la complejidad de los entornos institucionales modernos.</p>
-                <!-- Reemplazar src con el enlace de inserción de YouTube o Drive si aplica, o mantener el botón -->
-                <a href="[ENLACE_DE_TU_VIDEO_O_DRIVE]" target="_blank" class="btn-link">Ver Video Ensayo ↗</a>
-            </div>
-        </div>
-
-        <!-- NODO 3 -->
-        <div class="section-node">
-            <span class="node-tag">Unidades II y III: Servicios Sociales y Gerencia Social</span>
-            <h3 class="node-title">3. Realidad Nacional y Fortalecimiento Institucional</h3>
-            <p>Análisis crítico del contexto de los servicios sociales en Guatemala, diagnosticando debilidades, fortalezas y articulando la Gerencia Social con el diseño, manejo y ejecución efectiva de las Políticas Sociales del país.</p>
-            
-            <div class="evidence-box">
-                <h4>🇬🇹 Diagnóstico de los Servicios Sociales en Guatemala</h4>
-                <p>Investigación en tríos que fundamentó el Segundo Examen Parcial, consolidando una lectura diagnóstica sobre la infraestructura y cobertura de la asistencia social a nivel nacional.</p>
-                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn-link">Ver Informe de Diagnóstico ↗</a>
-            </div>
-
-            <div class="evidence-box">
-                <h4>🛠️ Plan de Fortalecimiento Institucional</h4>
-                <p>Propuesta técnica integradora elaborada en tríos para optimizar la gestión, transparencia y el impacto de un servicio social específico desde las competencias de la gerencia social.</p>
-                <a href="[ENLACE_DE_TU_DRIVE]" target="_blank" class="btn-link">Ver Plan de Fortalecimiento ↗</a>
-            </div>
-            
-            <div class="evidence-box">
-                <h4>🔍 Auditoría Social en los Servicios Sociales</h4>
-                <p>Proyecto grupal de autoformación y campo enfocado en la transparencia, rendición de cuentas y la fiscalización ciudadana de las prestaciones sociales.</p>
-            </div>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>Curso: Administración de Servicios Sociales (Código: 2145) — Año 2026</p>
-        <p>Docente: <span class="docente-credit">Dra. Luisa Fernanda de León Alvarado</span></p>
-        <p>División de Humanidades y Ciencias Sociales — Carrera de Trabajo Social</p>
-        <p>Centro Universitario de Occidente (CUNOC) — Universidad de San Carlos de Guatemala</p>
-    </footer>
-
-</body>
-</html>
