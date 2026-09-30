@@ -4,15 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portafolio Digital | Administración de Servicios Sociales</title>
-  <meta name="description" content="Portafolio digital colectivo de Gerencia Social de Denisse Odete Parada Villatoro, estudiante de Trabajo Social en el CUNOC - USAC.">
+  <meta name="description" content="Gerencia Social: portafolio digital colectivo en formato revista de Denisse Odete Parada Villatoro, estudiante de Trabajo Social del CUNOC - USAC.">
   <meta name="theme-color" content="#FBF8FF">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap" rel="stylesheet">
 
   <style>
-    /* ---------- Tokens ---------- */
+    /* =====================================================
+       TOKENS
+       ===================================================== */
     :root {
       color-scheme: light;
 
@@ -22,32 +24,28 @@
       --line: #E4DCF3;
       --white: #FFFFFF;
 
-      --lav: #D9CCF5;   --lav-soft: #F0EAFC;
-      --rose: #FAD0DC;  --rose-soft: #FEEBF0;
-      --mint: #C2EAD6;  --mint-soft: #E8F7EF;
-      --butter: #FFF0B8;
-      --sky: #CBE6F7;
+      --lav: #D9CCF5;    --lav-soft: #F0EAFC;
+      --rose: #FAD0DC;   --rose-soft: #FEEBF0;
+      --mint: #C2EAD6;   --mint-soft: #E8F7EF;
+      --butter: #FFF0B8; --butter-soft: #FFF8DA;
+      --sky: #CBE6F7;    --sky-soft: #EAF5FC;
 
       --btn: #4A3C8C;
       --btn-hover: #382D72;
 
       --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, -apple-system, sans-serif;
-      --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
-
-      --rail: 72px;
+      --font-read: "Newsreader", Georgia, "Times New Roman", serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       background: var(--bg);
       color: var(--ink);
-      font-family: var(--font-body);
+      font-family: var(--font-display);
       font-size: 1.0625rem;
-      line-height: 1.6;
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -58,316 +56,329 @@
       text-wrap: balance;
       margin: 0;
     }
-
     p { margin: 0; }
+    ul, ol { margin: 0; padding: 0; list-style: none; }
+    a { color: var(--btn); }
 
-    .wrap {
-      width: min(1120px, 100% - 2.5rem);
-      margin-inline: auto;
+    .wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+
+    .sr {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap;
     }
 
-    :focus-visible {
-      outline: 3px solid var(--btn);
-      outline-offset: 3px;
-      border-radius: 6px;
-    }
+    :focus-visible { outline: 3px solid var(--btn); outline-offset: 3px; border-radius: 6px; }
 
     .skip {
-      position: absolute;
-      left: 1rem;
-      top: -4rem;
-      background: var(--btn);
-      color: #fff;
-      padding: .6rem 1rem;
-      border-radius: 10px;
-      z-index: 10;
-      text-decoration: none;
+      position: absolute; left: 1rem; top: -4rem; z-index: 20;
+      background: var(--btn); color: #fff; padding: .6rem 1rem;
+      border-radius: 10px; text-decoration: none;
     }
     .skip:focus { top: 1rem; }
 
-    /* ---------- Hero ---------- */
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(3.5rem, 9vw, 6.5rem) 0 clamp(3rem, 7vw, 5rem);
-      isolation: isolate;
+    /* =====================================================
+       BARRA SUPERIOR (navegación entre páginas)
+       ===================================================== */
+    .bar {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(251, 248, 255, .94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .bar .wrap { display: flex; align-items: center; gap: 1rem; padding: .6rem 0; }
+    .brand {
+      flex: none; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em;
+      color: var(--ink); text-decoration: none;
+    }
+    .bar nav { flex: 1; overflow-x: auto; scrollbar-width: none; }
+    .bar nav::-webkit-scrollbar { display: none; }
+    .bar ul { display: flex; gap: .35rem; justify-content: flex-end; white-space: nowrap; }
+    .bar nav a {
+      display: block; padding: .35rem .85rem; border-radius: 999px;
+      font-weight: 600; font-size: .92rem; color: var(--ink); text-decoration: none;
+    }
+    .bar nav a:hover { background: var(--lav-soft); }
+
+    /* Página activa resaltada (solo CSS) */
+    body:not(:has(.page:target)) .bar a[href="#portada"],
+    body:has(#portada:target)    .bar a[href="#portada"],
+    body:has(#editorial:target)  .bar a[href="#editorial"],
+    body:has(#unidad-1:target)   .bar a[href="#unidad-1"],
+    body:has(#unidad-2:target)   .bar a[href="#unidad-2"],
+    body:has(#unidad-3:target)   .bar a[href="#unidad-3"],
+    body:has(#lecturas:target)   .bar a[href="#lecturas"] {
+      background: var(--ink); color: #fff;
     }
 
-    /* Formas planas que evocan nodos, sin degradados */
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      z-index: -1;
-    }
-    .hero::before {
-      width: clamp(260px, 42vw, 520px);
-      aspect-ratio: 1;
-      background: var(--lav-soft);
-      top: -14%;
-      right: -8%;
-    }
-    .hero::after {
-      width: clamp(140px, 20vw, 260px);
-      aspect-ratio: 1;
-      background: var(--mint-soft);
-      bottom: -6%;
-      left: -4%;
+    /* =====================================================
+       PÁGINAS: una a la vez, sin JavaScript
+       ===================================================== */
+    .page { display: none; padding: clamp(1.5rem, 4vw, 3rem) 0 1rem; scroll-margin-top: 4.5rem; }
+    .page:target { display: block; }
+    body:not(:has(.page:target)) #portada { display: block; }
+
+    /* Navegadores sin :has() muestran todo en una sola columna */
+    @supports not selector(:has(*)) {
+      .page { display: block; }
     }
 
-    .hero-grid {
-      display: grid;
-      gap: clamp(2.5rem, 6vw, 4rem);
-      align-items: center;
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+      .page:target { animation: turn .4s cubic-bezier(.2, .7, .2, 1) both; }
+      body:not(:has(.page:target)) #portada { animation: turn .4s cubic-bezier(.2, .7, .2, 1) both; }
     }
+    @keyframes turn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
-    @media (min-width: 900px) {
-      .hero-grid { grid-template-columns: 1.25fr .75fr; }
+    /* =====================================================
+       PORTADA
+       ===================================================== */
+    .cover-card {
+      position: relative; isolation: isolate; overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      padding: clamp(1.5rem, 4.5vw, 3.5rem);
     }
-
+    .nodes {
+      position: absolute; z-index: -1;
+      right: -30px; top: -30px;
+      width: clamp(230px, 42vw, 470px);
+      height: auto;
+    }
     .badge {
-      display: inline-block;
-      background: var(--butter);
-      color: var(--ink);
-      font-weight: 600;
-      font-size: .9rem;
-      padding: .35rem .95rem;
-      border-radius: 999px;
-      margin-bottom: 1.4rem;
+      display: inline-block; background: var(--butter);
+      font-weight: 600; font-size: .92rem;
+      padding: .35rem 1rem; border-radius: 999px;
     }
-
-    h1 {
-      font-size: clamp(2.5rem, 6.2vw, 4.7rem);
-      line-height: 1.02;
-      font-weight: 750;
-      letter-spacing: -0.025em;
-    }
-
-    .lead {
+    .masthead {
       margin-top: 1.4rem;
-      font-size: clamp(1.15rem, 2vw, 1.4rem);
+      font-size: clamp(3.4rem, 11.5vw, 8.6rem);
+      font-weight: 800;
+      line-height: .9;
+      letter-spacing: -0.045em;
+    }
+    .masthead span { display: block; }
+    .cover-sub {
+      margin-top: 1.4rem;
+      font-family: var(--font-read);
+      font-style: italic;
+      font-size: clamp(1.25rem, 2.4vw, 1.6rem);
       color: var(--ink-2);
-      max-width: 34ch;
-      line-height: 1.45;
     }
+    .author { margin-top: 1.8rem; }
+    .author .who { display: block; font-weight: 700; font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.2; }
+    .author .role { display: block; color: var(--ink-2); margin-top: .2rem; }
 
-    .chips {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: .6rem;
-      padding: 0;
-      margin: 2rem 0 0;
-    }
-    .chips li {
-      padding: .4rem 1rem;
-      border-radius: 999px;
-      font-size: .95rem;
-      font-weight: 500;
-    }
+    .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
+    .chips li { padding: .3rem .9rem; border-radius: 999px; font-size: .92rem; font-weight: 500; }
     .chips li:nth-child(1) { background: var(--lav); }
     .chips li:nth-child(2) { background: var(--rose); }
     .chips li:nth-child(3) { background: var(--mint); }
     .chips li:nth-child(4) { background: var(--sky); }
 
-    /* ---------- Recorrido (nav + mapa de nodos) ---------- */
-    .route {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 1.6rem 1.5rem 1.7rem;
-    }
-    .route h2 {
-      font-size: 1.15rem;
-      margin-bottom: 1.3rem;
-    }
-    .route ol {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      position: relative;
-      display: grid;
-      gap: 1.25rem;
-    }
-    /* Hilo que une los nodos */
-    .route ol::before {
-      content: "";
-      position: absolute;
-      left: 21px;
-      top: 22px;
-      bottom: 22px;
-      width: 2px;
-      background: var(--line);
-      transform-origin: top;
-    }
-    .route a {
-      position: relative;
-      display: flex;
-      gap: .9rem;
-      align-items: center;
-      color: inherit;
-      text-decoration: none;
-    }
-    .route .dot {
-      flex: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--c);
-      display: grid;
-      place-items: center;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.05rem;
-      box-shadow: 0 0 0 5px var(--white);
+    .coverlines { display: grid; gap: .9rem; margin-top: clamp(2rem, 5vw, 3.2rem); }
+    @media (min-width: 820px) { .coverlines { grid-template-columns: repeat(3, 1fr); } }
+
+    .coverlines a {
+      display: grid; grid-template-columns: auto 1fr; gap: .2rem .9rem; align-items: start;
+      height: 100%;
+      background: var(--c-soft);
+      border-radius: 20px;
+      padding: 1.1rem 1.2rem;
+      color: var(--ink); text-decoration: none;
       transition: box-shadow .2s ease;
     }
-    .route a:hover .dot,
-    .route a:focus-visible .dot { box-shadow: 0 0 0 5px var(--white), 0 0 0 8px var(--c); }
-    .route .t { display: block; font-weight: 600; line-height: 1.25; }
-    .route small { display: block; color: var(--ink-2); font-size: .88rem; line-height: 1.35; margin-top: .15rem; }
-
-    /* Único momento animado: el hilo se traza y los nodos aparecen */
-    @media (prefers-reduced-motion: no-preference) {
-      .route ol::before { animation: draw 1s .15s cubic-bezier(.2,.7,.2,1) both; }
-      .route li { animation: pop .55s cubic-bezier(.2,.7,.2,1) both; }
-      .route li:nth-child(1) { animation-delay: .25s; }
-      .route li:nth-child(2) { animation-delay: .55s; }
-      .route li:nth-child(3) { animation-delay: .85s; }
-    }
-    @keyframes draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-    @keyframes pop  { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
-
-    /* ---------- Nodos ---------- */
-    main { padding-bottom: 2rem; }
-
-    .node {
-      display: grid;
-      grid-template-columns: var(--rail) 1fr;
-      padding-bottom: 2.5rem;
-      scroll-margin-top: 1.5rem;
-    }
-
-    .rail { position: relative; }
-    .rail::after {
-      content: "";
-      position: absolute;
-      left: 24px;
-      top: 58px;
-      bottom: 0;
-      width: 2px;
-      background: var(--line);
-    }
-    .node:last-child .rail::after { display: none; }
-
-    .marker {
-      position: relative;
-      z-index: 1;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+    .coverlines a:hover,
+    .coverlines a:focus-visible { box-shadow: 0 0 0 3px var(--c); }
+    .coverlines .n {
+      grid-row: 1 / span 2;
+      width: 38px; height: 38px; border-radius: 50%;
       background: var(--c);
-      display: grid;
-      place-items: center;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.2rem;
-      box-shadow: 0 0 0 6px var(--bg);
+      display: grid; place-items: center;
+      font-weight: 800;
     }
+    .coverlines strong { font-size: 1.12rem; line-height: 1.2; letter-spacing: -0.01em; }
+    .coverlines span.t { color: var(--ink-2); font-size: .95rem; line-height: 1.4; }
 
-    .panel {
-      background: var(--c-soft);
-      border: 1px solid rgba(44, 40, 72, .06);
-      border-radius: 28px;
-      padding: clamp(1.4rem, 3.2vw, 2.4rem);
+    /* =====================================================
+       EDITORIAL
+       ===================================================== */
+    .editorial-grid { display: grid; gap: 2.5rem; }
+    @media (min-width: 960px) { .editorial-grid { grid-template-columns: minmax(0, 1fr) 380px; gap: 3.5rem; } }
+
+    .page-title { font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1; font-weight: 800; letter-spacing: -0.03em; }
+    .standfirst {
+      font-family: var(--font-read); font-style: italic;
+      font-size: clamp(1.2rem, 2.2vw, 1.5rem); line-height: 1.45;
+      color: var(--ink-2); max-width: 46ch; margin-top: 1rem;
     }
-
-    .tag {
-      display: inline-block;
-      background: var(--c);
-      font-weight: 600;
-      font-size: .9rem;
-      padding: .3rem .9rem;
-      border-radius: 999px;
+    .read p {
+      font-family: var(--font-read);
+      font-size: 1.2rem; line-height: 1.7;
+      max-width: 62ch; margin: 0 0 1.2rem;
     }
-
-    .panel h2 {
-      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-      line-height: 1.08;
-      margin: 1rem 0 .8rem;
-      max-width: 20ch;
+    .dropcap::first-letter {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 4.3em; float: left; line-height: .8;
+      margin: .07em .12em 0 0;
     }
+    .read { margin-top: 2rem; }
 
-    .desc {
-      color: var(--ink-2);
-      max-width: 62ch;
-      line-height: 1.7;
-    }
-
-    .resources {
-      display: grid;
-      gap: 1rem;
-      margin-top: 1.8rem;
-    }
-    .resources.two { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-
-    .resource {
+    .card {
       background: var(--white);
-      border-radius: 18px;
-      padding: 1.15rem 1.2rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 1.3rem 1.4rem;
     }
+    .card h3 { font-size: 1.1rem; margin-bottom: .9rem; }
+    .stack { display: grid; gap: 1.25rem; align-content: start; }
 
-    .ico {
-      flex: none;
-      width: 46px;
-      height: 46px;
-      border-radius: 13px;
+    .ficha { display: grid; grid-template-columns: auto 1fr; gap: .55rem 1rem; margin: 0; font-size: .97rem; }
+    .ficha dt { color: var(--ink-2); font-weight: 500; }
+    .ficha dd { margin: 0; font-weight: 600; }
+
+    /* Índice con el hilo que une las unidades */
+    .toc { position: relative; display: grid; gap: 1.1rem; }
+    .toc::before {
+      content: ""; position: absolute; left: 19px; top: 20px; bottom: 20px;
+      width: 2px; background: var(--line);
+    }
+    .toc a { position: relative; display: flex; align-items: center; gap: .85rem; color: var(--ink); text-decoration: none; }
+    .toc .dot {
+      flex: none; width: 40px; height: 40px; border-radius: 50%;
+      background: var(--c); display: grid; place-items: center;
+      font-weight: 800; box-shadow: 0 0 0 5px var(--white);
+    }
+    .toc .dot svg { width: 20px; height: 20px; }
+    .toc .t { flex: 1; font-weight: 600; line-height: 1.25; }
+    .toc .pg { color: var(--ink-2); font-size: .88rem; }
+    .toc a:hover .t { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* =====================================================
+       UNIDADES (artículos)
+       ===================================================== */
+    .unit-head {
+      background: var(--c-soft);
+      border-radius: 32px;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      display: grid; gap: 1.2rem 2rem; align-items: center;
+    }
+    @media (min-width: 720px) { .unit-head { grid-template-columns: auto 1fr; } }
+
+    .unit-num {
+      width: clamp(76px, 12vw, 136px); aspect-ratio: 1; border-radius: 50%;
       background: var(--c);
-      display: grid;
-      place-items: center;
+      display: grid; place-items: center;
+      font-weight: 800; font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1;
     }
-    .ico svg { width: 22px; height: 22px; }
+    .unit-head h2 { font-size: clamp(2.2rem, 5.2vw, 4rem); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em; }
+    .unit-head .standfirst { color: var(--ink-2); }
 
-    .resource .body { flex: 1 1 220px; min-width: 0; }
-    .resource h3 { font-size: 1.12rem; line-height: 1.25; }
-    .resource p { color: var(--ink-2); font-size: .97rem; line-height: 1.5; margin-top: .3rem; }
+    .unit-body { display: grid; gap: 2.5rem; margin-top: 2.5rem; }
+    @media (min-width: 960px) { .unit-body { grid-template-columns: minmax(0, 1fr) 380px; gap: 3.5rem; } }
+
+    .text p {
+      font-family: var(--font-read);
+      font-size: 1.2rem; line-height: 1.7;
+      max-width: 62ch; margin: 0 0 1.2rem;
+    }
+    .text .pull {
+      margin: 1.8rem 0 1.9rem;
+      padding-left: 1.4rem;
+      border-left: 6px solid var(--c);
+      max-width: 32ch;
+    }
+    .text .pull p {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.4rem, 2.6vw, 1.95rem);
+      line-height: 1.2; letter-spacing: -0.01em;
+      margin: 0; max-width: none;
+    }
+
+    .terms { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .terms li {
+      background: var(--c-soft); border-radius: 999px;
+      padding: .28rem .8rem; font-weight: 500; font-size: .92rem; line-height: 1.35;
+    }
+
+    .evid { display: grid; gap: 1rem; }
+    .evid li + li { border-top: 1px solid var(--line); padding-top: 1rem; }
+    .mode {
+      display: inline-block; background: var(--c);
+      border-radius: 999px; font-size: .82rem; font-weight: 600;
+      padding: .12rem .7rem; margin-bottom: .45rem;
+    }
+    .evid strong { display: block; font-size: 1.05rem; line-height: 1.25; letter-spacing: -0.005em; }
+    .evid p { color: var(--ink-2); font-size: .94rem; line-height: 1.45; margin: .3rem 0 .8rem; }
 
     .btn {
-      display: inline-block;
-      background: var(--btn);
-      color: #fff;
-      font-weight: 600;
-      font-size: .95rem;
-      text-decoration: none;
-      padding: .6rem 1.2rem;
-      border-radius: 999px;
+      display: inline-block; background: var(--btn); color: #fff;
+      font-weight: 600; font-size: .93rem; text-decoration: none;
+      padding: .5rem 1.1rem; border-radius: 999px;
       transition: background-color .2s ease;
     }
     .btn:hover { background: var(--btn-hover); }
 
-    /* ---------- Pie ---------- */
+    /* =====================================================
+       LECTURAS Y VIDEOS
+       ===================================================== */
+    .lib-grid { display: grid; gap: 1.5rem; margin-top: 2.5rem; }
+    @media (min-width: 960px) { .lib-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem; align-items: start; } }
+
+    .lib-card { border-radius: 28px; padding: clamp(1.3rem, 3vw, 2rem); }
+    .lib-card h3 { font-size: 1.4rem; margin-bottom: 1.1rem; }
+    .lib-card h3 + ul + h3 { margin-top: 2rem; }
+
+    .refs { display: grid; gap: .95rem; }
+    .refs li { font-family: var(--font-read); font-size: 1.08rem; line-height: 1.5; }
+    .refs a { font-family: var(--font-display); font-weight: 600; font-size: .92rem; white-space: nowrap; }
+
+    .videos { display: grid; gap: .55rem; }
+    .videos a {
+      display: flex; align-items: center; gap: .7rem;
+      background: var(--white); border-radius: 14px;
+      padding: .65rem .9rem; color: var(--ink);
+      font-weight: 600; text-decoration: none; line-height: 1.3;
+    }
+    .videos a:hover { box-shadow: 0 0 0 3px var(--sky); }
+    .videos svg { flex: none; width: 22px; height: 22px; }
+
+    /* =====================================================
+       CAMBIO DE PÁGINA (inferior)
+       ===================================================== */
+    .turn {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: .8rem;
+      margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
+    }
+    .turn a {
+      font-weight: 600; color: var(--ink); text-decoration: none;
+      padding: .6rem 1.2rem; border-radius: 999px;
+      border: 2px solid var(--line);
+    }
+    .turn a:hover { background: var(--lav-soft); }
+    .turn .next { margin-left: auto; }
+
+    /* =====================================================
+       PIE
+       ===================================================== */
     footer {
+      margin-top: 2rem; padding: 2rem 0 3rem;
       border-top: 1px solid var(--line);
-      margin-top: 1rem;
-      padding: 2rem 0 3rem;
-      color: var(--ink-2);
-      font-size: .95rem;
-      text-align: center;
+      color: var(--ink-2); font-size: .95rem; text-align: center;
     }
 
-    /* ---------- Móvil ---------- */
+    /* =====================================================
+       MÓVIL
+       ===================================================== */
     @media (max-width: 640px) {
-      :root { --rail: 46px; }
       body { font-size: 1rem; }
-      .marker { width: 40px; height: 40px; font-size: 1.05rem; box-shadow: 0 0 0 5px var(--bg); }
-      .rail::after { left: 19px; top: 48px; }
-      .panel { border-radius: 22px; }
-      .btn { width: 100%; text-align: center; }
+      .brand { display: none; }
+      .bar ul { justify-content: flex-start; }
+      .cover-card, .unit-head { border-radius: 26px; }
+      .read p, .text p { font-size: 1.12rem; }
+      .turn a { flex: 1 1 100%; text-align: center; }
+      .turn .next { margin-left: 0; }
     }
   </style>
 </head>
@@ -375,130 +386,417 @@
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
 
-  <header class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <p class="badge">Estudiante colaborador</p>
-        <h1>Denisse Odete Parada Villatoro</h1>
-        <p class="lead">Portafolio digital colectivo: Gerencia Social</p>
-        <ul class="chips" aria-label="Datos académicos">
-          <li>CUNOC - USAC</li>
-          <li>Trabajo Social</li>
-          <li>10.º semestre</li>
-          <li>Año 2026</li>
+  <header class="bar">
+    <div class="wrap">
+      <a class="brand" href="#portada">Gerencia Social</a>
+      <nav aria-label="Páginas de la revista">
+        <ul>
+          <li><a href="#portada">Portada</a></li>
+          <li><a href="#editorial">Editorial</a></li>
+          <li><a href="#unidad-1">Unidad 1</a></li>
+          <li><a href="#unidad-2">Unidad 2</a></li>
+          <li><a href="#unidad-3">Unidad 3</a></li>
+          <li><a href="#lecturas">Lecturas y videos</a></li>
         </ul>
-      </div>
-
-      <nav class="route" aria-label="Recorrido del portafolio">
-        <h2>Recorrido del portafolio</h2>
-        <ol>
-          <li>
-            <a href="#nodo-1" style="--c: var(--lav)">
-              <span class="dot" aria-hidden="true">I</span>
-              <span><span class="t">Proceso administrativo</span><small>Fundamentos y corrientes del pensamiento</small></span>
-            </a>
-          </li>
-          <li>
-            <a href="#nodo-2" style="--c: var(--rose)">
-              <span class="dot" aria-hidden="true">II</span>
-              <span><span class="t">El factor humano</span><small>Liderazgo adaptativo y salud laboral</small></span>
-            </a>
-          </li>
-          <li>
-            <a href="#nodo-3" style="--c: var(--mint)">
-              <span class="dot" aria-hidden="true">III</span>
-              <span><span class="t">Intervención estratégica</span><small>Realidad nacional y planes de fortalecimiento</small></span>
-            </a>
-          </li>
-        </ol>
       </nav>
     </div>
   </header>
 
   <main id="contenido" class="wrap">
 
-    <!-- ============ NODO I ============ -->
-    <section class="node" id="nodo-1" style="--c: var(--lav); --c-soft: var(--lav-soft)" aria-labelledby="t1">
-      <div class="rail"><span class="marker" aria-hidden="true">I</span></div>
-      <div class="panel">
-        <p class="tag">Nodo I: Proceso administrativo</p>
-        <h2 id="t1">Fundamentos y corrientes del pensamiento</h2>
-        <p class="desc">Un espacio de deconstrucción conceptual donde conectamos las teorías clásicas de la administración con las demandas técnicas y éticas que exigen los servicios sociales contemporáneos.</p>
+    <!-- =====================================================
+         PÁGINA 1: PORTADA
+         ===================================================== -->
+    <section class="page" id="portada" aria-labelledby="cover-title">
+      <div class="cover-card">
 
-        <div class="resources">
-          <article class="resource">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h7M9 17h5"/></svg>
-            </span>
-            <div class="body">
-              <h3>Glosario colectivo de administración</h3>
-              <p>Construcción colaborativa de conceptos clave y principios de Fayol adaptados al quehacer institucional.</p>
-            </div>
-            <!-- TODO: reemplazar "#" por el enlace real de Drive y agregar target="_blank" rel="noopener" -->
-            <a class="btn" href="#">Ver glosario</a>
-          </article>
-        </div>
+        <svg class="nodes" viewBox="0 0 420 420" aria-hidden="true" focusable="false">
+          <path d="M310 110 L150 250 L330 320" fill="none" stroke="#2C2848" stroke-opacity=".22" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="310" cy="110" r="92" fill="#D9CCF5"/>
+          <circle cx="150" cy="250" r="62" fill="#FAD0DC"/>
+          <circle cx="330" cy="320" r="78" fill="#C2EAD6"/>
+          <circle cx="72" cy="118" r="26" fill="#FFF0B8"/>
+          <g font-family="Bricolage Grotesque, Segoe UI, system-ui, sans-serif" font-weight="800" font-size="46" fill="#2C2848" text-anchor="middle">
+            <text x="310" y="126">1</text>
+            <text x="150" y="266">2</text>
+            <text x="330" y="336">3</text>
+          </g>
+        </svg>
+
+        <p class="badge">Portafolio digital colectivo</p>
+        <h1 class="masthead" id="cover-title"><span>Gerencia</span><span>Social</span></h1>
+        <p class="cover-sub">Administración de Servicios Sociales</p>
+
+        <p class="author">
+          <span class="who">Denisse Odete Parada Villatoro</span>
+          <span class="role">Estudiante colaborador</span>
+        </p>
+        <ul class="chips" aria-label="Datos académicos">
+          <li>CUNOC - USAC</li>
+          <li>Trabajo Social</li>
+          <li>10.º semestre</li>
+          <li>Año 2026</li>
+        </ul>
+
+        <ol class="coverlines" aria-label="En este número">
+          <li>
+            <a href="#unidad-1" style="--c: var(--lav); --c-soft: var(--lav-soft)">
+              <span class="n" aria-hidden="true">1</span>
+              <strong>Enfoque de la administración</strong>
+              <span class="t">Qué es administrar y cómo se cuida al equipo humano.</span>
+            </a>
+          </li>
+          <li>
+            <a href="#unidad-2" style="--c: var(--rose); --c-soft: var(--rose-soft)">
+              <span class="n" aria-hidden="true">2</span>
+              <strong>Administración en los servicios sociales</strong>
+              <span class="t">Lo que la administración aporta al Trabajo Social.</span>
+            </a>
+          </li>
+          <li>
+            <a href="#unidad-3" style="--c: var(--mint); --c-soft: var(--mint-soft)">
+              <span class="n" aria-hidden="true">3</span>
+              <strong>Gerencia social</strong>
+              <span class="t">Gestionar políticas sociales con visión estratégica.</span>
+            </a>
+          </li>
+        </ol>
       </div>
+
+      <nav class="turn" aria-label="Cambiar de página">
+        <a class="next" href="#editorial">Siguiente: Editorial</a>
+      </nav>
     </section>
 
-    <!-- ============ NODO II ============ -->
-    <section class="node" id="nodo-2" style="--c: var(--rose); --c-soft: var(--rose-soft)" aria-labelledby="t2">
-      <div class="rail"><span class="marker" aria-hidden="true">II</span></div>
-      <div class="panel">
-        <p class="tag">Nodo II: El factor humano</p>
-        <h2 id="t2">Liderazgo adaptativo y salud laboral</h2>
-        <p class="desc">Análisis crítico de los procesos internos de los equipos de trabajo, el desarrollo de la inteligencia emocional y el abordaje de riesgos psicosociales en el ejercicio del Trabajo Social.</p>
+    <!-- =====================================================
+         PÁGINA 2: EDITORIAL
+         ===================================================== -->
+    <section class="page" id="editorial" aria-labelledby="ed-title">
+      <div class="editorial-grid">
+        <div>
+          <h2 class="page-title" id="ed-title">Editorial</h2>
+          <p class="standfirst">Un portafolio para recorrer, unidad por unidad, lo que significa administrar un servicio social.</p>
 
-        <div class="resources two">
-          <article class="resource">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>
-            </span>
-            <div class="body">
-              <h3>Foro de debate: gestión del "burnout"</h3>
-              <p>Análisis de casos reales sobre el desgaste profesional en equipos sociales y estrategias gerenciales de contención.</p>
-            </div>
-            <!-- TODO: reemplazar "#" por el enlace real de Drive y agregar target="_blank" rel="noopener" -->
-            <a class="btn" href="#">Leer conclusiones</a>
-          </article>
+          <div class="read">
+            <p class="dropcap">Este portafolio reúne el trabajo del curso Administración de Servicios Sociales, de la carrera de Trabajo Social del Centro Universitario de Occidente. Su propósito es definir los conocimientos básicos de administración que sirven en el desempeño profesional e institucional, y aplicarlos con eficiencia y eficacia en los servicios sociales donde el profesional de Trabajo Social ejerce como administrador.</p>
+            <p>El curso combina clases presenciales con actividades asincrónicas en Moodle, y se apoya en dos teorías del aprendizaje. El constructivismo propone que el conocimiento se construye de forma activa, en grupo y a partir de la experiencia. El conectivismo entiende el aprendizaje como una red de nodos conectados entre personas, grupos y tecnologías.</p>
+            <p>Esa segunda idea inspira la forma de esta revista: tres unidades que funcionan como nodos de un mismo hilo, desde los fundamentos de la administración hasta la gerencia social.</p>
+          </div>
+        </div>
 
-          <article class="resource">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>
-            </span>
-            <div class="body">
-              <h3>Video ensayo: liderazgo adaptativo</h3>
-              <p>Producción audiovisual individual sobre las competencias del gerente social ante entornos de incertidumbre.</p>
-            </div>
-            <!-- TODO: reemplazar por la URL del video en YouTube -->
-            <a class="btn" href="https://youtube.com" target="_blank" rel="noopener">Ver video</a>
-          </article>
+        <div class="stack">
+          <section class="card" aria-labelledby="ficha-t">
+            <h3 id="ficha-t">Ficha del curso</h3>
+            <dl class="ficha">
+              <dt>Curso</dt><dd>Administración de Servicios Sociales</dd>
+              <dt>Código</dt><dd>2145</dd>
+              <dt>Área</dt><dd>III Profesional</dd>
+              <dt>Semestre</dt><dd>Décimo</dd>
+              <dt>Sección</dt><dd>A</dd>
+              <dt>Año</dt><dd>2026</dd>
+              <dt>Docente</dt><dd>Dra. Luisa Fernanda de León Alvarado</dd>
+            </dl>
+          </section>
+
+          <section class="card" aria-labelledby="toc-t">
+            <h3 id="toc-t">En este número</h3>
+            <ol class="toc">
+              <li>
+                <a href="#unidad-1" style="--c: var(--lav)">
+                  <span class="dot" aria-hidden="true">1</span>
+                  <span class="t">Enfoque de la administración</span>
+                  <span class="pg">Pág. 3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#unidad-2" style="--c: var(--rose)">
+                  <span class="dot" aria-hidden="true">2</span>
+                  <span class="t">Administración en los servicios sociales</span>
+                  <span class="pg">Pág. 4</span>
+                </a>
+              </li>
+              <li>
+                <a href="#unidad-3" style="--c: var(--mint)">
+                  <span class="dot" aria-hidden="true">3</span>
+                  <span class="t">Gerencia social</span>
+                  <span class="pg">Pág. 5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#lecturas" style="--c: var(--butter)">
+                  <span class="dot" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h10"/></svg>
+                  </span>
+                  <span class="t">Lecturas y videos</span>
+                  <span class="pg">Pág. 6</span>
+                </a>
+              </li>
+            </ol>
+          </section>
         </div>
       </div>
+
+      <nav class="turn" aria-label="Cambiar de página">
+        <a href="#portada">Anterior: Portada</a>
+        <a class="next" href="#unidad-1">Siguiente: Unidad 1</a>
+      </nav>
     </section>
 
-    <!-- ============ NODO III ============ -->
-    <section class="node" id="nodo-3" style="--c: var(--mint); --c-soft: var(--mint-soft)" aria-labelledby="t3">
-      <div class="rail"><span class="marker" aria-hidden="true">III</span></div>
-      <div class="panel">
-        <p class="tag">Nodo III: Intervención estratégica</p>
-        <h2 id="t3">Realidad nacional y planes de fortalecimiento</h2>
-        <p class="desc">Articulación pragmática del portafolio. Diagnóstico situacional de las políticas públicas y propuestas de transformación estructural en las instituciones del contexto guatemalteco.</p>
-
-        <div class="resources">
-          <article class="resource">
-            <span class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7.5 11 12 15.5 16.5 11"/><path d="M5 19h14"/></svg>
-            </span>
-            <div class="body">
-              <h3>Diagnóstico de servicios sociales en Guatemala</h3>
-              <p>Investigación aplicada en tríos académicos que evalúa la cobertura y eficiencia de las prestaciones sociales nacionales.</p>
-            </div>
-            <!-- TODO: reemplazar "#" por el enlace real de Drive y agregar target="_blank" rel="noopener" -->
-            <a class="btn" href="#">Descargar diagnóstico</a>
-          </article>
+    <!-- =====================================================
+         PÁGINA 3: UNIDAD 1
+         ===================================================== -->
+    <article class="page" id="unidad-1" aria-labelledby="u1-title" style="--c: var(--lav); --c-soft: var(--lav-soft)">
+      <header class="unit-head">
+        <span class="unit-num" aria-hidden="true">1</span>
+        <div>
+          <h2 id="u1-title"><span class="sr">Unidad 1: </span>Enfoque de la administración</h2>
+          <p class="standfirst">Qué es administrar, de dónde vienen sus ideas y cómo se cuida al equipo humano que hace funcionar una institución.</p>
         </div>
+      </header>
+
+      <div class="unit-body">
+        <div class="text">
+          <p class="dropcap">Administrar es coordinar los esfuerzos de las personas para alcanzar objetivos comunes. Por eso la administración se aplica en cualquier tipo de organización, sea pública, privada o mixta, aunque cambien el ambiente, el nivel de autoridad y la misión de cada una. La unidad recorre las definiciones, los principales exponentes y las corrientes actuales del pensamiento administrativo, entre ellas los principios que formuló Henri Fayol.</p>
+
+          <blockquote class="pull"><p>¿Cómo se coordinan los esfuerzos de muchas personas para lograr un mismo objetivo?</p></blockquote>
+
+          <p>El proceso administrativo ordena el trabajo en cuatro etapas: planeación, organización, dirección y evaluación. Dentro de él, la administración de personal define el propósito, los objetivos, las funciones y la estructura organizacional que permiten que los equipos trabajen bien.</p>
+          <p>La unidad termina con las técnicas más recientes para dirigir personas: liderazgo, inteligencia emocional, trabajo colaborativo y trabajo cooperativo. Desde ahí se analizan los procesos internos de los equipos y los riesgos psicosociales del ejercicio profesional, como el desgaste conocido como burnout.</p>
+        </div>
+
+        <aside class="stack" aria-label="Material de la unidad 1">
+          <section class="card">
+            <h3>Conceptos clave</h3>
+            <ul class="terms">
+              <li>Definición y exponentes</li>
+              <li>Principios de la administración</li>
+              <li>Proceso administrativo</li>
+              <li>Administración pública, privada y mixta</li>
+              <li>Administración de personal</li>
+              <li>Liderazgo</li>
+              <li>Inteligencia emocional</li>
+              <li>Trabajo colaborativo y cooperativo</li>
+            </ul>
+          </section>
+
+          <section class="card">
+            <h3>Evidencias del portafolio</h3>
+            <ul class="evid">
+              <li>
+                <span class="mode">Grupal</span>
+                <strong>Glosario colaborativo sobre administración</strong>
+                <p>Conceptos clave y principios de Fayol adaptados al quehacer institucional.</p>
+                <!-- TODO: reemplaza href por el enlace de Drive y agrega target="_blank" rel="noopener" -->
+                <a class="btn" href="#unidad-1">Ver glosario</a>
+              </li>
+              <li>
+                <span class="mode">En parejas</span>
+                <strong>Estudio de caso y foro de debate: gestión del “burnout”</strong>
+                <p>Desgaste profesional en equipos sociales y estrategias gerenciales de contención.</p>
+                <!-- TODO: reemplaza href por el enlace de Drive y agrega target="_blank" rel="noopener" -->
+                <a class="btn" href="#unidad-1">Leer conclusiones</a>
+              </li>
+              <li>
+                <span class="mode">Individual</span>
+                <strong>Video ensayo: liderazgo adaptativo</strong>
+                <p>Competencias del gerente social ante entornos de incertidumbre.</p>
+                <!-- TODO: reemplaza por la URL del video de YouTube -->
+                <a class="btn" href="https://youtube.com" target="_blank" rel="noopener">Ver video</a>
+              </li>
+            </ul>
+          </section>
+        </aside>
       </div>
+
+      <nav class="turn" aria-label="Cambiar de página">
+        <a href="#editorial">Anterior: Editorial</a>
+        <a class="next" href="#unidad-2">Siguiente: Unidad 2</a>
+      </nav>
+    </article>
+
+    <!-- =====================================================
+         PÁGINA 4: UNIDAD 2
+         ===================================================== -->
+    <article class="page" id="unidad-2" aria-labelledby="u2-title" style="--c: var(--rose); --c-soft: var(--rose-soft)">
+      <header class="unit-head">
+        <span class="unit-num" aria-hidden="true">2</span>
+        <div>
+          <h2 id="u2-title"><span class="sr">Unidad 2: </span>Administración en los servicios sociales</h2>
+          <p class="standfirst">Qué aporta la administración al Trabajo Social y cómo funcionan los servicios sociales en Guatemala.</p>
+        </div>
+      </header>
+
+      <div class="unit-body">
+        <div class="text">
+          <p class="dropcap">Los servicios sociales son el lugar donde la profesión se encuentra con la institución: programas, prestaciones y equipos que atienden necesidades concretas de la población. Esta unidad revisa sus características, sus debilidades y fortalezas, y la forma en que funcionan en el contexto guatemalteco.</p>
+
+          <blockquote class="pull"><p>¿Qué tan bien llegan los servicios sociales a quienes los necesitan?</p></blockquote>
+
+          <p>La idea central es que administrar bien un servicio social no es un asunto burocrático: incide en la cobertura, en la calidad de la atención y en el uso responsable de los recursos. Por eso se estudia la vinculación entre la administración y el Trabajo Social, y lo que cada una aporta a la otra.</p>
+          <p>El trabajo de la unidad se concreta en un diagnóstico de los servicios sociales del contexto guatemalteco, elaborado en tríos, que evalúa la cobertura y la eficiencia de las prestaciones sociales nacionales.</p>
+        </div>
+
+        <aside class="stack" aria-label="Material de la unidad 2">
+          <section class="card">
+            <h3>Conceptos clave</h3>
+            <ul class="terms">
+              <li>Servicios sociales: definición y tipos</li>
+              <li>Debilidades y fortalezas</li>
+              <li>Servicios sociales en Guatemala</li>
+              <li>Importancia de la administración</li>
+              <li>Vinculación con el Trabajo Social</li>
+            </ul>
+          </section>
+
+          <section class="card">
+            <h3>Evidencias del portafolio</h3>
+            <ul class="evid">
+              <li>
+                <span class="mode">En tríos</span>
+                <strong>Diagnóstico de los servicios sociales en el contexto guatemalteco</strong>
+                <p>Evalúa la cobertura y la eficiencia de las prestaciones sociales nacionales.</p>
+                <!-- TODO: reemplaza href por el enlace de Drive y agrega target="_blank" rel="noopener" -->
+                <a class="btn" href="#unidad-2">Descargar diagnóstico</a>
+              </li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+
+      <nav class="turn" aria-label="Cambiar de página">
+        <a href="#unidad-1">Anterior: Unidad 1</a>
+        <a class="next" href="#unidad-3">Siguiente: Unidad 3</a>
+      </nav>
+    </article>
+
+    <!-- =====================================================
+         PÁGINA 5: UNIDAD 3
+         ===================================================== -->
+    <article class="page" id="unidad-3" aria-labelledby="u3-title" style="--c: var(--mint); --c-soft: var(--mint-soft)">
+      <header class="unit-head">
+        <span class="unit-num" aria-hidden="true">3</span>
+        <div>
+          <h2 id="u3-title"><span class="sr">Unidad 3: </span>Gerencia social</h2>
+          <p class="standfirst">Cómo gestionar políticas y programas sociales con visión estratégica, empezando por el fortalecimiento de las instituciones.</p>
+        </div>
+      </header>
+
+      <div class="unit-body">
+        <div class="text">
+          <p class="dropcap">La gerencia social aplica las herramientas de la administración al diseño, la ejecución y la evaluación de políticas y programas sociales. La unidad presenta sus conceptos, su relación con las políticas sociales y las características que se esperan de quien ejerce como gerente social.</p>
+
+          <blockquote class="pull"><p>¿Cómo se convierte una política social en resultados para la gente?</p></blockquote>
+
+          <p>También se examinan los retos actuales de la gerencia social y de la política social, y el fortalecimiento institucional como camino para que las organizaciones respondan mejor a su misión.</p>
+          <p>La unidad se apoya en las experiencias de profesionales que trabajan en el campo administrativo y gerencial, y se concreta en un plan de fortalecimiento institucional elaborado en tríos.</p>
+        </div>
+
+        <aside class="stack" aria-label="Material de la unidad 3">
+          <section class="card">
+            <h3>Conceptos clave</h3>
+            <ul class="terms">
+              <li>Gerencia social y sus políticas</li>
+              <li>El gerente social</li>
+              <li>Gerencia social y políticas sociales</li>
+              <li>Fortalecimiento institucional</li>
+              <li>Retos de la gerencia social</li>
+              <li>Experiencias profesionales</li>
+            </ul>
+          </section>
+
+          <section class="card">
+            <h3>Evidencias del portafolio</h3>
+            <ul class="evid">
+              <li>
+                <span class="mode">En tríos</span>
+                <strong>Plan de fortalecimiento institucional</strong>
+                <p>Propuesta para fortalecer una institución desde la gerencia social.</p>
+                <!-- TODO: reemplaza href por el enlace de Drive y agrega target="_blank" rel="noopener" -->
+                <a class="btn" href="#unidad-3">Ver plan</a>
+              </li>
+              <li>
+                <span class="mode">Individual</span>
+                <strong>Intercambio de experiencias profesionales en el campo administrativo gerencial</strong>
+                <p>Aprendizajes a partir de experiencias profesionales en el campo administrativo.</p>
+                <!-- TODO: reemplaza href por el enlace de Drive y agrega target="_blank" rel="noopener" -->
+                <a class="btn" href="#unidad-3">Ver evidencia</a>
+              </li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+
+      <nav class="turn" aria-label="Cambiar de página">
+        <a href="#unidad-2">Anterior: Unidad 2</a>
+        <a class="next" href="#lecturas">Siguiente: Lecturas y videos</a>
+      </nav>
+    </article>
+
+    <!-- =====================================================
+         PÁGINA 6: LECTURAS Y VIDEOS
+         ===================================================== -->
+    <section class="page" id="lecturas" aria-labelledby="lec-title">
+      <header class="unit-head" style="--c: var(--butter); --c-soft: var(--butter-soft)">
+        <span class="unit-num" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="56%" height="56%" fill="none" stroke="#2C2848" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h10"/></svg>
+        </span>
+        <div>
+          <h2 id="lec-title">Lecturas y videos</h2>
+          <p class="standfirst">La bibliografía del curso y una selección de videos para profundizar en cada tema.</p>
+        </div>
+      </header>
+
+      <div class="lib-grid">
+        <section class="card lib-card" style="background: var(--lav-soft); border-color: transparent" aria-labelledby="lb-t">
+          <h3 id="lb-t">Lecturas básicas</h3>
+          <ul class="refs">
+            <li>Berrío. <em>Conversaciones entre la Administración y el Trabajo Social</em>. 2014. Universidad del Valle, Cali, Colombia.
+              <a href="https://www.redalyc.org/pdf/5742/574261385017.pdf" target="_blank" rel="noopener">Leer en línea</a></li>
+            <li>Chiavenato, I. (2021). <em>Administración de recursos humanos: El capital humano de las organizaciones</em> (11.ª ed.). McGraw-Hill.</li>
+            <li>Esquivel Corella, F. (2005). <em>Gerencia social: un análisis crítico desde el Trabajo Social</em>. Editorial Espacio, Argentina.
+              <a href="https://revistaprospectiva.univalle.edu.co/index.php/prospectiva/article/download/7353/9832/21301" target="_blank" rel="noopener">Leer en línea</a></li>
+            <li>Kliksberg, B. (2020). <em>Los nuevos desafíos de la gerencia social en América Latina</em>. CLAD (Centro Latinoamericano de Administración para el Desarrollo).
+              <a href="https://publications.iadb.org/publications/spanish/document/La-gerencia-social-ante-los-nuevos-retos-del-desarrollo-social-en-Am%C3%A9rica-Latina.pdf" target="_blank" rel="noopener">Leer en línea</a></li>
+            <li>Menéndez. <em>Administración y Trabajo Social</em>. 2012. Escuela de Trabajo Social, USAC.</li>
+            <li>Pastor Seller, E. (2022). <em>La gobernanza y gestión de los servicios sociales comunitarios: Desafíos éticos y metodológicos del Trabajo Social</em>. Ediciones Pirámide.
+              <a href="https://dialnet.unirioja.es/descarga/articulo/8951389.pdf" target="_blank" rel="noopener">Leer en línea</a></li>
+            <li>Reyes Ponce, A. <em>Administración de empresas, teoría y práctica</em>, partes I y II. Editorial Limusa.</li>
+            <li>Molina, M. L. y Morera, N. E. (2005). <em>La gerencia de servicios sociales</em>. Editorial Lumen/Humanitas, Argentina.</li>
+            <li>Siguí Fajardo, N. (2000). <em>Introducción a la gerencia social</em>. Editorial Humanitas.</li>
+            <li>Subirats, J. y Blanco, I. (2021). <em>Innovación social y políticas públicas: Gestión de servicios sociales en la era digital</em>. Editorial Ariel.</li>
+            <li>Werther Jr., W. B. (2000). <em>Administración de personal y recursos humanos</em>. McGraw-Hill, México.</li>
+          </ul>
+
+          <h3 style="margin-top: 2rem">Lecturas complementarias</h3>
+          <ul class="refs">
+            <li>Ander-Egg, E. y Aguilar, M. J. (1987). <em>Administración y ejecución de programas de Trabajo Social</em>. Editorial Humanitas.</li>
+            <li>Blanchard, K. y O’Connor, M. (2007). <em>Administración por valores</em>. Editorial Norma, Colombia.</li>
+            <li>Robbins, S. y Coulter, M. (2000). <em>Administración</em> (6.ª ed.). Prentice-Hall, México.</li>
+            <li>Terry y Franklin (1997). <em>Principios de administración</em> (4.ª impresión). Compañía Editorial Continental, México.</li>
+          </ul>
+        </section>
+
+        <section class="card lib-card" style="background: var(--sky-soft); border-color: transparent" aria-labelledby="vd-t">
+          <h3 id="vd-t">Videos recomendados</h3>
+          <ul class="videos">
+            <li><a href="https://youtu.be/c_BB5WEJ6w8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>Administración y Trabajo Social</a></li>
+            <li><a href="https://youtu.be/16z28DjRTAA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>Buen liderazgo</a></li>
+            <li><a href="https://youtu.be/a-85thq_3qE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>Fundamentos de la gerencia social</a></li>
+            <li><a href="https://youtu.be/ihz4RdPkxRs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>Gerencia social</a></li>
+            <li><a href="https://youtu.be/kL4h2vfZTWw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>Importancia de la administración</a></li>
+            <li><a href="https://youtu.be/se62UwCxUrI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>Inteligencia emocional</a></li>
+            <li><a href="https://youtu.be/c9j4tpd3UR4" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>Principios de la administración de Henri Fayol</a></li>
+            <li><a href="https://youtu.be/yHSZ3M0DYpc" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>Servicios sociales</a></li>
+            <li><a href="https://youtu.be/nDenVCpHWGM" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>Trabajo colaborativo</a></li>
+            <li><a href="https://youtu.be/qoPVOd1BBVo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="#2C2848" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.5v5l4-2.5z" fill="#2C2848"/></svg>Trabajo cooperativo</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <nav class="turn" aria-label="Cambiar de página">
+        <a href="#unidad-3">Anterior: Unidad 3</a>
+        <a class="next" href="#portada">Volver a la portada</a>
+      </nav>
     </section>
 
   </main>
