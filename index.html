@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrar para transformar | Revista Académica de Trabajo Social</title>
-    <meta name="description" content="Revista académica de Administración de Servicios Sociales desde el Trabajo Social guatemalteco: administración, servicios sociales, gerencia social, casos prácticos y bitácora de aprendizaje.">
+    <meta name="description" content="Revista académica de Administración de Servicios Sociales desde el Trabajo Social guatemalteco: administración, servicios sociales, auditoría social, gerencia social, casos prácticos y bitácora de aprendizaje.">
     <meta name="author" content="Denisse Parada">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,6 @@
            1. IDENTIDAD VISUAL — SISTEMA DE DISEÑO
            ========================================= */
         :root {
-            /* Paleta cromática */
             --verde:        #173F3A;
             --verde-oscuro: #0F2D29;
             --verde-medio:  #1F5A52;
@@ -29,7 +28,6 @@
             --linea:        #E4DCCC;
             --blanco:       #FFFFFF;
 
-            /* Tipografía — escala */
             --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
             --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
@@ -42,19 +40,16 @@
             --fs-small:   0.9rem;
             --fs-micro:   0.72rem;
 
-            /* Espaciado */
             --sp-xs: 0.5rem;
             --sp-sm: 0.85rem;
             --sp-md: 1.4rem;
             --sp-lg: 2.2rem;
             --sp-xl: 3.5rem;
 
-            /* Layout */
             --max-read: 68ch;
             --max-content: 1080px;
             --topbar-h: 64px;
 
-            /* Radios y sombras */
             --radius-sm: 3px;
             --radius-md: 6px;
             --shadow-soft: 0 6px 22px rgba(23, 63, 58, 0.06);
@@ -80,7 +75,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Accesibilidad: foco visible */
         a:focus-visible,
         button:focus-visible {
             outline: 2px solid var(--terracota);
@@ -121,16 +115,17 @@
             display: flex;
             gap: 0.15rem;
             align-items: center;
+            flex-wrap: wrap;
         }
         .topbar-nav a {
             position: relative;
             color: rgba(245, 240, 230, 0.78);
             text-decoration: none;
             font-family: var(--font-sans);
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 500;
             letter-spacing: 0.3px;
-            padding: 0.45rem 0.8rem;
+            padding: 0.45rem 0.7rem;
             border-radius: 3px;
             transition: var(--transition);
         }
@@ -148,7 +143,7 @@
             left: 50%;
             bottom: -1px;
             transform: translateX(-50%);
-            width: 24px;
+            width: 22px;
             height: 2px;
             background: var(--terracota);
             border-radius: 2px;
@@ -245,6 +240,7 @@
             color: var(--terracota);
             margin-bottom: 1.3rem;
             font-weight: 600;
+            text-align: justify;
         }
         .cover-title {
             font-family: var(--font-serif);
@@ -255,6 +251,7 @@
             color: var(--marfil);
             margin-bottom: 1.5rem;
             text-wrap: balance;
+            text-align: justify;
         }
         .cover-title em {
             font-style: italic;
@@ -272,9 +269,9 @@
             padding-left: 1.4rem;
             border-left: 2px solid var(--terracota);
             text-wrap: pretty;
+            text-align: justify;
         }
 
-        /* Entrada al contenido */
         .cover-cta {
             margin-top: 1.8rem;
             display: inline-flex;
@@ -302,7 +299,6 @@
         }
         .cover-cta:hover::after { transform: translateX(4px); }
 
-        /* Retrato editorial */
         .cover-photo {
             position: relative;
             border: 1px solid rgba(199,121,91,0.5);
@@ -331,7 +327,6 @@
             text-align: center;
         }
 
-        /* Índice */
         .cover-index {
             padding: 1.8rem 0 0;
             position: relative;
@@ -344,6 +339,7 @@
             color: rgba(245,240,230,0.6);
             margin-bottom: 1rem;
             font-weight: 600;
+            text-align: justify;
         }
         .cover-index-grid {
             display: grid;
@@ -375,9 +371,9 @@
             font-size: 1rem;
             font-weight: 600;
             line-height: 1.3;
+            text-align: justify;
         }
 
-        /* Ficha académica */
         .cover-bottom {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -396,6 +392,7 @@
             color: var(--terracota);
             margin-bottom: 0.3rem;
             font-weight: 600;
+            text-align: justify;
         }
         .cover-bottom .ficha-item strong {
             font-family: var(--font-serif);
@@ -403,6 +400,8 @@
             font-size: 0.95rem;
             color: var(--marfil);
             line-height: 1.3;
+            text-align: justify;
+            display: block;
         }
 
         /* =========================================
@@ -426,6 +425,7 @@
             color: var(--terracota);
             font-weight: 600;
             margin-bottom: 0.7rem;
+            text-align: justify;
         }
         .page-title {
             font-family: var(--font-serif);
@@ -435,6 +435,7 @@
             color: var(--verde);
             letter-spacing: -0.8px;
             text-wrap: balance;
+            text-align: justify;
         }
         .page-lead {
             font-family: var(--font-serif);
@@ -445,6 +446,7 @@
             max-width: 70ch;
             line-height: 1.55;
             text-wrap: pretty;
+            text-align: justify;
         }
 
         h2.section-h {
@@ -456,6 +458,7 @@
             letter-spacing: -0.4px;
             line-height: 1.22;
             text-wrap: balance;
+            text-align: justify;
         }
         h3.sub-h {
             font-family: var(--font-serif);
@@ -464,15 +467,37 @@
             color: var(--verde);
             margin: 1.8rem 0 0.7rem;
             letter-spacing: -0.2px;
+            text-align: justify;
+        }
+        h4 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: var(--fs-h4);
+            color: var(--verde);
+            margin: 1.4rem 0 0.6rem;
+            text-align: justify;
         }
         p {
             margin-bottom: 1rem;
             color: var(--carbon);
             max-width: var(--max-read);
+            text-align: justify;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
         }
         p + p { text-indent: 1.5em; }
+        ul, ol {
+            max-width: var(--max-read);
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.4rem;
+            text-align: justify;
+            hyphens: auto;
+        }
 
-        /* 8. LECTURA CRÍTICA — identidad visual constante */
         .lectura-critica {
             margin: 2rem 0;
             padding: 0 0 0 1.4rem;
@@ -483,6 +508,7 @@
             color: var(--verde);
             line-height: 1.65;
             max-width: 70ch;
+            text-align: justify;
         }
         .lectura-critica::before {
             content: "LECTURA CRÍTICA";
@@ -494,6 +520,7 @@
             color: var(--terracota);
             font-weight: 700;
             margin-bottom: 0.55rem;
+            text-align: justify;
         }
 
         .pull-quote {
@@ -507,14 +534,13 @@
             margin: 2.4rem 0;
             border-top: 1px solid var(--linea);
             border-bottom: 1px solid var(--linea);
-            text-align: center;
+            text-align: justify;
             letter-spacing: -0.3px;
             max-width: none;
         }
         .pull-quote::before { content: "“"; color: var(--terracota); font-size: 2.2rem; vertical-align: -0.2em; margin-right: 0.15em; }
         .pull-quote::after { content: "”"; color: var(--terracota); font-size: 2.2rem; vertical-align: -0.2em; margin-left: 0.15em; }
 
-        /* Columna lateral */
         .layout-side {
             display: grid;
             grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
@@ -539,6 +565,7 @@
             color: var(--terracota);
             font-weight: 700;
             margin-bottom: 0.65rem;
+            text-align: justify;
         }
         .side-note p {
             font-family: var(--font-serif);
@@ -546,10 +573,10 @@
             line-height: 1.6;
             margin-bottom: 0.7rem;
             max-width: none;
+            text-align: justify;
         }
         .side-note p:last-child { margin-bottom: 0; }
 
-        /* Tarjetas de teoría */
         .theory-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -582,6 +609,7 @@
             color: var(--verde);
             margin-bottom: 0.25rem;
             line-height: 1.3;
+            text-align: justify;
         }
         .theory-card .author {
             font-family: var(--font-sans);
@@ -591,14 +619,15 @@
             color: var(--texto-ter);
             font-weight: 600;
             margin-bottom: 0.9rem;
+            text-align: justify;
         }
         .theory-card p {
             font-size: 0.94rem;
             line-height: 1.65;
             max-width: none;
+            text-align: justify;
         }
 
-        /* Tabla comparativa */
         .table-wrap { overflow-x: auto; margin: 1.8rem 0; -webkit-overflow-scrolling: touch; }
         table {
             width: 100%;
@@ -613,7 +642,7 @@
         th {
             background: var(--verde);
             color: var(--marfil);
-            text-align: left;
+            text-align: justify;
             padding: 0.85rem 1rem;
             font-family: var(--font-serif);
             font-weight: 600;
@@ -625,12 +654,12 @@
             border-bottom: 1px solid var(--linea);
             vertical-align: top;
             line-height: 1.55;
+            text-align: justify;
         }
         tr:last-child td { border-bottom: none; }
         tbody tr:nth-child(even) { background: var(--marfil-claro); }
         td strong { color: var(--verde); font-family: var(--font-serif); font-weight: 600; }
 
-        /* Mapa de servicios */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -652,6 +681,7 @@
             font-weight: 700;
             color: var(--verde);
             margin-bottom: 0.6rem;
+            text-align: justify;
         }
         .service-block .lbl {
             font-family: var(--font-sans);
@@ -662,15 +692,16 @@
             font-weight: 700;
             display: block;
             margin: 0.55rem 0 0.15rem;
+            text-align: justify;
         }
         .service-block p {
             font-size: 0.87rem;
             line-height: 1.5;
             margin: 0;
             max-width: none;
+            text-align: justify;
         }
 
-        /* Casos prácticos */
         .case-block {
             background: var(--verde);
             color: var(--marfil);
@@ -688,6 +719,7 @@
             font-weight: 700;
             display: block;
             margin-bottom: 0.7rem;
+            text-align: justify;
         }
         .case-block h4 {
             font-family: var(--font-serif);
@@ -696,12 +728,14 @@
             color: var(--marfil);
             margin-bottom: 0.9rem;
             line-height: 1.3;
+            text-align: justify;
         }
         .case-block p {
             color: rgba(245,240,230,0.92);
             font-size: 0.98rem;
             margin-bottom: 0.9rem;
             max-width: none;
+            text-align: justify;
         }
         .case-block .question {
             margin-top: 1.1rem;
@@ -711,9 +745,9 @@
             font-style: italic;
             color: var(--terracota);
             font-size: 1rem;
+            text-align: justify;
         }
 
-        /* Indicadores */
         .indicators {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -736,6 +770,7 @@
             color: var(--terracota);
             font-weight: 700;
             margin-bottom: 0.4rem;
+            text-align: justify;
         }
         .indicator h5 {
             font-family: var(--font-serif);
@@ -743,6 +778,7 @@
             font-weight: 700;
             color: var(--verde);
             margin-bottom: 0.4rem;
+            text-align: justify;
         }
         .indicator p {
             font-size: 0.84rem;
@@ -750,9 +786,9 @@
             color: var(--texto-sec);
             margin: 0;
             max-width: none;
+            text-align: justify;
         }
 
-        /* Bitácora */
         .bitacora {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -773,6 +809,7 @@
             color: var(--terracota);
             line-height: 1;
             margin-bottom: 0.7rem;
+            text-align: justify;
         }
         .bitacora-item h5 {
             font-family: var(--font-serif);
@@ -780,14 +817,15 @@
             font-weight: 700;
             color: var(--verde);
             margin-bottom: 0.7rem;
+            text-align: justify;
         }
         .bitacora-item p {
             font-size: 0.94rem;
             line-height: 1.6;
             max-width: none;
+            text-align: justify;
         }
 
-        /* Galería de evidencias */
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -812,7 +850,7 @@
             font-style: italic;
             color: var(--verde);
             font-size: 0.88rem;
-            text-align: center;
+            text-align: justify;
             padding: 0 1rem;
         }
         .gallery-item .caption {
@@ -821,6 +859,7 @@
             font-size: 0.8rem;
             line-height: 1.45;
             color: var(--texto-sec);
+            text-align: justify;
         }
         .gallery-item .caption strong {
             display: block;
@@ -829,15 +868,16 @@
             color: var(--verde);
             margin-bottom: 0.15rem;
             font-weight: 700;
+            text-align: justify;
         }
 
-        /* Bibliografía */
         .biblio-list { list-style: none; padding: 0; }
         .biblio-list li {
             padding: 0.95rem 0;
             border-bottom: 1px solid var(--linea);
             font-size: 0.94rem;
             line-height: 1.65;
+            text-align: justify;
         }
         .biblio-list li:last-child { border-bottom: none; }
         .biblio-list strong { font-family: var(--font-serif); color: var(--verde); font-weight: 600; }
@@ -848,6 +888,7 @@
             color: var(--texto-ter);
             margin-top: 0.25rem;
             font-family: var(--font-sans);
+            text-align: justify;
         }
         .biblio-list a {
             color: var(--terracota);
@@ -858,7 +899,6 @@
         }
         .biblio-list a:hover { color: var(--terracota-hover); text-decoration: underline; }
 
-        /* Cierre */
         .closing {
             background: var(--verde);
             color: var(--marfil);
@@ -873,12 +913,14 @@
             color: var(--marfil);
             margin-bottom: 1.1rem;
             line-height: 1.25;
+            text-align: justify;
         }
         .closing p {
             color: rgba(245,240,230,0.92);
             font-size: 1rem;
             line-height: 1.75;
             max-width: none;
+            text-align: justify;
         }
         .closing .signature {
             margin-top: 1.8rem;
@@ -886,9 +928,9 @@
             font-style: italic;
             color: var(--terracota);
             font-size: 1.02rem;
+            text-align: justify;
         }
 
-        /* Botón anexos */
         .btn-anexos {
             display: inline-block;
             margin-top: 1rem;
@@ -905,7 +947,112 @@
         }
         .btn-anexos:hover { background: var(--terracota-hover); transform: translateY(-1px); }
 
-        /* 3.6 Navegación al final de cada unidad */
+        /* =========================================
+           MAPAS CONCEPTUALES
+           ========================================= */
+        .mapa-conceptual {
+            background: var(--marfil-claro);
+            border: 1px solid var(--linea);
+            border-radius: var(--radius-sm);
+            padding: 2rem 1.8rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+        .mapa-conceptual h4 {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--terracota);
+            font-weight: 700;
+            margin-bottom: 1.4rem;
+            text-align: center;
+        }
+        .mapa-nucleo {
+            background: var(--verde);
+            color: var(--marfil);
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 1rem 1.6rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            margin: 0 auto 1.4rem;
+            max-width: 380px;
+            letter-spacing: 0.2px;
+        }
+        .mapa-ramas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .mapa-rama {
+            background: var(--blanco);
+            border: 1px solid var(--linea);
+            border-top: 3px solid var(--terracota);
+            padding: 1rem 1.1rem;
+            border-radius: var(--radius-sm);
+        }
+        .mapa-rama h5 {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--verde);
+            margin-bottom: 0.6rem;
+            text-align: justify;
+        }
+        .mapa-rama ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mapa-rama ul li {
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--texto-sec);
+            padding: 0.25rem 0;
+            border-bottom: 1px dashed var(--linea);
+            text-align: justify;
+        }
+        .mapa-rama ul li:last-child { border-bottom: none; }
+
+        /* Mapa de flujo horizontal (ciclo) */
+        .mapa-flujo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+        .mapa-flujo .paso {
+            background: var(--blanco);
+            border: 1px solid var(--verde);
+            border-radius: var(--radius-sm);
+            padding: 0.7rem 1rem;
+            font-family: var(--font-serif);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--verde);
+            text-align: center;
+            min-width: 110px;
+            text-align: justify;
+        }
+        .mapa-flujo .flecha {
+            color: var(--terracota);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .mapa-flujo .paso.destacado {
+            background: var(--verde);
+            color: var(--marfil);
+        }
+
+        /* =========================================
+           3.6 Navegación al final de cada unidad
+           ========================================= */
         .unit-nav {
             display: flex;
             justify-content: space-between;
@@ -931,6 +1078,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
+            text-align: justify;
         }
         .unit-nav a:hover {
             background: var(--verde);
@@ -996,7 +1144,6 @@
             .cover-index-grid { grid-template-columns: 1fr; }
         }
 
-        /* Impresión */
         @media print {
             .topbar, .unit-nav, .cover-cta { display: none; }
             body { height: auto; overflow: visible; display: block; }
@@ -1009,7 +1156,7 @@
 <body>
 
     <!-- =========================================
-         3. NAVEGACIÓN SUPERIOR
+         NAVEGACIÓN SUPERIOR
          ========================================= -->
     <header class="topbar">
         <a href="#portada" class="topbar-brand">Revista <span>ASS</span> · Trabajo Social</a>
@@ -1018,11 +1165,12 @@
             <a href="#portada">Portada</a>
             <a href="#unidad-1">01 Administración</a>
             <a href="#unidad-2">02 Servicios Sociales</a>
-            <a href="#unidad-3">03 Gerencia Social</a>
-            <a href="#practica">04 Práctica</a>
-            <a href="#bitacora">05 Bitácora</a>
-            <a href="#fuentes">06 Fuentes</a>
-            <a href="#cierre">07 Cierre</a>
+            <a href="#unidad-4">03 Auditoría Social</a>
+            <a href="#unidad-3">04 Gerencia Social</a>
+            <a href="#practica">05 Práctica</a>
+            <a href="#bitacora">06 Bitácora</a>
+            <a href="#fuentes">07 Fuentes</a>
+            <a href="#cierre">08 Cierre</a>
         </nav>
     </header>
 
@@ -1042,7 +1190,7 @@
                     <div>
                         <p class="cover-kicker">Administración de Servicios Sociales</p>
                         <h1 class="cover-title">Administrar para <em>transformar</em></h1>
-                        <p class="cover-subtitle">Instituciones, derechos y realidad social: un recorrido crítico por la administración, los servicios sociales y la gerencia social desde el Trabajo Social guatemalteco.</p>
+                        <p class="cover-subtitle">Instituciones, derechos y realidad social: un recorrido crítico por la administración, los servicios sociales, la auditoría social y la gerencia social desde el Trabajo Social guatemalteco.</p>
                         <a href="#unidad-1" class="cover-cta">Explorar la revista</a>
                     </div>
 
@@ -1057,12 +1205,12 @@
                     <div class="cover-index-grid">
                         <a href="#unidad-1" class="cover-index-item"><span class="num">01</span><span class="name">Administración de las organizaciones</span></a>
                         <a href="#unidad-2" class="cover-index-item"><span class="num">02</span><span class="name">Servicios sociales y realidad guatemalteca</span></a>
-                        <a href="#unidad-3" class="cover-index-item"><span class="num">03</span><span class="name">Gerencia social y transformación</span></a>
-                        <a href="#practica" class="cover-index-item"><span class="num">04</span><span class="name">Del aprendizaje a la práctica</span></a>
-                        <a href="#bitacora" class="cover-index-item"><span class="num">05</span><span class="name">Mi bitácora de aprendizaje</span></a>
-                        <a href="#fuentes" class="cover-index-item"><span class="num">06</span><span class="name">Fuentes y archivo académico</span></a>
-                        <a href="#cierre" class="cover-index-item"><span class="num">07</span><span class="name">Cierre editorial</span></a>
-                        <a href="#portada" class="cover-index-item"><span class="num">00</span><span class="name">Editorial</span></a>
+                        <a href="#unidad-4" class="cover-index-item"><span class="num">03</span><span class="name">Auditoría social y auditoría social feminista</span></a>
+                        <a href="#unidad-3" class="cover-index-item"><span class="num">04</span><span class="name">Gerencia social y transformación</span></a>
+                        <a href="#practica" class="cover-index-item"><span class="num">05</span><span class="name">Del aprendizaje a la práctica</span></a>
+                        <a href="#bitacora" class="cover-index-item"><span class="num">06</span><span class="name">Mi bitácora de aprendizaje</span></a>
+                        <a href="#fuentes" class="cover-index-item"><span class="num">07</span><span class="name">Fuentes y archivo académico</span></a>
+                        <a href="#cierre" class="cover-index-item"><span class="num">08</span><span class="name">Cierre editorial</span></a>
                     </div>
                 </div>
 
@@ -1095,7 +1243,7 @@
 
                 <p>La administración de los servicios sociales constituye un campo fundamental para comprender cómo las instituciones organizan sus recursos, capacidades y esfuerzos para responder a las necesidades de la población. Desde la formación en Trabajo Social, acercarse a esta temática permite reconocer que la intervención profesional no ocurre de manera aislada, sino dentro de estructuras institucionales que condicionan sus posibilidades, alcances y resultados.</p>
 
-                <p>Esta revista reúne los principales contenidos, experiencias y aprendizajes desarrollados durante el curso de Administración de Servicios Sociales, abordando temas relacionados con la administración, los servicios sociales y la gerencia social. Su propósito es presentar estos contenidos desde una perspectiva vinculada con el Trabajo Social y con la realidad social guatemalteca.</p>
+                <p>Esta revista reúne los principales contenidos, experiencias y aprendizajes desarrollados durante el curso de Administración de Servicios Sociales, abordando temas relacionados con la administración, los servicios sociales, la auditoría social y la gerencia social. Su propósito es presentar estos contenidos desde una perspectiva vinculada con el Trabajo Social y con la realidad social guatemalteca.</p>
 
                 <p>Más que recopilar información, esta revista busca mostrar el recorrido realizado durante el semestre y generar una mirada crítica sobre la manera en que las instituciones gestionan recursos, organizan sus servicios y responden a las necesidades sociales.</p>
 
@@ -1335,7 +1483,6 @@
                     <p class="question">¿Cómo redistribuirías las responsabilidades aplicando principios de administración de personal y liderazgo adaptativo? ¿Qué indicadores usarías para verificar que la medida funcionó?</p>
                 </div>
 
-                <!-- Navegación de unidad -->
                 <div class="unit-nav">
                     <a href="#portada">← Volver a la portada</a>
                     <a href="#unidad-2" class="nav-center">Siguiente: Unidad II →</a>
@@ -1462,19 +1609,386 @@
 
                 <div class="unit-nav">
                     <a href="#unidad-1">← Unidad I</a>
-                    <a href="#unidad-3" class="nav-center">Siguiente: Unidad III →</a>
+                    <a href="#unidad-4" class="nav-center">Siguiente: Auditoría Social →</a>
                     <a href="#fuentes">Ver fuentes</a>
                 </div>
             </div>
         </section>
 
         <!-- =========================================
-             03 · GERENCIA SOCIAL Y TRANSFORMACIÓN
+             03 · AUDITORÍA SOCIAL Y AUDITORÍA SOCIAL FEMINISTA
+             ========================================= -->
+        <section id="unidad-4" class="page">
+            <div class="inner">
+                <header class="page-header">
+                    <p class="page-kicker">03 · Unidad III</p>
+                    <h2 class="page-title">Auditoría social y auditoría social feminista</h2>
+                    <p class="page-lead">El control ciudadano como herramienta de transparencia, exigibilidad de derechos y transformación institucional.</p>
+                </header>
+
+                <div class="lectura-critica">
+                    La auditoría social constituye una de las expresiones más potentes de la participación ciudadana en la gestión pública. No se limita a vigilar el uso de los recursos, sino que interpela el sentido mismo de las políticas, los programas y los servicios sociales. Desde el Trabajo Social, la auditoría social adquiere un carácter ético y político: implica reconocer que las personas no son beneficiarias pasivas de las instituciones, sino sujetos de derecho con capacidad de exigir, proponer y transformar. En un país como Guatemala, atravesado por desigualdades estructurales y desconfianza histórica hacia las instituciones, la auditoría social se convierte en un puente entre la ciudadanía y el Estado, y en una herramienta clave para garantizar que los servicios sociales lleguen efectivamente a quienes más los necesitan.
+                </div>
+
+                <h2 class="section-h">¿Qué es la auditoría social?</h2>
+                <p>La auditoría social es un proceso organizado, participativo y sistemático mediante el cual la ciudadanía, las organizaciones sociales y las comunidades vigilan, examinan, evalúan y demandan cuentas sobre la gestión pública, el uso de los recursos y el cumplimiento de las políticas y servicios que el Estado debe garantizar. A diferencia de la auditoría financiera o contable tradicional, la auditoría social no se limita a verificar cifras: examina también la calidad, la pertinencia, la oportunidad y el impacto social de las acciones públicas.</p>
+
+                <p>Su propósito central es fortalecer la transparencia, la rendición de cuentas, la participación ciudadana y la exigibilidad de derechos. Es, en esencia, un ejercicio de control democrático que parte de la ciudadanía y se dirige hacia las instituciones encargadas de garantizar el bienestar colectivo.</p>
+
+                <div class="pull-quote">
+                    La auditoría social no es un fin en sí misma: es un medio para que las personas recuperen la palabra, el control y la dignidad sobre lo que les pertenece.
+                </div>
+
+                <h2 class="section-h">Mapa conceptual · Auditoría social</h2>
+                <div class="mapa-conceptual">
+                    <h4>Mapa conceptual</h4>
+                    <div class="mapa-nucleo">AUDITORÍA SOCIAL</div>
+                    <div class="mapa-ramas">
+                        <div class="mapa-rama">
+                            <h5>Definición</h5>
+                            <ul>
+                                <li>Control ciudadano de la gestión pública.</li>
+                                <li>Vigilancia del uso de recursos.</li>
+                                <li>Evaluación de políticas y servicios.</li>
+                                <li>Exigibilidad de derechos.</li>
+                            </ul>
+                        </div>
+                        <div class="mapa-rama">
+                            <h5>Principios</h5>
+                            <ul>
+                                <li>Transparencia.</li>
+                                <li>Participación ciudadana.</li>
+                                <li>Rendición de cuentas.</li>
+                                <li>Equidad e inclusión.</li>
+                                <li>Autonomía de la ciudadanía.</li>
+                            </ul>
+                        </div>
+                        <div class="mapa-rama">
+                            <h5>Actores</h5>
+                            <ul>
+                                <li>Comunidades organizadas.</li>
+                                <li>Organizaciones sociales.</li>
+                                <li>Consejos comunitarios.</li>
+                                <li>Universidades y centros de investigación.</li>
+                                <li>Medios de comunicación.</li>
+                            </ul>
+                        </div>
+                        <div class="mapa-rama">
+                            <h5>Objetivos</h5>
+                            <ul>
+                                <li>Fortalecer la democracia.</li>
+                                <li>Prevenir la corrupción.</li>
+                                <li>Mejorar la calidad de los servicios.</li>
+                                <li>Garantizar derechos.</li>
+                                <li>Incidir en políticas públicas.</li>
+                            </ul>
+                        </div>
+                        <div class="mapa-rama">
+                            <h5>Tipos</h5>
+                            <ul>
+                                <li>Auditoría social comunitaria.</li>
+                                <li>Auditoría social sobre políticas públicas.</li>
+                                <li>Auditoría social de programas y proyectos.</li>
+                                <li>Auditoría social feminista.</li>
+                            </ul>
+                        </div>
+                        <div class="mapa-rama">
+                            <h5>Herramientas</h5>
+                            <ul>
+                                <li>Observatorios ciudadanos.</li>
+                                <li>Monitoreo de presupuestos.</li>
+                                <li>Informes alternativos.</li>
+                                <li>Cabildos abiertos.</li>
+                                <li>Plataformas digitales.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-h">Origen y contexto</h2>
+                <p>La auditoría social surge con fuerza en América Latina en las últimas décadas del siglo XX, en un contexto marcado por transiciones democráticas, ajustes estructurales y una creciente desconfianza hacia las instituciones públicas. En Guatemala, su desarrollo se vincula con el proceso de paz, los acuerdos sobre participación ciudadana y la necesidad de fortalecer mecanismos de control social frente a la corrupción y la exclusión histórica.</p>
+
+                <p>Diversas organizaciones sociales, comunidades indígenas, consejos comunitarios de desarrollo y organismos internacionales han impulsado experiencias de auditoría social en salud, educación, alimentación, infraestructura y gestión municipal. En cada caso, el eje común es la convicción de que la ciudadanía tiene derecho a saber, a preguntar y a decidir sobre lo que le afecta.</p>
+
+                <h2 class="section-h">Tipos de auditoría social</h2>
+                <div class="theory-grid">
+                    <article class="theory-card">
+                        <span class="theory-num">01</span>
+                        <h4>Auditoría social comunitaria</h4>
+                        <p>Realizada por las propias comunidades, con énfasis en el control de los recursos que llegan a su territorio y en la exigencia de servicios básicos. Se apoya en consejos comunitarios, líderes locales y asambleas.</p>
+                    </article>
+                    <article class="theory-card">
+                        <span class="theory-num">02</span>
+                        <h4>Auditoría social sobre políticas públicas</h4>
+                        <p>Analiza el diseño, la implementación y el impacto de políticas sociales (salud, educación, protección, alimentación), verificando su coherencia con las necesidades reales de la población.</p>
+                    </article>
+                    <article class="theory-card">
+                        <span class="theory-num">03</span>
+                        <h4>Auditoría social de programas y proyectos</h4>
+                        <p>Monitorea la ejecución de programas específicos, su presupuesto, sus metas y sus resultados, exigiendo información clara y accesible para la población.</p>
+                    </article>
+                    <article class="theory-card">
+                        <span class="theory-num">04</span>
+                        <h4>Auditoría social feminista</h4>
+                        <p>Perspectiva crítica que analiza cómo las políticas y servicios sociales reproducen o transforman las desigualdades de género, y que coloca a las mujeres como sujetas activas del control ciudadano.</p>
+                    </article>
+                </div>
+
+                <h2 class="section-h">Ciclo de la auditoría social</h2>
+                <p>La auditoría social es un proceso cíclico y continuo, no un evento aislado. Se desarrolla en fases que permiten organizar la acción ciudadana, sistematizar la información y generar incidencia.</p>
+
+                <div class="mapa-conceptual">
+                    <h4>Mapa conceptual · Ciclo de la auditoría social</h4>
+                    <div class="mapa-flujo">
+                        <div class="paso destacado">1. Organización</div>
+                        <span class="flecha">→</span>
+                        <div class="paso">2. Diagnóstico</div>
+                        <span class="flecha">→</span>
+                        <div class="paso">3. Planificación</div>
+                        <span class="flecha">→</span>
+                        <div class="paso destacado">4. Monitoreo</div>
+                        <span class="flecha">→</span>
+                        <div class="paso">5. Análisis</div>
+                        <span class="flecha">→</span>
+                        <div class="paso">6. Incidencia</div>
+                        <span class="flecha">→</span>
+                        <div class="paso destacado">7. Seguimiento</div>
+                    </div>
+                </div>
+
+                <p><strong>1. Organización:</strong> conformación del grupo auditor, definición de roles y acuerdos básicos de participación y transparencia interna.</p>
+                <p><strong>2. Diagnóstico:</strong> identificación del problema, del servicio o del programa a auditar, y reconocimiento del contexto institucional.</p>
+                <p><strong>3. Planificación:</strong> definición de objetivos, indicadores, herramientas de recolección de información y cronograma.</p>
+                <p><strong>4. Monitoreo:</strong> recolección sistemática de información en territorio: visitas, entrevistas, revisión de documentos, observación directa.</p>
+                <p><strong>5. Análisis:</strong> interpretación de la información obtenida, contraste con las normas, las políticas y las necesidades reales de la población.</p>
+                <p><strong>6. Incidencia:</strong> presentación pública de hallazgos, diálogo con autoridades, propuestas de mejora y exigencia de rendición de cuentas.</p>
+                <p><strong>7. Seguimiento:</strong> verificación del cumplimiento de los compromisos adquiridos y reinicio del ciclo, con nuevos aprendizajes.</p>
+
+                <h2 class="section-h">Actores de la auditoría social</h2>
+                <div class="services-grid">
+                    <div class="service-block">
+                        <h5>Comunidades organizadas</h5>
+                        <p>Consejos comunitarios, asambleas locales, comités de desarrollo y grupos de base que ejercen el control social desde el territorio.</p>
+                    </div>
+                    <div class="service-block">
+                        <h5>Organizaciones sociales</h5>
+                        <p>ONG, colectivos, redes temáticas y movimientos sociales que acompañan, asesoran o articulan procesos de auditoría social.</p>
+                    </div>
+                    <div class="service-block">
+                        <h5>Universidades y centros de investigación</h5>
+                        <p>Aportan metodologías, análisis técnico, formación y sistematización de experiencias de auditoría social.</p>
+                    </div>
+                    <div class="service-block">
+                        <h5>Medios de comunicación</h5>
+                        <p>Difunden hallazgos, amplían el debate público y contribuyen a que la información llegue a más sectores de la población.</p>
+                    </div>
+                    <div class="service-block">
+                        <h5>Instituciones públicas</h5>
+                        <p>Son objeto de la auditoría, pero también corresponsables de garantizar el acceso a la información y de responder a las demandas ciudadanas.</p>
+                    </div>
+                    <div class="service-block">
+                        <h5>Trabajo Social</h5>
+                        <p>Facilita procesos, acompaña comunidades, traduce información técnica y contribuye a la construcción de ciudadanía activa.</p>
+                    </div>
+                </div>
+
+                <h2 class="section-h">Herramientas y metodologías</h2>
+                <p>La auditoría social utiliza herramientas que combinan la observación en territorio, el análisis documental y la participación ciudadana. Entre las más utilizadas se encuentran:</p>
+                <ul>
+                    <li><strong>Observatorios ciudadanos:</strong> espacios permanentes de monitoreo de políticas, presupuestos y servicios.</li>
+                    <li><strong>Monitoreo de presupuestos públicos:</strong> seguimiento de la asignación, ejecución y resultados del gasto público.</li>
+                    <li><strong>Informes alternativos:</strong> documentos elaborados por la ciudadanía que contrastan la información oficial con la realidad observada.</li>
+                    <li><strong>Cabildos abiertos y audiencias públicas:</strong> espacios de diálogo directo entre autoridades y población.</li>
+                    <li><strong>Plataformas digitales:</strong> herramientas que facilitan el acceso a información pública y la participación en línea.</li>
+                    <li><strong>Encuestas y sondeos comunitarios:</strong> instrumentos para recoger percepciones y datos sobre los servicios.</li>
+                    <li><strong>Cartografía social:</strong> representación visual del territorio y de los servicios existentes.</li>
+                </ul>
+
+                <h2 class="section-h">Análisis crítico desde el Trabajo Social</h2>
+                <p>La auditoría social interpela directamente al Trabajo Social porque comparte con él su vocación de justicia, su compromiso con los derechos humanos y su apuesta por la participación de las personas en las decisiones que afectan sus vidas. Sin embargo, la auditoría social plantea desafíos importantes:</p>
+
+                <p><strong>Primero,</strong> exige reconocer que la ciudadanía no es un objeto de intervención, sino un sujeto político con capacidad de análisis, propuesta y exigencia. El Trabajo Social puede contribuir a fortalecer esas capacidades, pero no debe sustituirlas ni hablar en nombre de las comunidades.</p>
+
+                <p><strong>Segundo,</strong> implica confrontar relaciones de poder. La auditoría social cuestiona la opacidad institucional, la discrecionalidad en el uso de los recursos y la distancia entre las políticas y las realidades territoriales. El profesional del Trabajo Social que acompaña estos procesos debe estar dispuesto a sostener esa tensión con ética y responsabilidad.</p>
+
+                <p><strong>Tercero,</strong> requiere rigor metodológico. La auditoría social no es un ejercicio de denuncia improvisada: exige información verificable, análisis sistemático y capacidad de diálogo con las instituciones. El Trabajo Social puede aportar herramientas de investigación, sistematización y evaluación que fortalezcan la credibilidad de los procesos.</p>
+
+                <p><strong>Cuarto,</strong> supone una apuesta por la sostenibilidad. La auditoría social no se agota en una acción puntual: debe convertirse en una práctica permanente, integrada a la vida comunitaria y a la cultura institucional.</p>
+
+                <div class="pull-quote">
+                    Auditar socialmente es devolverle a la ciudadanía la posibilidad de preguntar, de exigir y de construir un Estado que realmente sirva a las personas.
+                </div>
+
+                <h2 class="section-h">Auditoría social feminista</h2>
+
+                <p>La auditoría social feminista es una perspectiva crítica dentro de la auditoría social que analiza cómo las políticas, los programas y los servicios públicos reproducen, mantienen o transforman las desigualdades de género. No se limita a "agregar mujeres" a los procesos de control ciudadano: cuestiona las estructuras mismas que producen la exclusión y propone nuevas formas de entender el poder, el conocimiento y la participación.</p>
+
+                <p>Su punto de partida es el reconocimiento de que las mujeres —especialmente las mujeres indígenas, rurales, empobrecidas y diversas— han sido históricamente excluidas de los espacios de decisión, de la información pública y del acceso efectivo a los servicios sociales. La auditoría social feminista busca revertir esa exclusión, colocando a las mujeres como sujetas activas del control ciudadano y como protagonistas de la transformación institucional.</p>
+
+                <h2 class="section-h">Mapa conceptual · Auditoría social feminista</h2>
+                <div class="mapa-conceptual">
+                    <h4>Mapa conceptual</h4>
+                    <div class="mapa-nucleo">AUDITORÍA SOCIAL FEMINISTA</div>
+                    <div class="mapa-ramas">
+                        <div class="mapa-rama">
+                            <h5>Definición</h5>
+                            <ul>
+                                <li>Control ciudadano con perspectiva de género.</li>
+                                <li>Análisis de desigualdades estructurales.</li>
+                                <li>Participación activa de las mujeres.</li>
+                                <li>Exigibilidad de derechos específicos.</li>
+                            </ul>
+                        </div>
+                        <div class="mapa-rama">
+                            <h5>Principios</h5>
+                            <ul>
+                                <li>Equidad de género.</li>
+                                <li>Interseccionalidad.</li>
+                                <li>Autonomía de las mujeres.</li>
+                                <li>Justicia social.</li>
+                                <li>Participación sin subordinación.</li>
+                            </ul>
+                        </div>
+                        <div class="mapa-rama">
+                            <h5>Enfoques</h5>
+                            <ul>
+                                <li>Género y poder.</li>
+                                <li>Interseccionalidad.</li>
+                                <li>Derechos humanos de las mujeres.</li>
+                                <li>Economía feminista.</li>
+                                <li>Cuidados y sostenibilidad de la vida.</li>
+                            </ul>
+                        </div>
+                        <div class="mapa-rama">
+                            <h5>Ámbitos de análisis</h5>
+                            <ul>
+                                <li>Presupuestos con enfoque de género.</li>
+                                <li>Servicios de salud y educación.</li>
+                                <li>Atención a la violencia.</li>
+                                <li>Participación política de las mujeres.</li>
+                                <li>Acceso a recursos y tierra.</li>
+                            </ul>
+                        </div>
+                        <div class="mapa-rama">
+                            <h5>Herramientas</h5>
+                            <ul>
+                                <li>Auditoría de género de presupuestos.</li>
+                                <li>Observatorios de derechos de las mujeres.</li>
+                                <li>Informes alternativos con enfoque feminista.</li>
+                                <li>Asambleas de mujeres.</li>
+                                <li>Cartografías del cuidado.</li>
+                            </ul>
+                        </div>
+                        <div class="mapa-rama">
+                            <h5>Aportes</h5>
+                            <ul>
+                                <li>Visibiliza desigualdades ocultas.</li>
+                                <li>Fortalece liderazgos de mujeres.</li>
+                                <li>Transforma políticas públicas.</li>
+                                <li>Cuestiona el poder patriarcal.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-h">Fundamentos teóricos de la auditoría social feminista</h2>
+
+                <h3 class="sub-h">1. Perspectiva de género</h3>
+                <p>La auditoría social feminista parte de la distinción entre sexo y género. Mientras el sexo se refiere a las características biológicas, el género alude a las construcciones sociales, culturales e históricas que asignan roles, expectativas y jerarquías diferenciadas a mujeres y hombres. Esas construcciones no son neutrales: producen desigualdades que se expresan en el acceso a recursos, en la división del trabajo, en la participación política y en la garantía de derechos.</p>
+
+                <h3 class="sub-h">2. Interseccionalidad</h3>
+                <p>La interseccionalidad, concepto desarrollado por Kimberlé Crenshaw, sostiene que las desigualdades no se suman de manera aislada, sino que se entrelazan. Una mujer indígena, rural y empobrecida no enfrenta solo el machismo: enfrenta también el racismo, la exclusión territorial y la pobreza. La auditoría social feminista incorpora esta mirada para analizar cómo se cruzan distintas formas de opresión y cómo las políticas públicas deben responder a esa complejidad.</p>
+
+                <h3 class="sub-h">3. Derechos humanos de las mujeres</h3>
+                <p>La auditoría social feminista se apoya en el marco internacional de derechos humanos de las mujeres: la Convención sobre la Eliminación de Todas las Formas de Discriminación contra la Mujer (CEDAW), la Convención de Belém do Pará, la Plataforma de Acción de Beijing y los Objetivos de Desarrollo Sostenible. Estos instrumentos ofrecen estándares concretos para evaluar si las políticas y los servicios cumplen con sus obligaciones.</p>
+
+                <h3 class="sub-h">4. Economía feminista y cuidados</h3>
+                <p>La economía feminista visibiliza el trabajo doméstico y de cuidados no remunerado, históricamente asignado a las mujeres y sistemáticamente invisibilizado por las cuentas nacionales. La auditoría social feminista incorpora esta mirada para preguntar cómo las políticas sociales reconocen, redistribuyen y reducen ese trabajo, y cómo garantizan el derecho al cuidado sin reproducir la desigualdad.</p>
+
+                <h3 class="sub-h">5. Participación política de las mujeres</h3>
+                <p>La auditoría social feminista no se limita al análisis técnico: promueve activamente la participación política de las mujeres en los espacios de control ciudadano. Cuestiona los mecanismos que las excluyen —horarios, idiomas, cargas de cuidado, violencias— y construye condiciones para que su voz sea escuchada y su liderazgo reconocido.</p>
+
+                <h2 class="section-h">Ciclo de la auditoría social feminista</h2>
+                <div class="mapa-conceptual">
+                    <h4>Mapa conceptual · Ciclo</h4>
+                    <div class="mapa-flujo">
+                        <div class="paso destacado">1. Organización de mujeres</div>
+                        <span class="flecha">→</span>
+                        <div class="paso">2. Diagnóstico con género</div>
+                        <span class="flecha">→</span>
+                        <div class="paso">3. Definición de indicadores</div>
+                        <span class="flecha">→</span>
+                        <div class="paso destacado">4. Recolección de información</div>
+                        <span class="flecha">→</span>
+                        <div class="paso">5. Análisis interseccional</div>
+                        <span class="flecha">→</span>
+                        <div class="paso">6. Incidencia feminista</div>
+                    </div>
+                </div>
+
+                <p>Cada fase incorpora la perspectiva de género: la organización busca garantizar la participación efectiva de las mujeres; el diagnóstico identifica desigualdades específicas; los indicadores miden el cumplimiento de derechos de las mujeres; la recolección de información respeta sus tiempos, idiomas y contextos; el análisis examina cómo se cruzan las desigualdades; y la incidencia propone transformaciones concretas en las políticas, los servicios y las instituciones.</p>
+
+                <h2 class="section-h">Aportes de la auditoría social feminista</h2>
+                <div class="services-grid">
+                    <div class="service-block">
+                        <h5>Visibiliza lo invisible</h5>
+                        <p>Pone en la agenda pública las desigualdades que suelen quedar fuera de los informes oficiales: el trabajo de cuidados, la violencia doméstica, la brecha salarial, la exclusión política.</p>
+                    </div>
+                    <div class="service-block">
+                        <h5>Fortalece liderazgos</h5>
+                        <p>Genera espacios donde las mujeres ejercen liderazgo, toman decisiones y construyen autonomía colectiva.</p>
+                    </div>
+                    <div class="service-block">
+                        <h5>Transforma políticas</h5>
+                        <p>IncidE en el diseño, la implementación y la evaluación de políticas públicas con enfoque de género.</p>
+                    </div>
+                    <div class="service-block">
+                        <h5>Cuestiona el poder</h5>
+                        <p>Interpela las estructuras patriarcales que atraviesan las instituciones, las comunidades y las familias.</p>
+                    </div>
+                    <div class="service-block">
+                        <h5>Articula voces</h5>
+                        <p>Conecta a mujeres diversas —indígenas, rurales, urbanas, jóvenes, adultas mayores— en redes de incidencia.</p>
+                    </div>
+                    <div class="service-block">
+                        <h5>Construye ciudadanía</h5>
+                        <p>Fortalece el ejercicio pleno de la ciudadanía de las mujeres como sujetas de derecho y de transformación.</p>
+                    </div>
+                </div>
+
+                <h2 class="section-h">Análisis crítico: auditoría social feminista y Trabajo Social</h2>
+                <p>La auditoría social feminista interpela al Trabajo Social en varios sentidos. En primer lugar, cuestiona la mirada asistencialista que aún persiste en algunas intervenciones sociales: las mujeres no son receptoras pasivas de servicios, sino sujetas políticas con capacidad de análisis y propuesta. En segundo lugar, obliga a revisar las propias prácticas profesionales, reconociendo que el Trabajo Social también puede reproducir relaciones de poder cuando no incorpora la perspectiva de género.</p>
+
+                <p>En tercer lugar, exige una apuesta decidida por la participación real de las mujeres en los procesos de control ciudadano, garantizando condiciones materiales —tiempo, espacio, cuidado, idioma, seguridad— para que su voz sea efectivamente escuchada. Y en cuarto lugar, invita a construir alianzas con organizaciones feministas, colectivos de mujeres y redes comunitarias, reconociendo que la transformación no se hace solo desde las instituciones, sino también desde los movimientos sociales.</p>
+
+                <div class="pull-quote">
+                    Auditar con perspectiva feminista es reconocer que ninguna política, ningún servicio y ninguna institución son neutrales al género, y que transformarlos es una tarea colectiva y urgente.
+                </div>
+
+                <div class="case-block">
+                    <h4>Caso práctico · Auditoría social feminista en un programa de salud materna</h4>
+                    <p>Un programa de salud materna en un municipio rural reporta alta cobertura, pero las mujeres de las comunidades señalan que deben caminar varias horas para recibir atención, que no hay traductoras en su idioma y que son atendidas por personal que no las escucha. El programa "existe", pero no responde a las condiciones reales de las mujeres.</p>
+                    <p class="question">¿Cómo aplicarías la auditoría social feminista en este caso? ¿Qué indicadores usarías? ¿Cómo garantizarías la participación efectiva de las mujeres en el proceso? ¿Qué propuestas de transformación llevarías a las autoridades?</p>
+                </div>
+
+                <h2 class="section-h">Síntesis de la unidad</h2>
+                <p>La auditoría social y la auditoría social feminista son herramientas clave para que la ciudadanía —y especialmente las mujeres— ejerzan control sobre la gestión pública, exijan rendición de cuentas y contribuyan a transformar las instituciones. Desde el Trabajo Social, acompañar estos procesos implica reconocer el poder de las comunidades, cuestionar las propias prácticas y apostar por una democracia más profunda, más participativa y más justa. La auditoría social no es solo una técnica: es una forma de entender la relación entre Estado y ciudadanía, entre derechos y responsabilidades, entre poder y dignidad.</p>
+
+                <div class="unit-nav">
+                    <a href="#unidad-2">← Unidad II</a>
+                    <a href="#unidad-3" class="nav-center">Siguiente: Gerencia Social →</a>
+                    <a href="#fuentes">Ver fuentes</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+             04 · GERENCIA SOCIAL Y TRANSFORMACIÓN
              ========================================= -->
         <section id="unidad-3" class="page">
             <div class="inner">
                 <header class="page-header">
-                    <p class="page-kicker">03 · Unidad III</p>
+                    <p class="page-kicker">04 · Unidad IV</p>
                     <h2 class="page-title">Gerencia social y transformación institucional</h2>
                     <p class="page-lead">Pasar del análisis a la acción: gestionar instituciones que transforman realidades.</p>
                 </header>
@@ -1560,7 +2074,7 @@
                 </div>
 
                 <div class="unit-nav">
-                    <a href="#unidad-2">← Unidad II</a>
+                    <a href="#unidad-4">← Auditoría Social</a>
                     <a href="#practica" class="nav-center">Siguiente: Práctica →</a>
                     <a href="#fuentes">Ver fuentes</a>
                 </div>
@@ -1568,12 +2082,12 @@
         </section>
 
         <!-- =========================================
-             04 · DEL APRENDIZAJE A LA PRÁCTICA
+             05 · DEL APRENDIZAJE A LA PRÁCTICA
              ========================================= -->
         <section id="practica" class="page">
             <div class="inner">
                 <header class="page-header">
-                    <p class="page-kicker">04 · Aplicación</p>
+                    <p class="page-kicker">05 · Aplicación</p>
                     <h2 class="page-title">Del aprendizaje a la práctica</h2>
                     <p class="page-lead">Experiencia aplicada: plan de fortalecimiento institucional y evidencias del curso.</p>
                 </header>
@@ -1621,7 +2135,7 @@
                     </div>
                     <div class="gallery-item">
                         <div class="thumb">Intercambio profesional</div>
-                        <div class="caption"><strong>Unidad III · Diálogo</strong>Conversación con profesionales del Trabajo Social y la gerencia social.</div>
+                        <div class="caption"><strong>Unidad IV · Diálogo</strong>Conversación con profesionales del Trabajo Social y la gerencia social.</div>
                     </div>
                     <div class="gallery-item">
                         <div class="thumb">Revista digital</div>
@@ -1661,10 +2175,10 @@
 
                 <h2 class="section-h">Anexos</h2>
                 <p>En este espacio se encuentran los documentos, evidencias y materiales complementarios que respaldan las actividades realizadas durante el curso.</p>
-                <a href="https://drive.google.com/drive/folders/1fuX7ob7psQ-AX-rdnhAO7oKxKlCn106I?usp=drive_link" target="_blank" class="btn-anexos">Consultar carpeta de anexos →</a>
+                <a href="https://drive.google.com/drive/folders/1fuX7ob7psQ-AX-rdnhAO7oKxKlCn106I?usp=drive_link" target="_blank" rel="noopener" class="btn-anexos">Consultar carpeta de anexos →</a>
 
                 <div class="unit-nav">
-                    <a href="#unidad-3">← Unidad III</a>
+                    <a href="#unidad-3">← Gerencia Social</a>
                     <a href="#bitacora" class="nav-center">Siguiente: Bitácora →</a>
                     <a href="#portada">Volver al inicio</a>
                 </div>
@@ -1672,12 +2186,12 @@
         </section>
 
         <!-- =========================================
-             05 · MI BITÁCORA DE APRENDIZAJE
+             06 · MI BITÁCORA DE APRENDIZAJE
              ========================================= -->
         <section id="bitacora" class="page">
             <div class="inner">
                 <header class="page-header">
-                    <p class="page-kicker">05 · Reflexión personal</p>
+                    <p class="page-kicker">06 · Reflexión personal</p>
                     <h2 class="page-title">Mi bitácora de aprendizaje</h2>
                     <p class="page-lead">Tres reflexiones sobre el recorrido del semestre: qué comprendí, qué cuestioné y cómo aplicar lo aprendido.</p>
                 </header>
@@ -1686,17 +2200,17 @@
                     <div class="bitacora-item">
                         <div class="num">01</div>
                         <h5>Lo que comprendí</h5>
-                        <p>Comprendí que la administración no es un ejercicio neutral: cada decisión sobre recursos, tiempos y prioridades impacta directamente en la vida de las personas. Aprendí que el Trabajo Social puede y debe participar en esos espacios, aportando una mirada ética y humana a la gestión institucional.</p>
+                        <p>Comprendí que la administración no es un ejercicio neutral: cada decisión sobre recursos, tiempos y prioridades impacta directamente en la vida de las personas. Aprendí que el Trabajo Social puede y debe participar en esos espacios, aportando una mirada ética y humana a la gestión institucional, y que la auditoría social —especialmente la feminista— es una herramienta clave para que la ciudadanía recupere el control sobre lo público.</p>
                     </div>
                     <div class="bitacora-item">
                         <div class="num">02</div>
                         <h5>Lo que cuestioné</h5>
-                        <p>Cuestioné la idea de que eficiencia y dignidad son opuestas. También cuestioné la burocracia que se vuelve un fin en sí misma y la fragmentación institucional que desaprovecha recursos mientras las necesidades crecen. Y cuestioné mi propio rol: no basta con conocer la teoría, hay que transformar la práctica.</p>
+                        <p>Cuestioné la idea de que eficiencia y dignidad son opuestas. También cuestioné la burocracia que se vuelve un fin en sí misma, la fragmentación institucional que desaprovecha recursos y la ausencia de mecanismos reales de control ciudadano. Y cuestioné mi propio rol: no basta con conocer la teoría, hay que transformar la práctica y acompañar a las comunidades en la exigencia de sus derechos.</p>
                     </div>
                     <div class="bitacora-item">
                         <div class="num">03</div>
                         <h5>Cómo lo aplicaré</h5>
-                        <p>Como futura trabajadora social, llevaré esta mirada a los espacios donde me toque intervenir: instituciones públicas, organizaciones sociales o proyectos comunitarios. Buscaré gestionar con pertinencia cultural, coordinar con otros actores, evaluar con rigor y no perder nunca de vista que detrás de cada servicio hay una persona con derechos.</p>
+                        <p>Como futura trabajadora social, llevaré esta mirada a los espacios donde me toque intervenir: instituciones públicas, organizaciones sociales o proyectos comunitarios. Buscaré gestionar con pertinencia cultural, coordinar con otros actores, evaluar con rigor, promover auditorías sociales con perspectiva de género y no perder nunca de vista que detrás de cada servicio hay una persona con derechos.</p>
                     </div>
                 </div>
 
@@ -1713,12 +2227,12 @@
         </section>
 
         <!-- =========================================
-             06 · FUENTES Y ARCHIVO ACADÉMICO
+             07 · FUENTES Y ARCHIVO ACADÉMICO
              ========================================= -->
         <section id="fuentes" class="page">
             <div class="inner">
                 <header class="page-header">
-                    <p class="page-kicker">06 · Rigor académico</p>
+                    <p class="page-kicker">07 · Rigor académico</p>
                     <h2 class="page-title">Fuentes y archivo académico</h2>
                     <p class="page-lead">Bibliografía, egografía, lecturas complementarias y videos consultados durante el curso.</p>
                 </header>
@@ -1740,7 +2254,16 @@
                     <li><strong>PNUD. (2022).</strong> <em>Informe sobre Desarrollo Humano en Guatemala.</em><span class="desc">Indicadores de desarrollo humano, desigualdad y pobreza.</span></li>
                 </ul>
 
-                <h2 class="section-h">Bibliografía · Unidad III</h2>
+                <h2 class="section-h">Bibliografía · Unidad III (Auditoría Social)</h2>
+                <ul class="biblio-list">
+                    <li><strong>Crenshaw, K. (1989).</strong> <em>Demarginalizing the Intersection of Race and Sex.</em> University of Chicago Legal Forum.<span class="desc">Origen del concepto de interseccionalidad.</span></li>
+                    <li><strong>Fraser, N. (1997).</strong> <em>Iustitia Interrupta: Reflexiones críticas desde la posición "postsocialista".</em> Siglo del Hombre.<span class="desc">Análisis de la justicia, el reconocimiento y la redistribución.</span></li>
+                    <li><strong>ONU Mujeres. (2014).</strong> <em>Guía para la auditoría de género.</em><span class="desc">Metodología para auditar políticas con perspectiva de género.</span></li>
+                    <li><strong>Banco Mundial. (2003).</strong> <em>Auditoría Social: Instrumento para la rendición de cuentas.</em><span class="desc">Marco metodológico de auditoría social.</span></li>
+                    <li><strong>PNUD. (2010).</strong> <em>Auditoría social y participación ciudadana en América Latina.</em><span class="desc">Experiencias y aprendizajes regionales.</span></li>
+                </ul>
+
+                <h2 class="section-h">Bibliografía · Unidad IV (Gerencia Social)</h2>
                 <ul class="biblio-list">
                     <li><strong>Kliksberg, B. (1990).</strong> <em>Gerencia Social: Un enfoque para el desarrollo.</em> Fondo de Cultura Económica.<span class="desc">Introducción al concepto de gerencia social y su papel en el desarrollo.</span></li>
                     <li><strong>Sulbrandt, J. (1999).</strong> <em>Gerencia social y políticas sociales.</em> INDES-BID.<span class="desc">Relación entre gerencia social y políticas sociales.</span></li>
@@ -1762,6 +2285,7 @@
                     <li><strong>MINEDUC · Programas Educativos.</strong> <a href="https://www.mineduc.gob.gt" target="_blank" rel="noopener">https://www.mineduc.gob.gt</a></li>
                     <li><strong>BID · Proyectos de Desarrollo Social.</strong> <a href="https://www.iadb.org/es" target="_blank" rel="noopener">https://www.iadb.org/es</a></li>
                     <li><strong>PNUD · Informes sobre Desarrollo Humano.</strong> <a href="https://www.undp.org/es/guatemala" target="_blank" rel="noopener">https://www.undp.org/es/guatemala</a></li>
+                    <li><strong>ONU Mujeres · Auditoría de género.</strong> <a href="https://www.unwomen.org/es" target="_blank" rel="noopener">https://www.unwomen.org/es</a></li>
                 </ul>
 
                 <h2 class="section-h">Videos seleccionados</h2>
@@ -1787,19 +2311,19 @@
         </section>
 
         <!-- =========================================
-             07 · CIERRE EDITORIAL
+             08 · CIERRE EDITORIAL
              ========================================= -->
         <section id="cierre" class="page">
             <div class="inner">
                 <header class="page-header">
-                    <p class="page-kicker">07 · Cierre</p>
+                    <p class="page-kicker">08 · Cierre</p>
                     <h2 class="page-title">Cierre editorial</h2>
                 </header>
 
                 <div class="closing">
                     <h2>Administrar es un acto de responsabilidad pública</h2>
-                    <p>Esta revista digital es el resultado de un proceso de aprendizaje que integró teoría, práctica y reflexión crítica. A lo largo del curso se construyó una mirada de la administración de servicios sociales desde el Trabajo Social, reconociendo la importancia de gestionar recursos, coordinar actores y orientar las instituciones hacia la garantía de derechos y el bienestar de la población.</p>
-                    <p>La administración no es un fin en sí misma, sino un medio para que las instituciones sociales cumplan su misión con pertinencia, equidad y sostenibilidad. Como futuros profesionales del Trabajo Social, tenemos la responsabilidad de contribuir a que los servicios sociales sean accesibles, oportunos y orientados a las necesidades reales de las personas.</p>
+                    <p>Esta revista digital es el resultado de un proceso de aprendizaje que integró teoría, práctica y reflexión crítica. A lo largo del curso se construyó una mirada de la administración de servicios sociales desde el Trabajo Social, reconociendo la importancia de gestionar recursos, coordinar actores, auditar socialmente y orientar las instituciones hacia la garantía de derechos y el bienestar de la población.</p>
+                    <p>La administración no es un fin en sí misma, sino un medio para que las instituciones sociales cumplan su misión con pertinencia, equidad y sostenibilidad. Como futuros profesionales del Trabajo Social, tenemos la responsabilidad de contribuir a que los servicios sociales sean accesibles, oportunos y orientados a las necesidades reales de las personas, y de acompañar a las comunidades en el ejercicio pleno de su derecho a exigir, proponer y transformar.</p>
                     <p class="signature">— Denisse Parada · Licenciatura en Trabajo Social</p>
                 </div>
 
