@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar para transformar | Revista Académica de Trabajo Social</title>
+    <title>Revista Académica | Administración de Servicios Sociales</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -23,13 +23,7 @@
             --linea: #E4DCCC;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -45,140 +39,309 @@
         }
 
         /* =========================================
-           NAVEGACIÓN SUPERIOR EDITORIAL
+           NAVEGACIÓN LATERAL
            ========================================= */
-        .topbar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            height: 62px;
-            background: rgba(23, 63, 58, 0.97);
-            backdrop-filter: blur(8px);
+        .magazine-nav {
+            width: 270px;
+            background: var(--verde);
             color: var(--marfil);
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 2rem;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(199, 121, 91, 0.35);
+            flex-direction: column;
+            padding: 2rem 1.5rem;
+            box-shadow: 4px 0 15px rgba(23, 63, 58, 0.18);
+            z-index: 100;
+            flex-shrink: 0;
+            overflow-y: auto;
         }
-        .topbar-brand {
-            font-family: 'Lora', serif;
-            font-weight: 700;
-            font-size: 1.02rem;
-            letter-spacing: 0.5px;
-            color: var(--marfil);
-            text-decoration: none;
-        }
-        .topbar-brand span {
-            color: var(--terracota);
-        }
-        .topbar-nav {
-            display: flex;
-            gap: 0.2rem;
-            flex-wrap: wrap;
-        }
-        .topbar-nav a {
-            color: rgba(245, 240, 230, 0.78);
-            text-decoration: none;
+        .magazine-nav h2 {
             font-family: 'Inter', sans-serif;
-            font-size: 0.82rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--terracota);
+            border-bottom: 1px solid rgba(245,240,230,0.15);
+            padding-bottom: 1rem;
+        }
+        .magazine-nav a {
+            display: block;
+            color: rgba(245,240,230,0.78);
+            text-decoration: none;
+            padding: 0.75rem 0.9rem;
+            margin-bottom: 0.3rem;
+            border-radius: 3px;
+            font-family: 'Inter', sans-serif;
             font-weight: 500;
-            letter-spacing: 0.4px;
-            padding: 0.4rem 0.75rem;
-            border-radius: 4px;
-            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            transition: all 0.25s ease;
+            border-left: 2px solid transparent;
         }
-        .topbar-nav a:hover { color: var(--terracota); }
-        .topbar-nav a.active {
+        .magazine-nav a:hover {
+            background: rgba(199,121,91,0.12);
             color: var(--marfil);
-            background: rgba(199, 121, 91, 0.22);
         }
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
+        .magazine-nav a.active {
             color: var(--marfil);
-            font-size: 1.5rem;
-            cursor: pointer;
+            border-left-color: var(--terracota);
+            background: rgba(199,121,91,0.15);
+        }
+        .nav-footer {
+            margin-top: auto;
+            font-size: 0.72rem;
+            color: rgba(245,240,230,0.45);
+            text-align: center;
+            padding-top: 2rem;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
         }
 
         /* =========================================
            CONTENIDO PRINCIPAL
            ========================================= */
-        .magazine {
+        .magazine-content {
             flex: 1;
+            position: relative;
             height: 100vh;
             overflow-y: auto;
-            padding-top: 62px;
+            scroll-behavior: smooth;
+            background: var(--marfil);
         }
 
-        .page { display: none; animation: fadeUp 0.55s ease; }
+        .page { display: none; padding: 3rem 4rem 5rem; min-height: 100vh; animation: fadeIn 0.55s ease; }
         .page:target { display: block; }
         body:not(:has(.page:target)) #portada { display: block; }
         body:has(.page:target:not(#portada)) #portada { display: none; }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(14px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =========================================
+           TIPOGRAFÍA EDITORIAL
+           ========================================= */
+        .section-title {
+            font-family: 'Lora', serif;
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: var(--verde);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 3px solid var(--terracota);
+            display: inline-block;
+            letter-spacing: -0.6px;
+            line-height: 1.15;
+        }
+        .subsection-title {
+            font-family: 'Lora', serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--verde);
+            margin: 2rem 0 1rem;
+            letter-spacing: -0.3px;
+        }
+        h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: var(--verde);
+            margin: 1.5rem 0 0.6rem;
+        }
+        h4 {
+            font-family: 'Lora', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--verde);
+            margin: 1.2rem 0 0.5rem;
+        }
+        p { margin-bottom: 1rem; text-align: justify; }
+
+        /* =========================================
+           TARJETAS
+           ========================================= */
+        .card {
+            background: #FFFFFF;
+            border-radius: 3px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--linea);
+        }
+        .card-accent { border-left: 4px solid var(--verde); }
+        .card-warning { border-left: 4px solid var(--terracota); }
+        .card-danger { border-left: 4px solid #8B3A2A; }
+        .card-success { border-left: 4px solid var(--verde); }
+
+        /* Grids */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+
+        /* Listas */
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li::before { content: "— "; color: var(--terracota); font-weight: 700; }
+        .cross-list { list-style: none; padding-left: 0; }
+        .cross-list li::before { content: "— "; color: var(--terracota); font-weight: 700; }
+
+        /* Diagramas */
+        .diagram {
+            background: var(--marfil-claro);
+            border: 1px solid var(--linea);
+            border-radius: 3px;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-family: 'Lora', serif;
+            font-weight: 600;
+            color: var(--verde);
+            line-height: 2;
+        }
+        .diagram .arrow { color: var(--terracota); font-size: 1.2rem; }
+        .diagram .box {
+            display: inline-block;
+            background: #FFFFFF;
+            border: 1.5px solid var(--verde);
+            border-radius: 2px;
+            padding: 0.5rem 1.3rem;
+            margin: 0.25rem 0.35rem;
+            font-size: 0.95rem;
+            font-family: 'Lora', serif;
+        }
+        .diagram .box-highlight { background: var(--verde); color: var(--marfil); }
+
+        /* Tarjetas pequeñas */
+        .profile-card {
+            background: #FFFFFF;
+            border-radius: 3px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--linea);
+        }
+        .profile-card .icon {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--terracota);
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+        .profile-card h4 { font-size: 1rem; font-weight: 700; color: var(--verde); margin-bottom: 0.4rem; }
+        .profile-card p { font-size: 0.9rem; color: #4a5654; text-align: center; }
+
+        /* Citas */
+        .quote {
+            background: var(--marfil-claro);
+            border-left: 4px solid var(--terracota);
+            padding: 1.3rem 1.6rem;
+            border-radius: 0 3px 3px 0;
+            margin: 1.4rem 0;
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--verde);
+            line-height: 1.65;
+        }
+        .quote strong { font-style: normal; font-weight: 700; }
+
+        /* Tablas */
+        .table-wrap { overflow-x: auto; margin: 1rem 0; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.93rem; }
+        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--linea); vertical-align: top; }
+        th {
+            background: var(--verde);
+            color: var(--marfil);
+            font-family: 'Lora', serif;
+            font-weight: 600;
+            font-size: 0.92rem;
+        }
+        tbody tr:nth-child(even) { background: var(--marfil-claro); }
+
+        /* Evidencias */
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .evidence-item {
+            background: #FFFFFF;
+            border: 1px solid var(--linea);
+            border-radius: 3px;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .evidence-item .placeholder {
+            background: var(--salvia);
+            border-radius: 2px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--verde);
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            margin-bottom: 0.6rem;
         }
 
         /* =========================================
            PORTADA EDITORIAL
            ========================================= */
         .cover {
-            min-height: 100vh;
             background: var(--verde);
             color: var(--marfil);
-            padding: 4rem 4rem 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            border-radius: 4px;
+            padding: 3.5rem 3rem;
+            margin-bottom: 3rem;
             position: relative;
             overflow: hidden;
         }
         .cover::before {
             content: "";
             position: absolute;
-            top: -120px; right: -120px;
-            width: 420px; height: 420px;
+            top: -80px; right: -80px;
+            width: 320px; height: 320px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(199,121,91,0.18), transparent 70%);
+            background: radial-gradient(circle, rgba(199,121,91,0.22), transparent 70%);
         }
         .cover-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(245,240,230,0.18);
-            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(245,240,230,0.2);
+            padding-bottom: 1rem;
             font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            letter-spacing: 2px;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: rgba(245,240,230,0.72);
+            color: rgba(245,240,230,0.7);
+            margin-bottom: 2.5rem;
+            position: relative;
         }
         .cover-top span:first-child { color: var(--terracota); font-weight: 600; }
 
-        .cover-center {
-            max-width: 900px;
-            padding: 3rem 0;
-        }
         .cover-kicker {
             font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--terracota);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             font-weight: 600;
+            position: relative;
         }
         .cover-title {
             font-family: 'Lora', serif;
             font-weight: 800;
-            font-size: 4.6rem;
-            line-height: 1.02;
-            letter-spacing: -1.5px;
+            font-size: 3.8rem;
+            line-height: 1.05;
+            letter-spacing: -1.2px;
             color: var(--marfil);
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
         }
         .cover-title em {
             font-style: italic;
@@ -187,608 +350,103 @@
         }
         .cover-subtitle {
             font-family: 'Lora', serif;
-            font-size: 1.35rem;
+            font-size: 1.15rem;
             font-weight: 400;
             font-style: italic;
             color: rgba(245,240,230,0.85);
-            max-width: 720px;
-            line-height: 1.5;
-            padding-left: 1.5rem;
+            max-width: 680px;
+            line-height: 1.55;
+            padding-left: 1.3rem;
             border-left: 2px solid var(--terracota);
+            position: relative;
         }
 
         .cover-bottom {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
-            border-top: 1px solid rgba(245,240,230,0.18);
-            padding-top: 1.8rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(245,240,230,0.2);
+            padding-top: 1.5rem;
+            position: relative;
         }
-        .cover-bottom .ficha-item span {
+        .ficha-item span {
             display: block;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.68rem;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
             color: var(--terracota);
             margin-bottom: 0.35rem;
             font-weight: 600;
         }
-        .cover-bottom .ficha-item strong {
+        .ficha-item strong {
             font-family: 'Lora', serif;
             font-weight: 600;
             font-size: 1rem;
             color: var(--marfil);
         }
-
-        /* Índice visual */
-        .cover-index {
-            padding: 2.5rem 0 0;
-        }
-        .cover-index h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: rgba(245,240,230,0.6);
-            margin-bottom: 1.2rem;
-            font-weight: 600;
-        }
-        .cover-index-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-        }
-        .cover-index-item {
-            border-top: 1px solid rgba(245,240,230,0.2);
-            padding-top: 0.8rem;
-            color: var(--marfil);
-            text-decoration: none;
-            transition: all 0.25s ease;
-        }
-        .cover-index-item:hover { border-top-color: var(--terracota); }
-        .cover-index-item .num {
-            font-family: 'Lora', serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--terracota);
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-        .cover-index-item .name {
-            font-family: 'Lora', serif;
-            font-size: 1.02rem;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        /* =========================================
-           PÁGINAS INTERIORES
-           ========================================= */
-        .inner {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 4rem 3.5rem 5rem;
-        }
-        .page-header {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--linea);
-        }
-        .page-kicker {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 3.5px;
-            text-transform: uppercase;
-            color: var(--terracota);
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-        .page-title {
-            font-family: 'Lora', serif;
-            font-weight: 800;
-            font-size: 3rem;
-            line-height: 1.08;
-            color: var(--verde);
-            letter-spacing: -0.8px;
-        }
-        .page-lead {
-            font-family: 'Lora', serif;
-            font-size: 1.2rem;
-            font-style: italic;
-            color: #4a5654;
-            margin-top: 1rem;
-            max-width: 760px;
-            line-height: 1.55;
-        }
-
-        h2.section-h {
-            font-family: 'Lora', serif;
-            font-weight: 700;
-            font-size: 1.85rem;
-            color: var(--verde);
-            margin: 3rem 0 1.2rem;
-            letter-spacing: -0.4px;
-            line-height: 1.2;
-        }
-        h3.sub-h {
-            font-family: 'Lora', serif;
-            font-weight: 600;
-            font-size: 1.25rem;
-            color: var(--verde);
-            margin: 2rem 0 0.8rem;
-            letter-spacing: -0.2px;
-        }
-        p { margin-bottom: 1rem; color: var(--carbon); }
-        p + p { text-indent: 1.5em; }
-
-        /* LECTURA CRÍTICA (reemplaza “Mi mirada”) */
-        .lectura-critica {
-            margin: 2rem 0;
-            padding: 0 0 0 1.5rem;
-            border-left: 3px solid var(--terracota);
-            font-family: 'Lora', serif;
-            font-style: italic;
-            font-size: 1.08rem;
-            color: var(--verde);
-            line-height: 1.6;
-        }
-        .lectura-critica::before {
-            content: "LECTURA CRÍTICA";
-            display: block;
-            font-family: 'Inter', sans-serif;
-            font-style: normal;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            color: var(--terracota);
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-        }
-
-        /* Cita destacada */
-        .pull-quote {
-            font-family: 'Lora', serif;
-            font-size: 1.6rem;
-            font-weight: 500;
-            font-style: italic;
-            line-height: 1.35;
-            color: var(--verde);
-            padding: 1.5rem 0;
-            margin: 2.5rem 0;
-            border-top: 1px solid var(--linea);
-            border-bottom: 1px solid var(--linea);
-            text-align: center;
-            letter-spacing: -0.3px;
-        }
-        .pull-quote::before { content: "“"; color: var(--terracota); font-size: 2.4rem; vertical-align: -0.2em; margin-right: 0.15em; }
-        .pull-quote::after { content: "”"; color: var(--terracota); font-size: 2.4rem; vertical-align: -0.2em; margin-left: 0.15em; }
-
-        /* Columna lateral */
-        .layout-side {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-            margin: 2rem 0;
-            align-items: start;
-        }
-        .side-note {
-            background: var(--marfil-claro);
-            border: 1px solid var(--linea);
-            border-top: 3px solid var(--verde);
-            padding: 1.5rem;
-            border-radius: 2px;
-        }
-        .side-note h5 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--terracota);
-            font-weight: 700;
-            margin-bottom: 0.7rem;
-        }
-        .side-note p {
-            font-family: 'Lora', serif;
-            font-size: 0.98rem;
-            line-height: 1.6;
-            margin-bottom: 0.8rem;
-        }
-        .side-note p:last-child { margin-bottom: 0; }
-
-        /* Tarjetas de teoría */
-        .theory-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .theory-card {
-            background: #FFFFFF;
-            border: 1px solid var(--linea);
-            padding: 1.8rem;
-            border-radius: 3px;
-            position: relative;
-        }
-        .theory-card .theory-num {
-            font-family: 'Lora', serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--terracota);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .theory-card h4 {
-            font-family: 'Lora', serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--verde);
-            margin-bottom: 0.3rem;
-            line-height: 1.3;
-        }
-        .theory-card .author {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: #6b7a77;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        .theory-card p {
-            font-size: 0.95rem;
-            line-height: 1.65;
-        }
-
-        /* Tabla comparativa de teorías */
-        .table-wrap { overflow-x: auto; margin: 2rem 0; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.88rem;
-            background: #FFFFFF;
-            border: 1px solid var(--linea);
-        }
-        th {
-            background: var(--verde);
-            color: var(--marfil);
-            text-align: left;
-            padding: 0.9rem 1rem;
-            font-family: 'Lora', serif;
-            font-weight: 600;
-            font-size: 0.92rem;
-            letter-spacing: 0.2px;
-        }
-        td {
-            padding: 0.85rem 1rem;
-            border-bottom: 1px solid var(--linea);
-            vertical-align: top;
-            line-height: 1.55;
-        }
-        tr:last-child td { border-bottom: none; }
-        tbody tr:nth-child(even) { background: var(--marfil-claro); }
-        td strong { color: var(--verde); font-family: 'Lora', serif; }
-
-        /* Mapa de servicios */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.2rem;
-            margin: 2rem 0;
-        }
-        .service-block {
-            background: #FFFFFF;
-            border: 1px solid var(--linea);
-            border-left: 3px solid var(--verde);
-            padding: 1.4rem 1.5rem;
-            border-radius: 2px;
-        }
-        .service-block h5 {
-            font-family: 'Lora', serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--verde);
-            margin-bottom: 0.7rem;
-        }
-        .service-block .lbl {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.68rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--terracota);
-            font-weight: 700;
-            display: block;
-            margin: 0.6rem 0 0.2rem;
-        }
-        .service-block p {
-            font-size: 0.88rem;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        /* Casos prácticos */
-        .case-block {
-            background: var(--verde);
-            color: var(--marfil);
-            padding: 2rem 2.2rem;
-            margin: 2.5rem 0;
-            border-radius: 3px;
-            position: relative;
-        }
-        .case-block::before {
-            content: "CASO PRÁCTICO";
-            font-family: 'Inter', sans-serif;
-            font-size: 0.68rem;
-            letter-spacing: 3px;
-            color: var(--terracota);
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.8rem;
-        }
-        .case-block h4 {
-            font-family: 'Lora', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--marfil);
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-        .case-block p {
-            color: rgba(245,240,230,0.92);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        .case-block .question {
-            margin-top: 1.2rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid rgba(245,240,230,0.2);
-            font-family: 'Lora', serif;
-            font-style: italic;
-            color: var(--terracota);
-            font-size: 1.02rem;
-        }
-
-        /* Indicadores */
-        .indicators {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        .indicator {
-            background: #FFFFFF;
-            border: 1px solid var(--linea);
-            padding: 1.3rem 1.2rem;
-            text-align: left;
-            border-radius: 2px;
-        }
-        .indicator .level {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.68rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--terracota);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .indicator h5 {
-            font-family: 'Lora', serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--verde);
-            margin-bottom: 0.5rem;
-        }
-        .indicator p {
-            font-size: 0.85rem;
-            line-height: 1.5;
-            color: #4a5654;
-            margin: 0;
-        }
-
-        /* Bitácora */
-        .bitacora {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .bitacora-item {
-            background: var(--marfil-claro);
-            border: 1px solid var(--linea);
-            padding: 1.8rem 1.5rem;
-            border-radius: 2px;
-            border-top: 3px solid var(--terracota);
-        }
-        .bitacora-item .num {
-            font-family: 'Lora', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--terracota);
-            line-height: 1;
-            margin-bottom: 0.8rem;
-        }
-        .bitacora-item h5 {
-            font-family: 'Lora', serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--verde);
-            margin-bottom: 0.8rem;
-        }
-        .bitacora-item p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Evidencias galería */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.2rem;
-            margin: 2rem 0;
-        }
-        .gallery-item {
-            border: 1px solid var(--linea);
-            background: #FFFFFF;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-        .gallery-item .thumb {
-            background: var(--salvia);
-            height: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Lora', serif;
-            font-style: italic;
-            color: var(--verde);
-            font-size: 0.9rem;
-        }
-        .gallery-item .caption {
-            padding: 0.9rem 1rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.82rem;
-            line-height: 1.45;
-        }
-        .gallery-item .caption strong {
-            display: block;
-            font-family: 'Lora', serif;
-            font-size: 0.95rem;
-            color: var(--verde);
-            margin-bottom: 0.2rem;
-        }
-
-        /* Bibliografía */
-        .biblio-list { list-style: none; padding: 0; }
-        .biblio-list li {
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--linea);
-            font-size: 0.95rem;
-            line-height: 1.65;
-        }
-        .biblio-list li:last-child { border-bottom: none; }
-        .biblio-list strong { font-family: 'Lora', serif; color: var(--verde); }
-        .biblio-list em { color: #4a5654; }
-        .biblio-list .desc {
-            display: block;
-            font-size: 0.85rem;
-            color: #6b7a77;
-            margin-top: 0.3rem;
-            font-family: 'Inter', sans-serif;
-        }
-        .biblio-list a {
-            color: var(--terracota);
-            text-decoration: none;
-            word-break: break-all;
-            font-size: 0.88rem;
-        }
-        .biblio-list a:hover { text-decoration: underline; }
-
-        /* Cierre */
-        .closing {
-            background: var(--verde);
-            color: var(--marfil);
-            padding: 3rem 3rem;
-            margin: 3rem 0 0;
-            border-radius: 3px;
-        }
-        .closing h2 {
-            font-family: 'Lora', serif;
-            font-size: 1.9rem;
-            font-weight: 700;
-            color: var(--marfil);
-            margin-bottom: 1.2rem;
-        }
-        .closing p {
-            color: rgba(245,240,230,0.92);
-            font-size: 1.02rem;
-            line-height: 1.75;
-        }
-        .closing .signature {
-            margin-top: 2rem;
-            font-family: 'Lora', serif;
-            font-style: italic;
-            color: var(--terracota);
-            font-size: 1.05rem;
-        }
-
-        /* Enlace a Anexos */
-        .btn-anexos {
-            display: inline-block;
-            margin-top: 1.2rem;
-            padding: 0.9rem 2rem;
-            background: var(--terracota);
-            color: var(--marfil);
-            text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            border-radius: 2px;
-            transition: background 0.25s ease;
-        }
-        .btn-anexos:hover { background: #a86146; }
 
         /* =========================================
            RESPONSIVE
            ========================================= */
         @media (max-width: 980px) {
-            .topbar { padding: 0 1rem; }
-            .topbar-nav {
-                display: none;
-                position: absolute;
-                top: 62px; left: 0; right: 0;
-                background: var(--verde);
-                flex-direction: column;
+            body { flex-direction: column; overflow: auto; height: auto; }
+            .magazine-nav {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
                 padding: 1rem;
-                border-bottom: 1px solid var(--terracota);
+                gap: 0.4rem;
+                justify-content: center;
             }
-            .topbar-nav.open { display: flex; }
-            .menu-toggle { display: block; }
-
-            .cover { padding: 2.5rem 1.5rem; }
-            .cover-title { font-size: 2.8rem; letter-spacing: -1px; }
-            .cover-subtitle { font-size: 1.1rem; }
+            .magazine-nav h2 { display: none; }
+            .magazine-nav a {
+                padding: 0.45rem 0.9rem;
+                font-size: 0.82rem;
+                border-left: none;
+                border-bottom: 2px solid transparent;
+                margin-bottom: 0;
+            }
+            .magazine-nav a.active { border-left: none; border-bottom-color: var(--terracota); }
+            .nav-footer { display: none; }
+            .magazine-content { height: auto; overflow: visible; }
+            .page { padding: 2rem 1.4rem; min-height: auto; }
+            .cover { padding: 2rem 1.5rem; }
+            .cover-title { font-size: 2.4rem; }
+            .cover-subtitle { font-size: 1rem; }
             .cover-bottom { grid-template-columns: 1fr; gap: 1rem; }
-            .cover-index-grid { grid-template-columns: 1fr 1fr; }
-
-            .inner { padding: 2.5rem 1.4rem 3.5rem; }
-            .page-title { font-size: 2.1rem; }
-            .page-lead { font-size: 1.05rem; }
-
-            .layout-side, .theory-grid, .services-grid,
-            .indicators, .bitacora, .gallery {
-                grid-template-columns: 1fr;
-            }
-            .pull-quote { font-size: 1.25rem; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.7rem; }
         }
     </style>
 </head>
 <body>
 
     <!-- =========================================
-         NAVEGACIÓN SUPERIOR
+         NAVEGACIÓN LATERAL
          ========================================= -->
-    <header class="topbar">
-        <a href="#portada" class="topbar-brand">Revista <span>ASS</span> · Trabajo Social</a>
-        <button class="menu-toggle" onclick="document.querySelector('.topbar-nav').classList.toggle('open')">☰</button>
-        <nav class="topbar-nav">
-            <a href="#portada">Portada</a>
-            <a href="#unidad-1">01 Administración</a>
-            <a href="#unidad-2">02 Servicios Sociales</a>
-            <a href="#unidad-3">03 Gerencia Social</a>
-            <a href="#practica">04 Práctica</a>
-            <a href="#bitacora">05 Bitácora</a>
-            <a href="#fuentes">06 Fuentes</a>
-            <a href="#cierre">07 Cierre</a>
-        </nav>
-    </header>
+    <nav class="magazine-nav">
+        <h2>Revista Académica</h2>
+        <a href="#portada" class="active">Portada / Editorial</a>
+        <a href="#unidad-1">Unidad I · Administración</a>
+        <a href="#unidad-2">Unidad II · Servicios Sociales</a>
+        <a href="#unidad-3">Unidad III · Gerencia Social</a>
+        <a href="#anexos">Experiencias y Evidencias</a>
+        <a href="#bibliografia">Bibliografía y Lecturas</a>
+        <a href="#actividades">Actividades Elaboradas</a>
+        <div class="nav-footer">
+            <p>Administración de Servicios Sociales</p>
+            <p>Licenciatura en Trabajo Social</p>
+        </div>
+    </nav>
 
-    <main class="magazine">
+    <!-- =========================================
+         CONTENIDO
+         ========================================= -->
+    <main class="magazine-content">
 
-        <!-- =========================================
-             00 · PORTADA EDITORIAL
-             ========================================= -->
+        <!-- ================= PORTADA Y EDITORIAL ================= -->
         <section id="portada" class="page">
             <div class="cover">
                 <div class="cover-top">
@@ -796,25 +454,9 @@
                     <span>Trabajo Social · 2025</span>
                 </div>
 
-                <div class="cover-center">
-                    <p class="cover-kicker">Administración de Servicios Sociales</p>
-                    <h1 class="cover-title">Administrar para <em>transformar</em></h1>
-                    <p class="cover-subtitle">Instituciones, derechos y realidad social: un recorrido crítico por la administración, los servicios sociales y la gerencia social desde el Trabajo Social guatemalteco.</p>
-
-                    <div class="cover-index">
-                        <h4>Índice</h4>
-                        <div class="cover-index-grid">
-                            <a href="#unidad-1" class="cover-index-item"><span class="num">01</span><span class="name">Administración de las organizaciones</span></a>
-                            <a href="#unidad-2" class="cover-index-item"><span class="num">02</span><span class="name">Servicios sociales y realidad guatemalteca</span></a>
-                            <a href="#unidad-3" class="cover-index-item"><span class="num">03</span><span class="name">Gerencia social y transformación</span></a>
-                            <a href="#practica" class="cover-index-item"><span class="num">04</span><span class="name">Del aprendizaje a la práctica</span></a>
-                            <a href="#bitacora" class="cover-index-item"><span class="num">05</span><span class="name">Mi bitácora de aprendizaje</span></a>
-                            <a href="#fuentes" class="cover-index-item"><span class="num">06</span><span class="name">Fuentes y archivo académico</span></a>
-                            <a href="#cierre" class="cover-index-item"><span class="num">07</span><span class="name">Cierre editorial</span></a>
-                            <a href="#portada" class="cover-index-item"><span class="num">00</span><span class="name">Editorial</span></a>
-                        </div>
-                    </div>
-                </div>
+                <p class="cover-kicker">Administración de Servicios Sociales</p>
+                <h1 class="cover-title">Administrar para <em>transformar</em></h1>
+                <p class="cover-subtitle">Instituciones, derechos y realidad social: un recorrido crítico por la administración, los servicios sociales y la gerencia social desde el Trabajo Social guatemalteco.</p>
 
                 <div class="cover-bottom">
                     <div class="ficha-item">
@@ -832,678 +474,945 @@
                 </div>
             </div>
 
+            <!-- Perfil de la Creadora -->
+            <div class="grid-2" style="align-items:center; margin-bottom:3rem;">
+                <div style="border-radius:3px; overflow:hidden; border:1px solid var(--linea);">
+                    <img src="denisse.jpg" alt="Denisse Parada" style="width:100%; height:auto; display:block;">
+                </div>
+                <div>
+                    <h2 class="section-title" style="font-size:1.8rem;">Denisse Parada</h2>
+                    <p style="font-family:'Inter',sans-serif; font-size:0.78rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--terracota); font-weight:600; margin-bottom:1.2rem;">Licenciatura en Trabajo Social</p>
+                    <p>Como estudiante de la Licenciatura en Trabajo Social, asumo la administración de servicios sociales no como un simple ejercicio técnico, sino como un acto profundamente humano. Detrás de cada recurso, cada programa y cada decisión institucional hay personas cuyas vidas y derechos están en juego. Por ello, valoro al ser humano en su dignidad, su contexto y su capacidad de transformación, y me proyecto profesionalmente desde principios de justicia social, equidad, respeto a la diversidad y compromiso ético con quienes más lo necesitan.</p>
+                    <div class="quote" style="margin-top:1.2rem;">
+                        <strong>Información del curso:</strong> Administración de Servicios Sociales · Enfoque en Trabajo Social y realidad guatemalteca · Producto: revista digital integradora.
+                    </div>
+                </div>
+            </div>
+
             <!-- Editorial -->
-            <div class="inner">
-                <header class="page-header">
-                    <p class="page-kicker">00 · Editorial</p>
-                    <h2 class="page-title">Sobre esta revista</h2>
-                </header>
-
+            <h2 class="section-title">Editorial</h2>
+            <div class="card card-accent">
                 <p>La administración de los servicios sociales constituye un campo fundamental para comprender cómo las instituciones organizan sus recursos, capacidades y esfuerzos para responder a las necesidades de la población. Desde la formación en Trabajo Social, acercarse a esta temática permite reconocer que la intervención profesional no ocurre de manera aislada, sino dentro de estructuras institucionales que condicionan sus posibilidades, alcances y resultados.</p>
-
                 <p>Esta revista reúne los principales contenidos, experiencias y aprendizajes desarrollados durante el curso de Administración de Servicios Sociales, abordando temas relacionados con la administración, los servicios sociales y la gerencia social. Su propósito es presentar estos contenidos desde una perspectiva vinculada con el Trabajo Social y con la realidad social guatemalteca.</p>
-
                 <p>Más que recopilar información, esta revista busca mostrar el recorrido realizado durante el semestre y generar una mirada crítica sobre la manera en que las instituciones gestionan recursos, organizan sus servicios y responden a las necesidades sociales.</p>
-
-                <div class="lectura-critica">
-                    Como estudiante de la Licenciatura en Trabajo Social, asumo la administración de servicios sociales no como un simple ejercicio técnico, sino como un acto profundamente humano. Detrás de cada recurso, cada programa y cada decisión institucional hay personas cuyas vidas y derechos están en juego. Por ello, valoro al ser humano en su dignidad, su contexto y su capacidad de transformación, y me proyecto profesionalmente desde principios de justicia social, equidad, respeto a la diversidad y compromiso ético con quienes más lo necesitan.
-                </div>
             </div>
         </section>
 
-        <!-- =========================================
-             01 · ADMINISTRACIÓN DE LAS ORGANIZACIONES
-             ========================================= -->
+        <!-- ================= UNIDAD I ================= -->
         <section id="unidad-1" class="page">
-            <div class="inner">
-                <header class="page-header">
-                    <p class="page-kicker">01 · Unidad I</p>
-                    <h2 class="page-title">Administración de las organizaciones</h2>
-                    <p class="page-lead">Comprender cómo funcionan las instituciones para poder transformarlas desde dentro.</p>
-                </header>
+            <h2 class="section-title">Unidad I · Enfoque de la Administración</h2>
 
-                <div class="lectura-critica">
-                    Comprender la administración desde Trabajo Social permitió reconocer que los procesos institucionales no son ajenos a la intervención profesional. Planificar, organizar recursos, coordinar equipos y evaluar resultados también forman parte de las condiciones que permiten desarrollar respuestas sociales pertinentes. Sin embargo, la gestión institucional no puede reducirse al cumplimiento de procedimientos, pues detrás de cada decisión administrativa existen personas, necesidades y derechos. Por ello, la administración adquiere sentido cuando contribuye a fortalecer la capacidad de las instituciones para responder de manera adecuada a las realidades sociales.
+            <div class="card card-accent">
+                <h3>MI MIRADA | Administración y Trabajo Social</h3>
+                <p>Comprender la administración desde Trabajo Social permitió reconocer que los procesos institucionales no son ajenos a la intervención profesional. Planificar, organizar recursos, coordinar equipos y evaluar resultados también forman parte de las condiciones que permiten desarrollar respuestas sociales pertinentes. Sin embargo, la gestión institucional no puede reducirse al cumplimiento de procedimientos, pues detrás de cada decisión administrativa existen personas, necesidades y derechos. Por ello, la administración adquiere sentido cuando contribuye a fortalecer la capacidad de las instituciones para responder de manera adecuada a las realidades sociales.</p>
+            </div>
+
+            <h3 class="subsection-title">La administración dentro de las organizaciones</h3>
+            <div class="card">
+                <p>La administración permite articular recursos, personas, procesos y objetivos dentro de una organización. Su importancia radica en generar condiciones para que las diferentes funciones institucionales se desarrollen de manera coordinada y orientada al cumplimiento de su misión.</p>
+                <div class="diagram">
+                    <div class="box box-highlight">RECURSOS</div>
+                    <div style="font-size:0.85rem;color:#6b7a77;">Humanos + materiales + financieros + tecnológicos</div>
+                    <div class="arrow">↓</div>
+                    <div class="box box-highlight">ADMINISTRACIÓN</div>
+                    <div style="font-size:0.85rem;color:#6b7a77;">Planificación → Organización → Dirección → Evaluación</div>
+                    <div class="arrow">↓</div>
+                    <div class="box box-highlight">RESULTADOS</div>
+                    <div style="font-size:0.85rem;color:#6b7a77;">Objetivos institucionales</div>
+                    <div class="arrow">↓</div>
+                    <div class="box box-highlight">IMPACTO SOCIAL</div>
+                    <div style="font-size:0.85rem;color:#6b7a77;">Respuesta a necesidades de la población</div>
                 </div>
+            </div>
 
-                <h2 class="section-h">La administración dentro de las organizaciones</h2>
-                <div class="layout-side">
-                    <div>
-                        <p>La administración permite articular recursos, personas, procesos y objetivos dentro de una organización. Su importancia radica en generar condiciones para que las diferentes funciones institucionales se desarrollen de manera coordinada y orientada al cumplimiento de su misión.</p>
-                        <p>En las instituciones sociales, esta función adquiere un matiz particular: no se trata solo de producir bienes o generar ganancias, sino de garantizar el acceso a derechos y responder a necesidades humanas concretas.</p>
-                    </div>
-                    <aside class="side-note">
-                        <h5>Del recurso al impacto</h5>
-                        <p>Recursos humanos, materiales, financieros y tecnológicos.</p>
-                        <p>Administración: planificación, organización, dirección y evaluación.</p>
-                        <p>Resultados institucionales y respuesta a las necesidades sociales.</p>
-                    </aside>
-                </div>
-
-                <h2 class="section-h">Teorías que explican la administración</h2>
-
-                <div class="theory-grid">
-                    <article class="theory-card">
-                        <span class="theory-num">01</span>
-                        <h4>Administración científica</h4>
-                        <p class="author">Frederick Taylor</p>
-                        <p>Taylor propuso que el trabajo podía analizarse, medirse y organizarse de manera sistemática para eliminar desperdicios y aumentar la productividad. Su aporte central es que la eficiencia no es casual, sino resultado de un estudio riguroso de los procesos. En instituciones sociales, esta lógica invita a optimizar recursos limitados sin perder calidad. Sin embargo, su mirada mecanicista nos recuerda que las personas no somos máquinas: la eficiencia debe estar subordinada a la dignidad humana.</p>
-                    </article>
-
-                    <article class="theory-card">
-                        <span class="theory-num">02</span>
-                        <h4>Teoría clásica</h4>
-                        <p class="author">Henri Fayol</p>
-                        <p>Fayol sistematizó la administración en cinco funciones —planear, organizar, dirigir, coordinar y controlar— y catorce principios que aún orientan la gestión. Su aporte es ofrecer un marco ordenado para pensar la estructura y el funcionamiento institucional. En Trabajo Social, ayuda a comprender cómo se distribuyen las responsabilidades dentro de una institución social y cómo intervenir desde una posición informada. No obstante, la rigidez de algunos principios debe adaptarse a la flexibilidad de la realidad social.</p>
-                    </article>
-
-                    <article class="theory-card">
-                        <span class="theory-num">03</span>
-                        <h4>Relaciones humanas</h4>
-                        <p class="author">Elton Mayo</p>
-                        <p>Mayo demostró que la productividad no depende solo de condiciones físicas o económicas, sino de relaciones interpersonales, comunicación y reconocimiento. Su aporte es haber puesto al ser humano en el centro de la organización. Para el Trabajo Social es fundamental porque valida la dimensión emocional y relacional del trabajo institucional. También advierte que el bienestar del trabajador no puede ser un instrumento para aumentar la producción, sino un fin en sí mismo.</p>
-                    </article>
-
-                    <article class="theory-card">
-                        <span class="theory-num">04</span>
-                        <h4>Teoría burocrática</h4>
-                        <p class="author">Max Weber</p>
-                        <p>Weber analizó la burocracia como la forma más racional y predecible de organizar el trabajo, basada en normas escritas, jerarquías claras y méritos. Su aporte es mostrar que las organizaciones necesitan orden y previsibilidad. En Trabajo Social, comprender la burocracia es clave para navegar estructuras institucionales. Pero también alerta sobre los riesgos de una burocracia excesiva que puede deshumanizar la atención.</p>
-                    </article>
-
-                    <article class="theory-card">
-                        <span class="theory-num">05</span>
-                        <h4>Enfoque de sistemas</h4>
-                        <p class="author">Ludwig von Bertalanffy</p>
-                        <p>Concibe la organización como un sistema compuesto por subsistemas interrelacionados que interactúan con su entorno. Su aporte es una visión integral y dinámica de las instituciones: ningún elemento funciona de manera aislada. En Trabajo Social permite entender que una institución social se adapta constantemente a los cambios del contexto y que la intervención debe considerar múltiples dimensiones.</p>
-                    </article>
-
-                    <article class="theory-card">
-                        <span class="theory-num">06</span>
-                        <h4>Enfoques contemporáneos</h4>
-                        <p class="author">Calidad total · Reingeniería · Aprendizaje organizacional</p>
-                        <p>Surgen como respuesta a la complejidad e incertidumbre actual. La calidad total busca mejora continua y satisfacción del usuario; la reingeniería propone repensar radicalmente los procesos; y el aprendizaje organizacional destaca la capacidad de las instituciones para aprender de su experiencia. Invitan a innovar, evaluar permanentemente y construir instituciones que aprendan de sus aciertos y errores.</p>
-                    </article>
-                </div>
-
-                <h2 class="section-h">Tabla comparativa</h2>
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Teoría</th>
-                                <th>Autor</th>
-                                <th>Idea central</th>
-                                <th>Aporte a instituciones sociales</th>
-                                <th>Limitación crítica</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Científica</strong></td>
-                                <td>Taylor</td>
-                                <td>Eficiencia mediante estudio del trabajo</td>
-                                <td>Optimización de recursos limitados</td>
-                                <td>Visión mecanicista del trabajador</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Clásica</strong></td>
-                                <td>Fayol</td>
-                                <td>Funciones y principios de gestión</td>
-                                <td>Estructura y coordinación institucional</td>
-                                <td>Rigidez frente a contextos cambiantes</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Relaciones humanas</strong></td>
-                                <td>Mayo</td>
-                                <td>Factor humano y relaciones sociales</td>
-                                <td>Motivación, bienestar y clima laboral</td>
-                                <td>Riesgo de instrumentalizar el bienestar</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Burocrática</strong></td>
-                                <td>Weber</td>
-                                <td>Racionalidad, normas y jerarquía</td>
-                                <td>Orden, previsibilidad y control</td>
-                                <td>Burocracia excesiva que deshumaniza</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Sistemas</strong></td>
-                                <td>Bertalanffy</td>
-                                <td>Organización como sistema abierto</td>
-                                <td>Visión integral y adaptabilidad</td>
-                                <td>Complejidad de aplicación práctica</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Contemporáneos</strong></td>
-                                <td>Varios</td>
-                                <td>Calidad, reingeniería, aprendizaje</td>
-                                <td>Innovación y mejora continua</td>
-                                <td>Riesgo de tecnocratizar la gestión social</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="pull-quote">
-                    Los enfoques administrativos explican cómo organizar el trabajo, pero en instituciones sociales su aplicación debe estar siempre al servicio de las personas.
-                </div>
-
-                <h2 class="section-h">Tipos de administración</h2>
-                <div class="services-grid">
-                    <div class="service-block">
-                        <h5>Administración pública</h5>
-                        <p>Gestiona recursos y servicios desde instituciones del Estado. Ejemplos: municipalidades, ministerios, instituciones públicas.</p>
-                    </div>
-                    <div class="service-block">
-                        <h5>Administración privada</h5>
-                        <p>Se desarrolla en organizaciones particulares y empresas. Énfasis en rentabilidad, eficiencia y competitividad.</p>
-                    </div>
-                    <div class="service-block">
-                        <h5>Administración mixta</h5>
-                        <p>Combina participación pública y privada. Ejemplos: alianzas público-privadas y fondos mixtos.</p>
-                    </div>
-                    <div class="service-block">
-                        <h5>¿Por qué importa al Trabajo Social?</h5>
-                        <p>Porque el profesional puede desempeñarse en cualquiera de estos espacios y debe comprender sus lógicas diferenciadas.</p>
+            <h3 class="subsection-title">Teorías que explican la administración</h3>
+            <div class="grid-3">
+                <div class="card">
+                    <h4>Administración científica</h4>
+                    <p><strong>Taylor</strong></p>
+                    <p style="font-size:0.9rem;">Énfasis en la eficiencia y la organización racional del trabajo.</p>
+                    <p style="font-size:0.9rem; margin-top:0.8rem;"><strong>¿Qué aporta este enfoque?</strong></p>
+                    <p style="font-size:0.9rem;">Taylor propuso que el trabajo podía analizarse, medirse y organizarse de manera sistemática para eliminar desperdicios y aumentar la productividad. Su aporte central es la idea de que la eficiencia no es casual, sino el resultado de un estudio riguroso de los procesos. En las instituciones sociales, esta lógica invita a preguntarnos cómo optimizar los recursos limitados para atender a más personas sin perder calidad. Sin embargo, su mirada mecanicista del trabajador nos recuerda que las personas no somos máquinas: en el Trabajo Social, la eficiencia debe estar siempre subordinada a la dignidad humana.</p>
+                    <div class="quote" style="margin-top:0.8rem; font-size:0.9rem;">
+                        "La administración científica busca la mejor manera de hacer el trabajo, pero la mejor manera no siempre es la más humana."
                     </div>
                 </div>
-
-                <h2 class="section-h">Proceso administrativo</h2>
-                <div class="indicators">
-                    <div class="indicator">
-                        <p class="level">Fase 01</p>
-                        <h5>Planeación</h5>
-                        <p>Definir objetivos, estrategias y cursos de acción.</p>
-                    </div>
-                    <div class="indicator">
-                        <p class="level">Fase 02</p>
-                        <h5>Organización</h5>
-                        <p>Estructurar funciones, recursos y responsabilidades.</p>
-                    </div>
-                    <div class="indicator">
-                        <p class="level">Fase 03</p>
-                        <h5>Dirección</h5>
-                        <p>Guiar, motivar y coordinar al equipo humano.</p>
-                    </div>
-                    <div class="indicator">
-                        <p class="level">Fase 04</p>
-                        <h5>Evaluación</h5>
-                        <p>Medir resultados y retroalimentar el proceso.</p>
+                <div class="card">
+                    <h4>Teoría clásica</h4>
+                    <p><strong>Fayol</strong></p>
+                    <p style="font-size:0.9rem;">Identificación de funciones administrativas y principios de gestión.</p>
+                    <p style="font-size:0.9rem; margin-top:0.8rem;"><strong>¿Qué aporta este enfoque?</strong></p>
+                    <p style="font-size:0.9rem;">Fayol sistematizó la administración en cinco funciones (planear, organizar, dirigir, coordinar y controlar) y catorce principios que aún hoy orientan la gestión institucional. Su principal aporte es ofrecer un marco ordenado para pensar la estructura y el funcionamiento de las organizaciones. En el Trabajo Social, estos principios nos ayudan a comprender cómo se distribuyen las responsabilidades dentro de una institución social y cómo podemos intervenir desde una posición informada. No obstante, la rigidez de algunos principios debe adaptarse a la flexibilidad que exige la realidad social.</p>
+                    <div class="quote" style="margin-top:0.8rem; font-size:0.9rem;">
+                        "Planear, organizar, dirigir, coordinar y controlar: cinco verbos que siguen vigentes en toda institución social."
                     </div>
                 </div>
+                <div class="card">
+                    <h4>Relaciones humanas</h4>
+                    <p><strong>Elton Mayo</strong></p>
+                    <p style="font-size:0.9rem;">Importancia del factor humano y las relaciones sociales en el trabajo.</p>
+                    <p style="font-size:0.9rem; margin-top:0.8rem;"><strong>¿Qué aporta este enfoque?</strong></p>
+                    <p style="font-size:0.9rem;">Mayo demostró que la productividad no depende solo de condiciones físicas o económicas, sino de las relaciones interpersonales, la comunicación y el reconocimiento. Su aporte es haber puesto al ser humano en el centro de la organización. Para el Trabajo Social, este enfoque es fundamental porque valida la importancia de la dimensión emocional y relacional en el trabajo institucional. Sin embargo, también nos advierte que el bienestar del trabajador no puede ser un instrumento para aumentar la producción, sino un fin en sí mismo.</p>
+                    <div class="quote" style="margin-top:0.8rem; font-size:0.9rem;">
+                        "El ser humano no es un recurso más: es el corazón de toda organización."
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Teoría burocrática</h4>
+                    <p><strong>Max Weber</strong></p>
+                    <p style="font-size:0.9rem;">Racionalidad, normas y jerarquía como base de la organización.</p>
+                    <p style="font-size:0.9rem; margin-top:0.8rem;"><strong>¿Qué aporta este enfoque?</strong></p>
+                    <p style="font-size:0.9rem;">Weber analizó la burocracia como la forma más racional y predecible de organizar el trabajo, basada en normas escritas, jerarquías claras y méritos. Su aporte es haber mostrado que las organizaciones necesitan orden y previsibilidad para funcionar. En el Trabajo Social, comprender la burocracia es clave para navegar las estructuras institucionales y saber dónde y cómo gestionar recursos. No obstante, también nos alerta sobre los riesgos de una burocracia excesiva que puede deshumanizar la atención y alejar a las instituciones de las necesidades reales de la población.</p>
+                    <div class="quote" style="margin-top:0.8rem; font-size:0.9rem;">
+                        "Las normas dan orden, pero también pueden convertirse en muros que separan a la institución de las personas."
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Enfoque de sistemas</h4>
+                    <p style="font-size:0.9rem;">La organización como sistema abierto en interacción con su entorno.</p>
+                    <p style="font-size:0.9rem; margin-top:0.8rem;"><strong>¿Qué aporta este enfoque?</strong></p>
+                    <p style="font-size:0.9rem;">Este enfoque concibe la organización como un sistema compuesto por subsistemas interrelacionados que interactúan con su entorno. Su aporte es ofrecer una visión integral y dinámica de las instituciones, reconociendo que ningún elemento funciona de manera aislada. En el Trabajo Social, esta mirada nos permite entender que una institución social no es un ente estático, sino que se adapta constantemente a los cambios del contexto. Además, nos invita a intervenir considerando las múltiples dimensiones que afectan el funcionamiento institucional: recursos, personal, procesos, entorno político y social.</p>
+                    <div class="quote" style="margin-top:0.8rem; font-size:0.9rem;">
+                        "Ninguna institución es una isla: todo lo que ocurre afuera la afecta, y todo lo que ocurre adentro impacta afuera."
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Enfoques contemporáneos</h4>
+                    <p style="font-size:0.9rem;">Calidad total, reingeniería, aprendizaje organizacional.</p>
+                    <p style="font-size:0.9rem; margin-top:0.8rem;"><strong>¿Qué aporta este enfoque?</strong></p>
+                    <p style="font-size:0.9rem;">Estos enfoques surgen como respuesta a la complejidad y la incertidumbre de los contextos actuales. La calidad total busca la mejora continua y la satisfacción del usuario; la reingeniería propone repensar radicalmente los procesos; y el aprendizaje organizacional destaca la capacidad de las instituciones para aprender de su experiencia. En el Trabajo Social, estos enfoques nos invitan a innovar, a evaluar permanentemente nuestras prácticas y a construir instituciones que aprendan de sus aciertos y errores. La clave está en no perder de vista que la calidad y la innovación deben estar al servicio de las personas.</p>
+                    <div class="quote" style="margin-top:0.8rem; font-size:0.9rem;">
+                        "Una institución que aprende es una institución que se transforma y que transforma vidas."
+                    </div>
+                </div>
+            </div>
+            <div class="quote">
+                <strong>Mirada crítica:</strong> Los diferentes enfoques administrativos permiten comprender cómo ha evolucionado la manera de organizar el trabajo. Sin embargo, su aplicación en instituciones sociales requiere considerar que estas no funcionan únicamente para producir bienes o alcanzar beneficios económicos, sino para responder a necesidades humanas y sociales.
+            </div>
 
-                <h2 class="section-h">Estructura organizacional</h2>
+            <h3 class="subsection-title">Tipos de administración</h3>
+            <div class="grid-3">
+                <div class="card card-accent">
+                    <h4>Administración pública</h4>
+                    <p>Gestiona recursos y servicios desde instituciones del Estado.</p>
+                    <p style="font-size:0.9rem;color:#4a5654;"><em>Ejemplos:</em> municipalidades, ministerios, instituciones públicas.</p>
+                </div>
+                <div class="card card-accent">
+                    <h4>Administración privada</h4>
+                    <p>Se desarrolla en organizaciones particulares y empresas.</p>
+                    <p style="font-size:0.9rem;color:#4a5654;"><em>Énfasis:</em> rentabilidad, eficiencia, competitividad.</p>
+                </div>
+                <div class="card card-accent">
+                    <h4>Administración mixta</h4>
+                    <p>Combina participación pública y privada.</p>
+                    <p style="font-size:0.9rem;color:#4a5654;"><em>Ejemplos:</em> alianzas público-privadas, fondos mixtos.</p>
+                </div>
+            </div>
+            <div class="quote">
+                <strong>¿Por qué importa para Trabajo Social?</strong> Porque el profesional puede desempeñarse en cualquiera de estos espacios.
+            </div>
+
+            <h3 class="subsection-title">Proceso administrativo</h3>
+            <div class="grid-4">
+                <div class="profile-card">
+                    <span class="icon">01</span>
+                    <h4>Planeación</h4>
+                    <p>Definir objetivos, estrategias y cursos de acción.</p>
+                </div>
+                <div class="profile-card">
+                    <span class="icon">02</span>
+                    <h4>Organización</h4>
+                    <p>Estructurar funciones, recursos y responsabilidades.</p>
+                </div>
+                <div class="profile-card">
+                    <span class="icon">03</span>
+                    <h4>Dirección</h4>
+                    <p>Guiar, motivar y coordinar al equipo humano.</p>
+                </div>
+                <div class="profile-card">
+                    <span class="icon">04</span>
+                    <h4>Evaluación</h4>
+                    <p>Medir resultados y retroalimentar el proceso.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Estructura organizacional</h3>
+            <div class="card">
                 <p>La estructura organizacional establece la distribución de funciones, responsabilidades, niveles de autoridad y relaciones de coordinación dentro de una institución.</p>
-                <div class="layout-side">
+                <div class="diagram">
+                    <div class="box box-highlight">DIRECCIÓN</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">COORDINACIÓN</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">ÁREAS / DEPARTAMENTOS</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">EQUIPOS DE TRABAJO</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">ATENCIÓN / SERVICIOS</div>
+                </div>
+                <p style="margin-top:1rem;"><strong>Conexión con Trabajo Social:</strong> Comprender la estructura institucional permite identificar dónde se toman decisiones, cómo se distribuyen las responsabilidades y cuáles son los canales existentes para coordinar acciones.</p>
+            </div>
+
+            <h3 class="subsection-title">Personas: el centro de la organización</h3>
+            <div class="grid-2">
+                <div class="card card-accent">
+                    <h4>¿Qué es la administración de personal?</h4>
+                    <p>Es la gestión del talento humano dentro de una organización, orientada a alinear las capacidades de las personas con los objetivos institucionales.</p>
+                    <h4>¿Para qué sirve?</h4>
+                    <p>Para seleccionar, desarrollar, motivar y retener al personal, generando condiciones para un desempeño efectivo.</p>
+                    <h4>¿Qué objetivos persigue?</h4>
+                    <ul>
+                        <li>Optimizar el rendimiento del equipo.</li>
+                        <li>Fomentar un clima laboral positivo.</li>
+                        <li>Desarrollar competencias profesionales.</li>
+                        <li>Asegurar el cumplimiento de la misión institucional.</li>
+                    </ul>
+                    <h4>¿Qué funciones desarrolla?</h4>
+                    <ul>
+                        <li>Reclutamiento y selección.</li>
+                        <li>Capacitación y desarrollo.</li>
+                        <li>Evaluación del desempeño.</li>
+                        <li>Gestión de compensaciones y bienestar.</li>
+                    </ul>
+                </div>
+                <div class="card card-success">
+                    <h4>Las personas también gestionan</h4>
+                    <ul>
+                        <li>Liderazgo</li>
+                        <li>Comunicación</li>
+                        <li>Motivación</li>
+                        <li>Trabajo en equipo</li>
+                        <li>Inteligencia emocional</li>
+                        <li>Resolución de conflictos</li>
+                    </ul>
+                    <p style="margin-top:1rem;">Estos elementos conectan directamente con el contenido sobre burnout y liderazgo adaptativo.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Cuando el Trabajo Social agota: gestión del burnout en equipos sociales</h3>
+            <div class="card card-danger">
+                <div class="grid-2">
                     <div>
-                        <p><strong>Conexión con Trabajo Social:</strong> comprender la estructura institucional permite identificar dónde se toman decisiones, cómo se distribuyen las responsabilidades y cuáles son los canales existentes para coordinar acciones.</p>
+                        <h4>¿Qué es el burnout?</h4>
+                        <p>Síndrome de agotamiento físico, emocional y mental relacionado con el trabajo, caracterizado por cansancio extremo, despersonalización y baja realización personal.</p>
+                        <h4>¿Por qué puede presentarse en equipos sociales?</h4>
+                        <ul>
+                            <li>Alta carga emocional en la atención a poblaciones vulnerables.</li>
+                            <li>Recursos limitados y demandas crecientes.</li>
+                            <li>Exposición constante a problemáticas sociales complejas.</li>
+                            <li>Falta de supervisión y apoyo institucional.</li>
+                        </ul>
                     </div>
-                    <aside class="side-note">
-                        <h5>Jerarquía típica</h5>
-                        <p><strong>Dirección</strong> → Coordinación → Áreas y departamentos → Equipos de trabajo → Atención y servicios.</p>
-                    </aside>
-                </div>
-
-                <h2 class="section-h">Personas: el centro de la organización</h2>
-                <div class="layout-side">
                     <div>
-                        <p>La administración de personal es la gestión del talento humano dentro de una organización, orientada a alinear las capacidades de las personas con los objetivos institucionales. Sirve para seleccionar, desarrollar, motivar y retener al personal. Persigue optimizar el rendimiento, fomentar un clima laboral positivo, desarrollar competencias y asegurar el cumplimiento de la misión. Sus funciones incluyen reclutamiento, capacitación, evaluación del desempeño y gestión del bienestar.</p>
+                        <h4>¿Cómo afecta al trabajador?</h4>
+                        <p>Desmotivación, fatiga crónica, irritabilidad, aislamiento, deterioro de la salud física y mental.</p>
+                        <h4>¿Cómo afecta al equipo?</h4>
+                        <p>Conflictos, baja cohesión, aumento del ausentismo, reducción de la productividad.</p>
+                        <h4>¿Cómo afecta la atención a la población?</h4>
+                        <p>Disminución de la calidad del servicio, pérdida de empatía, respuestas estandarizadas, falta de pertinencia.</p>
                     </div>
-                    <aside class="side-note">
-                        <h5>Las personas también gestionan</h5>
-                        <p>Liderazgo · Comunicación · Motivación · Trabajo en equipo · Inteligencia emocional · Resolución de conflictos.</p>
-                    </aside>
+                </div>
+                <h4 style="margin-top:1.2rem;">¿Qué puede hacer la administración?</h4>
+                <div class="grid-3">
+                    <ul>
+                        <li>Distribución adecuada de tareas</li>
+                        <li>Comunicación efectiva</li>
+                        <li>Supervisión y acompañamiento</li>
+                    </ul>
+                    <ul>
+                        <li>Organización de cargas laborales</li>
+                        <li>Espacios de apoyo y contención</li>
+                        <li>Reconocimiento del trabajo</li>
+                    </ul>
+                    <ul>
+                        <li>Trabajo colaborativo</li>
+                        <li>Fomento de la inteligencia emocional</li>
+                        <li>Evaluación del clima laboral</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Liderazgo adaptativo</h3>
+            <div class="card">
+                <h4>¿Qué aprendimos?</h4>
+                <p>El liderazgo adaptativo es mucho más que una técnica de gestión: es una forma de comprender el ejercicio del poder y la influencia en contextos de cambio constante. Aprendimos que un líder adaptativo no impone soluciones desde arriba, sino que crea las condiciones para que el equipo pueda leer su entorno, identificar los desafíos reales y construir respuestas colectivas. Este tipo de liderazgo reconoce que los problemas sociales complejos no tienen soluciones únicas ni permanentes, y que la mejor respuesta suele surgir de la inteligencia colectiva del equipo.</p>
+                <p>En el contexto del Trabajo Social, el liderazgo adaptativo implica también una profunda conciencia ética: quien lidera debe saber cuándo ceder el protagonismo, cuándo acompañar, cuándo confrontar y cuándo proteger. Es un liderazgo que se ejerce con y desde las personas, no sobre ellas.</p>
+
+                <h4>¿Por qué es importante en equipos sociales?</h4>
+                <p>Los equipos sociales trabajan en escenarios que cambian constantemente: nuevas problemáticas, poblaciones diversas, recursos que se reducen o se reorientan, contextos políticos cambiantes. En ese marco, un liderazgo rígido, basado solo en normas o en la autoridad formal, resulta insuficiente. Se necesita un liderazgo que pueda adaptarse, que lea las señales del entorno y que ayude al equipo a sostener su compromiso sin sacrificar su bienestar.</p>
+                <p>Además, el liderazgo adaptativo es importante porque fortalece la resiliencia del equipo, promueve la participación, facilita la innovación, cuida el clima laboral y conecta la institución con la realidad.</p>
+
+                <h4>¿Qué características debe tener un líder?</h4>
+                <div class="grid-4" style="margin-top:0.8rem;">
+                    <div class="profile-card">
+                        <span class="icon">01</span>
+                        <h4>Pensamiento estratégico</h4>
+                        <p style="font-size:0.85rem;">Capacidad para leer el contexto, anticipar escenarios y orientar las acciones hacia objetivos claros, sin perder de vista el propósito social de la institución.</p>
+                    </div>
+                    <div class="profile-card">
+                        <span class="icon">02</span>
+                        <h4>Empatía</h4>
+                        <p style="font-size:0.85rem;">Habilidad para comprender las emociones, necesidades y perspectivas del equipo y de la población atendida, generando relaciones de confianza y respeto.</p>
+                    </div>
+                    <div class="profile-card">
+                        <span class="icon">03</span>
+                        <h4>Comunicación</h4>
+                        <p style="font-size:0.85rem;">Capacidad de expresar ideas con claridad, escuchar activamente y construir canales de diálogo abiertos, honestos y oportunos.</p>
+                    </div>
+                    <div class="profile-card">
+                        <span class="icon">04</span>
+                        <h4>Adaptabilidad</h4>
+                        <p style="font-size:0.85rem;">Disposición para ajustar planes y estrategias ante los cambios del entorno, sin perder de vista los principios y valores institucionales.</p>
+                    </div>
                 </div>
 
-                <h2 class="section-h">Cuando el Trabajo Social agota: burnout en equipos sociales</h2>
-                <p>El burnout es un síndrome de agotamiento físico, emocional y mental relacionado con el trabajo, caracterizado por cansancio extremo, despersonalización y baja realización personal. En equipos sociales suele presentarse por alta carga emocional, recursos limitados, exposición constante a problemáticas complejas y falta de supervisión.</p>
-                <p>Afecta al trabajador (desmotivación, fatiga, irritabilidad), al equipo (conflictos, ausentismo) y a la población atendida (pérdida de empatía, respuestas estandarizadas). La administración puede responder con distribución adecuada de tareas, comunicación efectiva, supervisión, organización de cargas, espacios de apoyo, reconocimiento, trabajo colaborativo y evaluación del clima laboral.</p>
-
-                <h2 class="section-h">Liderazgo adaptativo</h2>
-                <p>El liderazgo adaptativo es una forma de comprender el ejercicio del poder y la influencia en contextos de cambio constante. Un líder adaptativo no impone soluciones desde arriba, sino que crea condiciones para que el equipo lea su entorno, identifique desafíos y construya respuestas colectivas. Reconoce que los problemas sociales complejos no tienen soluciones únicas y que la mejor respuesta surge de la inteligencia colectiva.</p>
-                <p>En Trabajo Social implica conciencia ética: saber cuándo ceder protagonismo, acompañar, confrontar o proteger. Es un liderazgo que se ejerce con y desde las personas, no sobre ellas. Sus características incluyen pensamiento estratégico, empatía, comunicación, adaptabilidad, ética, capacidad de delegar y visión de sostenibilidad.</p>
-
-                <div class="pull-quote">
-                    Un verdadero líder adaptativo no busca ser indispensable, sino construir equipos capaces de sostenerse y transformarse incluso en su ausencia.
+                <h4 style="margin-top:1.5rem;">Otras características importantes</h4>
+                <div class="grid-3">
+                    <div class="profile-card">
+                        <span class="icon">Ética</span>
+                        <p style="font-size:0.85rem;">Actuar con coherencia, transparencia y responsabilidad, priorizando el bienestar de las personas sobre los intereses institucionales o personales.</p>
+                    </div>
+                    <div class="profile-card">
+                        <span class="icon">Delegar</span>
+                        <p style="font-size:0.85rem;">Confiar en el equipo, distribuir responsabilidades y reconocer que el liderazgo no se concentra en una sola persona.</p>
+                    </div>
+                    <div class="profile-card">
+                        <span class="icon">Sostener</span>
+                        <p style="font-size:0.85rem;">Pensar en el largo plazo, cuidando los recursos, el equipo y los procesos para que los servicios puedan sostenerse en el tiempo.</p>
+                    </div>
                 </div>
 
-                <div class="case-block">
-                    <h4>Caso práctico · Distribuir responsabilidades en un equipo social</h4>
-                    <p>Un equipo de cinco profesionales atiende a más de 80 familias en una institución pública. La carga es desigual, dos integrantes muestran signos de agotamiento y las respuestas se vuelven lentas. La coordinación debe reorganizar el trabajo sin perder cobertura ni calidad.</p>
-                    <p class="question">¿Cómo redistribuirías las responsabilidades aplicando principios de administración de personal y liderazgo adaptativo? ¿Qué indicadores usarías para verificar que la medida funcionó?</p>
+                <div class="quote" style="margin-top:1.2rem;">
+                    En los servicios sociales, el liderazgo requiere capacidad para responder a escenarios cambiantes, reconocer las capacidades del equipo y promover procesos participativos. Por ello, liderar no significa únicamente dirigir, sino generar condiciones para que las personas puedan aportar al cumplimiento de objetivos comunes.
+                </div>
+                <div class="quote" style="margin-top:0.8rem;">
+                    <strong>Mi reflexión:</strong> Un verdadero líder adaptativo no busca ser indispensable, sino construir equipos capaces de sostenerse y transformarse incluso en su ausencia. En el Trabajo Social, liderar es, en última instancia, un acto de servicio: se lidera para que otros puedan crecer, para que la institución cumpla su misión y para que las personas atendidas reciban respuestas dignas y oportunas.
                 </div>
             </div>
         </section>
 
-        <!-- =========================================
-             02 · SERVICIOS SOCIALES Y REALIDAD GUATEMALTECA
-             ========================================= -->
+        <!-- ================= UNIDAD II ================= -->
         <section id="unidad-2" class="page">
-            <div class="inner">
-                <header class="page-header">
-                    <p class="page-kicker">02 · Unidad II</p>
-                    <h2 class="page-title">Servicios sociales y realidad guatemalteca</h2>
-                    <p class="page-lead">Comprender para quiénes y cómo se prestan los servicios sociales en Guatemala.</p>
-                </header>
+            <h2 class="section-title">Unidad II · Servicios Sociales</h2>
 
-                <div class="lectura-critica">
-                    El estudio de los servicios sociales busca comprender que estos constituyen una respuesta institucional frente a necesidades y problemáticas que afectan a diferentes sectores de la población. Sin embargo, su existencia no garantiza por sí misma el acceso efectivo de las personas a sus derechos. En Guatemala, las desigualdades sociales, económicas y territoriales pueden generar diferencias importantes en las posibilidades de acceder a servicios oportunos, adecuados y de calidad. Por ello, considero necesario analizar los servicios sociales no solamente desde la cantidad de personas atendidas, sino también desde su cobertura, accesibilidad, pertinencia, continuidad y capacidad para responder a las condiciones concretas de la población.
+            <div class="card card-accent">
+                <h3>EN MI OPINIÓN | Servicios sociales y realidad social</h3>
+                <p>El estudio de los servicios sociales busca comprender que estos constituyen una respuesta institucional frente a necesidades y problemáticas que afectan a diferentes sectores de la población. Sin embargo, su existencia no garantiza por sí misma el acceso efectivo de las personas a sus derechos. En Guatemala, las desigualdades sociales, económicas y territoriales pueden generar diferencias importantes en las posibilidades de acceder a servicios oportunos, adecuados y de calidad. Por ello, considero necesario analizar los servicios sociales no solamente desde la cantidad de personas atendidas, sino también desde su cobertura, accesibilidad, pertinencia, continuidad y capacidad para responder a las condiciones concretas de la población.</p>
+                <p>Desde lo social, esta mirada resulta fundamental porque permite identificar las brechas existentes entre las necesidades sociales y las respuestas institucionales. Así, la intervención profesional también implica contribuir a que los servicios sean más accesibles, pertinentes y orientados a la garantía de derechos.</p>
+            </div>
+
+            <h3 class="subsection-title">¿Qué son los servicios sociales?</h3>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Pregunta</th><th>Respuesta</th></tr>
+                    <tr><td><strong>¿Qué son?</strong></td><td>Prestaciones organizadas para atender necesidades sociales de la población.</td></tr>
+                    <tr><td><strong>¿Para qué existen?</strong></td><td>Para dar respuesta a necesidades y promover el bienestar social.</td></tr>
+                    <tr><td><strong>¿Quién los presta?</strong></td><td>Estado, organizaciones privadas, organizaciones sociales y otras instituciones.</td></tr>
+                    <tr><td><strong>¿A quiénes se dirigen?</strong></td><td>A diferentes sectores de la población, especialmente en situación de vulnerabilidad.</td></tr>
+                    <tr><td><strong>¿Qué buscan?</strong></td><td>Bienestar, protección, atención, acceso a derechos y respuesta a necesidades.</td></tr>
+                </table>
+            </div>
+
+            <h4>Características</h4>
+            <div class="grid-4">
+                <div class="profile-card"><span class="icon">01</span><h4>Accesibilidad</h4></div>
+                <div class="profile-card"><span class="icon">02</span><h4>Cobertura</h4></div>
+                <div class="profile-card"><span class="icon">03</span><h4>Continuidad</h4></div>
+                <div class="profile-card"><span class="icon">04</span><h4>Calidad</h4></div>
+                <div class="profile-card"><span class="icon">05</span><h4>Pertinencia</h4></div>
+                <div class="profile-card"><span class="icon">06</span><h4>Oportunidad</h4></div>
+                <div class="profile-card"><span class="icon">07</span><h4>Enfoque de derechos</h4></div>
+            </div>
+
+            <h3 class="subsection-title">Servicios sociales: entre capacidades y desafíos</h3>
+            <div class="grid-2">
+                <div class="card card-success">
+                    <h4>Fortalezas</h4>
+                    <ul class="check-list">
+                        <li>Atención de necesidades</li>
+                        <li>Presencia institucional</li>
+                        <li>Programas especializados</li>
+                        <li>Posibilidad de coordinación</li>
+                        <li>Protección social</li>
+                        <li>Promoción de derechos</li>
+                    </ul>
                 </div>
-
-                <h2 class="section-h">¿Qué son los servicios sociales?</h2>
-                <p>Son prestaciones organizadas para atender necesidades sociales de la población. Existen para dar respuesta a necesidades y promover bienestar. Los prestan el Estado, organizaciones privadas, organizaciones sociales y otras instituciones. Se dirigen a diferentes sectores, especialmente en situación de vulnerabilidad, y buscan bienestar, protección, atención, acceso a derechos y respuesta a necesidades.</p>
-
-                <div class="indicators">
-                    <div class="indicator"><p class="level">Característica</p><h5>Accesibilidad</h5><p>Facilidad para llegar al servicio.</p></div>
-                    <div class="indicator"><p class="level">Característica</p><h5>Cobertura</h5><p>Alcance territorial y poblacional.</p></div>
-                    <div class="indicator"><p class="level">Característica</p><h5>Continuidad</h5><p>Sostenibilidad en el tiempo.</p></div>
-                    <div class="indicator"><p class="level">Característica</p><h5>Calidad</h5><p>Pertinencia y oportunidad.</p></div>
+                <div class="card card-danger">
+                    <h4>Debilidades</h4>
+                    <ul class="cross-list">
+                        <li>Cobertura insuficiente</li>
+                        <li>Recursos limitados</li>
+                        <li>Burocracia</li>
+                        <li>Desigualdad territorial</li>
+                        <li>Falta de personal</li>
+                        <li>Dificultades de coordinación</li>
+                        <li>Discontinuidad de programas</li>
+                    </ul>
                 </div>
+            </div>
 
-                <h2 class="section-h">Servicios sociales: entre capacidades y desafíos</h2>
-                <div class="layout-side">
-                    <div>
-                        <h3 class="sub-h">Fortalezas</h3>
-                        <p>Atención de necesidades, presencia institucional, programas especializados, posibilidad de coordinación, protección social y promoción de derechos.</p>
-                        <h3 class="sub-h">Debilidades</h3>
-                        <p>Cobertura insuficiente, recursos limitados, burocracia, desigualdad territorial, falta de personal, dificultades de coordinación y discontinuidad de programas.</p>
-                    </div>
-                    <aside class="side-note">
-                        <h5>Desafíos estructurales</h5>
-                        <p>Desigualdad · Pobreza · Centralización · Acceso territorial · Recursos institucionales · Pertinencia cultural · Idioma · Cobertura.</p>
-                    </aside>
-                </div>
+            <h3 class="subsection-title">Servicios sociales en Guatemala</h3>
+            <div class="card">
+                <p style="margin-bottom:1.2rem;">A continuación se presenta un panorama de las principales instituciones que conforman el sector de servicios sociales en Guatemala, así como ejemplos concretos de su presencia y funcionamiento en el departamento de Quetzaltenango.</p>
 
-                <h2 class="section-h">Mapa de servicios sociales en Guatemala</h2>
-                <div class="services-grid">
-                    <div class="service-block">
-                        <h5>Salud</h5>
-                        <span class="lbl">Instituciones</span>
-                        <p>MSPAS · IGSS · Hospitales nacionales · Centros y puestos de salud.</p>
-                        <span class="lbl">Presencia en Quetzaltenango</span>
-                        <p>Dirección de Área de Salud, Hospital Regional de Occidente, centros y puestos, IGSS Quetzaltenango.</p>
+                <div class="grid-2">
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>Salud</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;"><strong>Instituciones principales:</strong> MSPAS, IGSS, hospitales nacionales, centros y puestos de salud.</p>
+                        <p style="font-size:0.9rem; color:#4a5654;"><strong>Presencia en Quetzaltenango:</strong> Dirección de Área de Salud de Quetzaltenango, Hospital Regional de Occidente, centros y puestos de salud, IGSS Quetzaltenango.</p>
                     </div>
-                    <div class="service-block">
-                        <h5>Educación</h5>
-                        <span class="lbl">Instituciones</span>
-                        <p>MINEDUC · CONALFA · DIGEEX · Establecimientos públicos.</p>
-                        <span class="lbl">Presencia en Quetzaltenango</span>
-                        <p>Dirección Departamental de Educación, supervisiones, escuelas e institutos, CONALFA.</p>
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>Educación</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;"><strong>Instituciones principales:</strong> MINEDUC, CONALFA, DIGEEX, establecimientos públicos.</p>
+                        <p style="font-size:0.9rem; color:#4a5654;"><strong>Presencia en Quetzaltenango:</strong> Dirección Departamental de Educación de Quetzaltenango, supervisiones educativas, escuelas e institutos, CONALFA.</p>
                     </div>
-                    <div class="service-block">
-                        <h5>Protección social</h5>
-                        <span class="lbl">Instituciones</span>
-                        <p>MIDES · SOSEP · SBS · Municipalidades.</p>
-                        <span class="lbl">Presencia en Quetzaltenango</span>
-                        <p>MIDES, SOSEP, Municipalidad de Quetzaltenango y sus programas sociales.</p>
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>Protección social</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;"><strong>Instituciones principales:</strong> MIDES, SOSEP, SBS, municipalidades.</p>
+                        <p style="font-size:0.9rem; color:#4a5654;"><strong>Presencia en Quetzaltenango:</strong> MIDES, SOSEP, Municipalidad de Quetzaltenango y sus programas sociales.</p>
                     </div>
-                    <div class="service-block">
-                        <h5>Niñez y adolescencia</h5>
-                        <span class="lbl">Instituciones</span>
-                        <p>SBS · PGN · PDH · MINEDUC · MSPAS · SVET · MIDES.</p>
-                        <span class="lbl">Presencia en Quetzaltenango</span>
-                        <p>SBS Quetzaltenango (Centro de Atención Integral), PGN, PDH, MSPAS, MINEDUC, SVET.</p>
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>Niñez y adolescencia</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;"><strong>Instituciones principales:</strong> SBS, PGN, PDH, MINEDUC, MSPAS, SVET, MIDES.</p>
+                        <p style="font-size:0.9rem; color:#4a5654;"><strong>Presencia en Quetzaltenango:</strong> SBS Quetzaltenango (Centro de Atención Integral), PGN, PDH, MSPAS, MINEDUC, SVET y programas municipales.</p>
                     </div>
-                    <div class="service-block">
-                        <h5>Mujeres</h5>
-                        <span class="lbl">Instituciones</span>
-                        <p>SEPREM · DEMI · SOSEP · MIDES · MINGOB/SVET · MP.</p>
-                        <span class="lbl">Presencia en Quetzaltenango</span>
-                        <p>DEMI Quetzaltenango, SEPREM, SOSEP, SVET, Oficina Municipal de la Mujer.</p>
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>Mujeres</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;"><strong>Instituciones principales:</strong> SEPREM, DEMI, SOSEP, MIDES, MINGOB/SVET, MP.</p>
+                        <p style="font-size:0.9rem; color:#4a5654;"><strong>Presencia en Quetzaltenango:</strong> DEMI Quetzaltenango, SEPREM, SOSEP, SVET, Municipalidad —Oficina Municipal de la Mujer— y organizaciones especializadas.</p>
                     </div>
-                    <div class="service-block">
-                        <h5>Personas adultas mayores</h5>
-                        <span class="lbl">Instituciones</span>
-                        <p>MIDES · SBS · SOSEP · IGSS · MSPAS · Municipalidades.</p>
-                        <span class="lbl">Presencia en Quetzaltenango</span>
-                        <p>Oficina Municipal del Adulto Mayor (OMAM), MSPAS, IGSS, SOSEP.</p>
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>Personas adultas mayores</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;"><strong>Instituciones principales:</strong> MIDES, SBS, SOSEP, IGSS, MSPAS, municipalidades.</p>
+                        <p style="font-size:0.9rem; color:#4a5654;"><strong>Presencia en Quetzaltenango:</strong> Oficina Municipal del Adulto Mayor (OMAM), MSPAS, IGSS, SOSEP y organizaciones/centros de atención.</p>
                     </div>
-                    <div class="service-block">
-                        <h5>Discapacidad</h5>
-                        <span class="lbl">Instituciones</span>
-                        <p>CONADI · MSPAS · MINEDUC · MIDES · IGSS · MINTRAB.</p>
-                        <span class="lbl">Presencia en Quetzaltenango</span>
-                        <p>CONADI, MSPAS, MINEDUC, IGSS, Municipalidad y organizaciones locales.</p>
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>Discapacidad</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;"><strong>Instituciones principales:</strong> CONADI, MSPAS, MINEDUC, MIDES, IGSS, MINTRAB.</p>
+                        <p style="font-size:0.9rem; color:#4a5654;"><strong>Presencia en Quetzaltenango:</strong> CONADI, MSPAS, MINEDUC, IGSS, Municipalidad y organizaciones locales.</p>
                     </div>
-                    <div class="service-block">
-                        <h5>Seguridad alimentaria</h5>
-                        <span class="lbl">Instituciones</span>
-                        <p>SESAN · MAGA · MSPAS · MIDES · MINEDUC.</p>
-                        <span class="lbl">Presencia en Quetzaltenango</span>
-                        <p>SESAN Quetzaltenango, MAGA, MSPAS, MIDES, municipalidades.</p>
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>Seguridad alimentaria</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0.5rem;"><strong>Instituciones principales:</strong> SESAN, MAGA, MSPAS, MIDES, MINEDUC.</p>
+                        <p style="font-size:0.9rem; color:#4a5654;"><strong>Presencia en Quetzaltenango:</strong> SESAN Quetzaltenango, MAGA, MSPAS, MIDES, municipalidades y programas comunitarios.</p>
                     </div>
                 </div>
+            </div>
 
-                <h2 class="section-h">Administración + Servicios Sociales + Trabajo Social</h2>
-                <div class="layout-side">
-                    <div>
-                        <p>La relación entre administración, servicios sociales y Trabajo Social puede comprenderse como un flujo: la necesidad social genera un servicio; el servicio se organiza dentro de una institución; la institución administra recursos, personal y planificación; y desde ahí se produce la intervención profesional que finalmente llega a la población.</p>
-                    </div>
-                    <aside class="side-note">
-                        <h5>Flujo institucional</h5>
-                        <p>Necesidad social → Servicio social → Institución → Administración → Intervención de Trabajo Social → Respuesta a la población.</p>
-                    </aside>
-                </div>
+            <h4 style="margin-top:1.5rem;">¿Cuáles son los principales desafíos?</h4>
+            <div class="grid-3">
+                <ul>
+                    <li>Desigualdad</li>
+                    <li>Pobreza</li>
+                    <li>Centralización</li>
+                    <li>Acceso territorial</li>
+                </ul>
+                <ul>
+                    <li>Recursos institucionales</li>
+                    <li>Pertinencia cultural</li>
+                    <li>Idioma</li>
+                    <li>Cobertura</li>
+                </ul>
+            </div>
 
-                <div class="case-block">
-                    <h4>Caso práctico · Barreras de acceso a un servicio social</h4>
-                    <p>Una comunidad rural de Quetzaltenango solicita atención del programa de seguridad alimentaria. El centro de salud más cercano está a dos horas, el personal habla únicamente español y las familias no cuentan con documentos actualizados. El servicio existe, pero no llega.</p>
-                    <p class="question">¿Qué barreras de acceso identificas? ¿Cómo podrías, desde Trabajo Social y administración, intervenir para reducirlas sin alterar la política pública vigente?</p>
+            <h3 class="subsection-title">Administración + Servicios Sociales + Trabajo Social</h3>
+            <div class="card">
+                <div class="diagram">
+                    <div class="box">NECESIDAD SOCIAL</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">SERVICIO SOCIAL</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">INSTITUCIÓN</div>
+                    <div class="arrow">↓</div>
+                    <div class="box box-highlight">ADMINISTRACIÓN</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">RECURSOS + PERSONAL + PLANIFICACIÓN + COORDINACIÓN</div>
+                    <div class="arrow">↓</div>
+                    <div class="box box-highlight">INTERVENCIÓN DE TRABAJO SOCIAL</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">RESPUESTA A LA POBLACIÓN</div>
                 </div>
             </div>
         </section>
 
-        <!-- =========================================
-             03 · GERENCIA SOCIAL Y TRANSFORMACIÓN
-             ========================================= -->
+        <!-- ================= UNIDAD III ================= -->
         <section id="unidad-3" class="page">
-            <div class="inner">
-                <header class="page-header">
-                    <p class="page-kicker">03 · Unidad III</p>
-                    <h2 class="page-title">Gerencia social y transformación institucional</h2>
-                    <p class="page-lead">Pasar del análisis a la acción: gestionar instituciones que transforman realidades.</p>
-                </header>
+            <h2 class="section-title">Unidad III · Gerencia Social</h2>
 
-                <div class="lectura-critica">
-                    La gerencia social integra los conocimientos desarrollados durante el curso y permite comprender que gestionar una institución social implica mucho más que administrar recursos o coordinar actividades; requiere analizar la realidad, reconocer necesidades, identificar capacidades institucionales, articular actores, tomar decisiones y orientar los recursos hacia resultados socialmente pertinentes. Para el Trabajo Social, la gerencia social amplía las posibilidades del ejercicio profesional al permitir participar en espacios de planificación, coordinación, gestión, evaluación y toma de decisiones.
+            <div class="card card-accent">
+                <h3>SEGÚN MI CRITERIO | Gerencia social y transformación</h3>
+                <p>La gerencia social integra los conocimientos desarrollados durante el curso y permite comprender que gestionar una institución social implica mucho más que administrar recursos o coordinar actividades; requiere analizar la realidad, reconocer necesidades, identificar capacidades institucionales, articular actores, tomar decisiones y orientar los recursos hacia resultados socialmente pertinentes. Desde esta perspectiva, el gerente social enfrenta el desafío de equilibrar las demandas de la población con las posibilidades y limitaciones de las instituciones, sin perder de vista la responsabilidad ética que implica decidir sobre recursos y prioridades.</p>
+                <p>Para el Trabajo Social, la gerencia social amplía las posibilidades del ejercicio profesional al permitir participar en espacios de planificación, coordinación, gestión, evaluación y toma de decisiones. Considero que su importancia radica en fortalecer las capacidades institucionales para generar respuestas que no se limiten a atender las problemáticas de manera inmediata, sino que contribuyan a construir procesos sostenibles y orientados al bienestar y los derechos de la población.</p>
+            </div>
+
+            <h3 class="subsection-title">¿Qué es la gerencia social?</h3>
+            <div class="card">
+                <div class="diagram">
+                    <div class="box">ADMINISTRACIÓN</div>
+                    <div style="font-size:0.85rem;color:#6b7a77;">Organizar recursos y procesos.</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">GESTIÓN</div>
+                    <div style="font-size:0.85rem;color:#6b7a77;">Movilizar recursos y actores.</div>
+                    <div class="arrow">↓</div>
+                    <div class="box box-highlight">GERENCIA SOCIAL</div>
+                    <div style="font-size:0.85rem;color:#6b7a77;">Orientar estratégicamente esos recursos y procesos hacia objetivos sociales.</div>
                 </div>
+            </div>
 
-                <h2 class="section-h">¿Qué es la gerencia social?</h2>
-                <div class="layout-side">
-                    <div>
-                        <p>La administración organiza recursos y procesos; la gestión moviliza recursos y actores; la gerencia social orienta estratégicamente esos recursos y procesos hacia objetivos sociales. Es una práctica que articula análisis, decisión y acción en contextos complejos.</p>
+            <h3 class="subsection-title">¿Qué necesita un gerente social?</h3>
+            <div class="grid-3">
+                <div class="profile-card"><span class="icon">01</span><h4>Pensamiento estratégico</h4></div>
+                <div class="profile-card"><span class="icon">02</span><h4>Capacidad de negociación</h4></div>
+                <div class="profile-card"><span class="icon">03</span><h4>Comunicación</h4></div>
+                <div class="profile-card"><span class="icon">04</span><h4>Liderazgo</h4></div>
+                <div class="profile-card"><span class="icon">05</span><h4>Ética</h4></div>
+                <div class="profile-card"><span class="icon">06</span><h4>Capacidad de análisis</h4></div>
+                <div class="profile-card"><span class="icon">07</span><h4>Adaptabilidad</h4></div>
+                <div class="profile-card"><span class="icon">08</span><h4>Trabajo interdisciplinario</h4></div>
+                <div class="profile-card"><span class="icon">09</span><h4>Orientación a resultados sociales</h4></div>
+            </div>
+            <div class="quote">
+                No se trata solamente de dirigir. Se trata de comprender, articular, decidir y gestionar en contextos complejos.
+            </div>
+
+            <h3 class="subsection-title">De la política a la acción</h3>
+            <div class="card">
+                <div class="diagram">
+                    <div class="box">POLÍTICA SOCIAL</div>
+                    <div style="font-size:0.85rem;color:#6b7a77;">Define prioridades y orientaciones.</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">INSTITUCIONES</div>
+                    <div style="font-size:0.85rem;color:#6b7a77;">Diseñan y ejecutan programas.</div>
+                    <div class="arrow">↓</div>
+                    <div class="box box-highlight">GERENCIA SOCIAL</div>
+                    <div style="font-size:0.85rem;color:#6b7a77;">Coordina recursos, actores y procesos.</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">SERVICIOS SOCIALES</div>
+                    <div style="font-size:0.85rem;color:#6b7a77;">Llegan a la población.</div>
+                    <div class="arrow">↓</div>
+                    <div class="box">RESULTADOS SOCIALES</div>
+                </div>
+                <p style="margin-top:1rem;"><strong>Reflexión:</strong> Entre la formulación de una política y su implementación pueden surgir dificultades relacionadas con la coordinación interinstitucional, la disponibilidad de recursos, la continuidad política y la pertinencia cultural.</p>
+            </div>
+
+            <h3 class="subsection-title">Fortalecimiento institucional</h3>
+            <div class="card card-success">
+                <h4>¿Qué significa?</h4>
+                <p>El fortalecimiento institucional es un proceso intencionado, sistemático y continuo mediante el cual una organización social busca mejorar sus capacidades para cumplir su misión, responder con pertinencia a las necesidades de la población y sostenerse en el tiempo. No se trata solo de "arreglar" lo que está mal, sino de construir condiciones internas que permitan a la institución actuar con eficacia, eficiencia, equidad y transparencia. Implica desarrollar capacidades humanas, técnicas, organizativas y relacionales que se traduzcan en servicios de mayor calidad y en una mejor respuesta a los derechos de las personas.</p>
+                <p>En el marco del Trabajo Social, el fortalecimiento institucional adquiere un sentido profundamente ético: una institución fuerte no es la que acumula más poder, sino la que mejor sirve a las personas. Fortalecer una institución social significa crear las condiciones para que las políticas y los programas lleguen efectivamente a quienes más lo necesitan, con pertinencia cultural, enfoque de derechos y participación de la comunidad.</p>
+
+                <h4>¿Qué puede fortalecerse?</h4>
+                <div class="grid-3">
+                    <div class="card" style="margin-bottom:0;">
+                        <h4>Organización</h4>
+                        <p style="font-size:0.9rem;">Definir claramente la estructura, las funciones, los niveles de autoridad y los canales de coordinación. Una organización ordenada evita la duplicación de esfuerzos y facilita la toma de decisiones.</p>
                     </div>
-                    <aside class="side-note">
-                        <h5>Progresión</h5>
-                        <p>Administración → Gestión → Gerencia social.</p>
-                    </aside>
-                </div>
-
-                <h2 class="section-h">El perfil del gerente social</h2>
-                <div class="indicators">
-                    <div class="indicator"><p class="level">Competencia</p><h5>Pensamiento estratégico</h5><p>Leer el contexto y anticipar escenarios.</p></div>
-                    <div class="indicator"><p class="level">Competencia</p><h5>Negociación</h5><p>Articular actores con intereses diversos.</p></div>
-                    <div class="indicator"><p class="level">Competencia</p><h5>Comunicación</h5><p>Dialogar con equipos, instituciones y población.</p></div>
-                    <div class="indicator"><p class="level">Competencia</p><h5>Ética</h5><p>Priorizar el bienestar de las personas.</p></div>
-                    <div class="indicator"><p class="level">Competencia</p><h5>Análisis</h5><p>Interpretar datos y contextos complejos.</p></div>
-                    <div class="indicator"><p class="level">Competencia</p><h5>Adaptabilidad</h5><p>Ajustar estrategias sin perder el propósito.</p></div>
-                    <div class="indicator"><p class="level">Competencia</p><h5>Interdisciplina</h5><p>Trabajar con múltiples saberes.</p></div>
-                    <div class="indicator"><p class="level">Competencia</p><h5>Resultados sociales</h5><p>Orientar la gestión a cambios reales.</p></div>
-                </div>
-
-                <h2 class="section-h">De la política a la acción</h2>
-                <p>La política social define prioridades y orientaciones; las instituciones diseñan y ejecutan programas; la gerencia social coordina recursos, actores y procesos; los servicios sociales llegan a la población; y finalmente se producen resultados sociales. Entre la formulación y la implementación surgen dificultades relacionadas con coordinación interinstitucional, disponibilidad de recursos, continuidad política y pertinencia cultural.</p>
-
-                <h2 class="section-h">Fortalecimiento institucional</h2>
-                <p>El fortalecimiento institucional es un proceso intencionado, sistemático y continuo mediante el cual una organización social mejora sus capacidades para cumplir su misión, responder con pertinencia a las necesidades de la población y sostenerse en el tiempo. No se trata solo de corregir lo que está mal, sino de construir condiciones internas para actuar con eficacia, eficiencia, equidad y transparencia. En Trabajo Social adquiere sentido ético: una institución fuerte no es la que acumula poder, sino la que mejor sirve a las personas.</p>
-
-                <div class="indicators">
-                    <div class="indicator"><p class="level">Dimensión</p><h5>Organización</h5><p>Estructura, funciones y canales de coordinación.</p></div>
-                    <div class="indicator"><p class="level">Dimensión</p><h5>Personal</h5><p>Competencias, bienestar y estabilidad laboral.</p></div>
-                    <div class="indicator"><p class="level">Dimensión</p><h5>Procesos</h5><p>Procedimientos claros, ágiles y pertinentes.</p></div>
-                    <div class="indicator"><p class="level">Dimensión</p><h5>Recursos</h5><p>Gestión transparente y sostenible.</p></div>
-                    <div class="indicator"><p class="level">Dimensión</p><h5>Comunicación</h5><p>Flujos internos y diálogo con la población.</p></div>
-                    <div class="indicator"><p class="level">Dimensión</p><h5>Coordinación</h5><p>Articulación con otras instituciones y actores.</p></div>
-                    <div class="indicator"><p class="level">Dimensión</p><h5>Planificación</h5><p>Herramientas estratégicas y operativas.</p></div>
-                    <div class="indicator"><p class="level">Dimensión</p><h5>Evaluación</h5><p>Cultura de aprendizaje y rendición de cuentas.</p></div>
-                </div>
-
-                <h2 class="section-h">Los retos del gerente social</h2>
-                <p>El gerente social no trabaja en terreno neutral. Su labor se desarrolla en contextos atravesados por limitaciones de recursos, demandas crecientes, fragmentación institucional, cambios políticos y diversidad social. Reconocer estos retos es condición para gestionar con realismo, creatividad y compromiso ético.</p>
-
-                <div class="layout-side">
-                    <div>
-                        <h3 class="sub-h">Recursos limitados · ¿Cómo priorizar?</h3>
-                        <p>Establecer criterios claros, transparentes y participativos: urgencia, vulnerabilidad, sostenibilidad, pertinencia cultural y capacidad institucional. La priorización debe ser dialogada, porque detrás de cada recurso hay personas y derechos.</p>
-
-                        <h3 class="sub-h">Necesidades crecientes · ¿Cómo responder?</h3>
-                        <p>Con creatividad, articulación e innovación: coordinación interinstitucional, participación comunitaria, uso de tecnologías, optimización de procesos y alianzas estratégicas. No responder solo desde la asistencia, sino desde la garantía de derechos.</p>
-
-                        <h3 class="sub-h">Instituciones fragmentadas · ¿Cómo coordinar?</h3>
-                        <p>Construyendo confianza, canales claros de comunicación, responsabilidades conjuntas y espacios de planificación compartida. El gerente social actúa como articulador: mesas intersectoriales, sistemas de referencia y plataformas comunes.</p>
+                    <div class="card" style="margin-bottom:0;">
+                        <h4>Personal</h4>
+                        <p style="font-size:0.9rem;">Fortalecer las competencias técnicas y humanas del equipo, promover la capacitación continua, el cuidado del bienestar y la estabilidad laboral. El personal es el principal activo de toda institución social.</p>
                     </div>
-                    <aside class="side-note">
-                        <h5>Seguimos enfrentando</h5>
-                        <p><strong>Cambios políticos</strong> · documentar procesos, fortalecer institucionalidad, construir alianzas amplias y promover participación.</p>
-                        <p><strong>Diversidad social</strong> · enfoque intercultural, respeto a idiomas y cosmovisiones, participación comunitaria.</p>
-                        <p><strong>Resultados</strong> · evaluar cambios reales con indicadores pertinentes, metodologías cualitativas y escucha activa.</p>
-                    </aside>
+                    <div class="card" style="margin-bottom:0;">
+                        <h4>Procesos</h4>
+                        <p style="font-size:0.9rem;">Diseñar, documentar y mejorar los procedimientos de trabajo para que sean claros, ágiles y pertinentes. Los procesos bien diseñados reducen la burocracia innecesaria y mejoran la atención.</p>
+                    </div>
+                    <div class="card" style="margin-bottom:0;">
+                        <h4>Recursos</h4>
+                        <p style="font-size:0.9rem;">Optimizar la gestión financiera, material y tecnológica, asegurando transparencia, sostenibilidad y uso eficiente de los recursos disponibles.</p>
+                    </div>
+                    <div class="card" style="margin-bottom:0;">
+                        <h4>Comunicación</h4>
+                        <p style="font-size:0.9rem;">Mejorar la comunicación interna y externa para que la información fluya con claridad, se construyan relaciones de confianza y la institución dialogue con la población.</p>
+                    </div>
+                    <div class="card" style="margin-bottom:0;">
+                        <h4>Coordinación</h4>
+                        <p style="font-size:0.9rem;">Articular acciones con otras instituciones, organizaciones sociales y actores comunitarios para evitar la fragmentación y potenciar los resultados.</p>
+                    </div>
+                    <div class="card" style="margin-bottom:0;">
+                        <h4>Planificación</h4>
+                        <p style="font-size:0.9rem;">Incorporar herramientas de planificación estratégica y operativa que orienten las acciones hacia objetivos claros y medibles, con visión de mediano y largo plazo.</p>
+                    </div>
+                    <div class="card" style="margin-bottom:0;">
+                        <h4>Evaluación</h4>
+                        <p style="font-size:0.9rem;">Instalar una cultura de evaluación permanente que permita aprender de la experiencia, rendir cuentas y mejorar continuamente los servicios.</p>
+                    </div>
+                    <div class="card" style="margin-bottom:0;">
+                        <h4>Participación</h4>
+                        <p style="font-size:0.9rem;">Promover la participación del personal, de la población atendida y de la comunidad en la toma de decisiones, generando procesos más democráticos y pertinentes.</p>
+                    </div>
                 </div>
 
-                <h2 class="section-h">Indicadores: actividad, producto, resultado e impacto</h2>
-                <div class="indicators">
-                    <div class="indicator"><p class="level">Nivel 01</p><h5>Actividad</h5><p>Realizar talleres de capacitación en la comunidad.</p></div>
-                    <div class="indicator"><p class="level">Nivel 02</p><h5>Producto</h5><p>Número de participantes formados.</p></div>
-                    <div class="indicator"><p class="level">Nivel 03</p><h5>Resultado</h5><p>Conocimientos adquiridos y aplicados.</p></div>
-                    <div class="indicator"><p class="level">Nivel 04</p><h5>Impacto</h5><p>Cambios observados en prácticas y condiciones de vida.</p></div>
+                <div class="quote" style="margin-top:1.2rem;">
+                    <strong>Experiencia aplicada:</strong> Plan de fortalecimiento institucional desarrollado durante el curso. Este ejercicio permitió analizar una institución social real, identificar sus principales áreas de mejora y proponer acciones concretas para fortalecer sus capacidades organizativas, humanas y de gestión. La experiencia demostró que el fortalecimiento institucional no es un fin en sí mismo, sino un medio para mejorar la calidad de vida de las personas a través de servicios más pertinentes, accesibles y sostenibles.
                 </div>
 
-                <div class="case-block">
-                    <h4>Caso práctico · Priorizar cuando los recursos son limitados</h4>
-                    <p>Un programa de protección social cuenta con presupuesto para atender a 200 familias, pero hay 600 en lista de espera. Tres grupos compiten: niñez en riesgo, mujeres víctimas de violencia y adultos mayores en abandono. Todos son prioritarios.</p>
-                    <p class="question">¿Qué criterios usarías para priorizar? ¿Cómo comunicarías la decisión sin vulnerar la dignidad de quienes quedan fuera? ¿Qué indicadores usarías para evaluar los resultados?</p>
+                <div class="quote" style="margin-top:0.8rem;">
+                    <strong>Reflexión crítica:</strong> Fortalecer una institución social no significa hacerla más grande o más poderosa, sino hacerla más humana, más cercana y más efectiva en la garantía de derechos. En un contexto como el guatemalteco, marcado por desigualdades profundas, el fortalecimiento institucional es una condición indispensable para que los servicios sociales puedan cumplir su promesa de bienestar y justicia social.
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Los retos del gerente social</h3>
+            <div class="card card-warning">
+                <p>El gerente social no trabaja en un terreno neutral. Su labor se desarrolla en contextos complejos, atravesados por limitaciones de recursos, demandas crecientes, fragmentación institucional, cambios políticos y una enorme diversidad social. Reconocer estos retos no es un ejercicio pesimista, sino una condición para gestionar con realismo, creatividad y compromiso ético.</p>
+
+                <h4>Recursos limitados</h4>
+                <p><strong>¿Cómo priorizar?</strong> La escasez de recursos es una realidad constante en las instituciones sociales. Priorizar no significa abandonar necesidades, sino establecer criterios claros, transparentes y participativos para decidir dónde y cómo invertir los recursos disponibles. Algunos criterios útiles son: la urgencia de la necesidad, el grado de vulnerabilidad de la población, la sostenibilidad de las acciones, la pertinencia cultural y la capacidad institucional para ejecutar. La priorización debe ser un proceso dialogado, no una decisión unilateral, porque detrás de cada recurso hay personas y derechos.</p>
+
+                <h4>Necesidades crecientes</h4>
+                <p><strong>¿Cómo responder?</strong> Las necesidades sociales no solo aumentan en cantidad, sino que se vuelven más complejas y diversas. Responder a ellas requiere creatividad, articulación y capacidad de innovación. El gerente social puede: fortalecer la coordinación con otras instituciones, promover la participación comunitaria, aprovechar las tecnologías disponibles, optimizar los procesos internos y desarrollar alianzas estratégicas con el sector privado y la sociedad civil. La clave está en no responder solo desde la lógica de la asistencia, sino desde la lógica de la garantía de derechos y la construcción de capacidades.</p>
+
+                <h4>Instituciones fragmentadas</h4>
+                <p><strong>¿Cómo coordinar?</strong> La fragmentación institucional es uno de los mayores obstáculos para la efectividad de los servicios sociales. Muchas instituciones trabajan de manera aislada, duplicando esfuerzos y desaprovechando recursos. Coordinar requiere construir confianza, establecer canales de comunicación claros, definir responsabilidades conjuntas y crear espacios de planificación compartida. El gerente social puede asumir un rol de articulador, promoviendo mesas intersectoriales, sistemas de referencia y contrarreferencia, y plataformas de información comunes. Coordinar no es perder autonomía, sino multiplicar el impacto.</p>
+
+                <h4>Cambios políticos</h4>
+                <p><strong>¿Cómo mantener continuidad?</strong> Los cambios de gobierno suelen traer consigo cambios en las prioridades, los equipos y las políticas. Esto puede poner en riesgo la continuidad de los programas sociales. Para mantener la continuidad, el gerente social puede: documentar los procesos y aprendizajes, fortalecer la institucionalidad más allá de las personas, construir alianzas amplias con actores sociales y comunitarios, y promover la participación de la población en la defensa de los servicios. La continuidad no depende solo de la voluntad política, sino de la capacidad de la institución y de la comunidad para sostener lo que han construido.</p>
+
+                <h4>Diversidad social</h4>
+                <p><strong>¿Cómo garantizar pertinencia?</strong> Guatemala es un país profundamente diverso en lo cultural, lingüístico, étnico y territorial. Garantizar la pertinencia de los servicios implica reconocer esa diversidad y adaptar las respuestas a las condiciones concretas de cada población. Esto requiere: incorporar el enfoque intercultural, respetar los idiomas y cosmovisiones, adaptar los materiales y metodologías, y promover la participación de las comunidades en el diseño y evaluación de los servicios. La pertinencia no es un adorno, es una condición para que los servicios sean efectivos y respetuosos de la dignidad de las personas.</p>
+
+                <h4>Resultados</h4>
+                <p><strong>¿Cómo evaluar cambios reales?</strong> Evaluar no es solo medir cuántas personas fueron atendidas, sino valorar si hubo cambios reales en sus condiciones de vida y en el ejercicio de sus derechos. Esto implica: construir indicadores pertinentes, incorporar metodologías cualitativas, escuchar la voz de la población, analizar los efectos no previstos y aprender de los errores. La evaluación debe ser un proceso permanente, participativo y orientado al aprendizaje, no solo un requisito administrativo. Evaluar bien es una forma de rendir cuentas y de mejorar la calidad de los servicios.</p>
+
+                <div class="quote" style="margin-top:1.2rem;">
+                    <strong>Reflexión final:</strong> Los retos del gerente social no se resuelven con fórmulas mágicas ni con soluciones únicas. Se enfrentan con visión estratégica, creatividad, ética, capacidad de diálogo y un profundo compromiso con las personas. Gestionar servicios sociales es, en esencia, un ejercicio de responsabilidad pública y de justicia social. Cada decisión, por pequeña que parezca, tiene un impacto en la vida de alguien. Por eso, el gerente social debe actuar siempre con la conciencia de que administrar recursos es, en última instancia, administrar oportunidades de bienestar y dignidad.
                 </div>
             </div>
         </section>
 
-        <!-- =========================================
-             04 · DEL APRENDIZAJE A LA PRÁCTICA
-             ========================================= -->
-        <section id="practica" class="page">
-            <div class="inner">
-                <header class="page-header">
-                    <p class="page-kicker">04 · Aplicación</p>
-                    <h2 class="page-title">Del aprendizaje a la práctica</h2>
-                    <p class="page-lead">Experiencia aplicada: plan de fortalecimiento institucional y evidencias del curso.</p>
-                </header>
+        <!-- ================= ANEXOS ================= -->
+        <section id="anexos" class="page">
+            <h2 class="section-title">Experiencias y Evidencias</h2>
 
-                <h2 class="section-h">Plan de fortalecimiento institucional</h2>
-                <p>Durante el curso se desarrolló un plan de fortalecimiento institucional orientado a mejorar las capacidades de una institución social. El ejercicio permitió analizar una institución real, identificar áreas de mejora y proponer acciones concretas para fortalecer sus capacidades organizativas, humanas y de gestión. La experiencia demostró que el fortalecimiento institucional no es un fin en sí mismo, sino un medio para mejorar la calidad de vida de las personas a través de servicios más pertinentes, accesibles y sostenibles.</p>
+            <h3 class="subsection-title">Evidencias de actividades</h3>
+            <div class="card">
+                <h4>Unidad I</h4>
+                <ul class="check-list">
+                    <li>Glosario colaborativo</li>
+                    <li>Comprobación de lectura</li>
+                    <li>Primer parcial</li>
+                    <li>Estudio de caso sobre Burnout</li>
+                    <li>Foro de debate</li>
+                    <li>Videoensayo de liderazgo adaptativo</li>
+                </ul>
+                <h4 style="margin-top:1.2rem;">Unidad II</h4>
+                <ul class="check-list">
+                    <li>Segundo parcial</li>
+                    <li>Diagnóstico de servicios sociales en Guatemala</li>
+                </ul>
+                <h4 style="margin-top:1.2rem;">Unidad III</h4>
+                <ul class="check-list">
+                    <li>Plan de fortalecimiento institucional</li>
+                    <li>Intercambio de experiencias profesionales</li>
+                </ul>
+            </div>
 
-                <div class="pull-quote">
-                    Fortalecer una institución social no significa hacerla más grande o más poderosa, sino hacerla más humana, más cercana y más efectiva en la garantía de derechos.
-                </div>
-
-                <h2 class="section-h">Actividades del curso</h2>
-                <div class="gallery">
-                    <div class="gallery-item">
-                        <div class="thumb">Glosario colaborativo</div>
-                        <div class="caption"><strong>Unidad I · Glosario</strong>Construcción colectiva de conceptos administrativos aplicados al Trabajo Social.</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="thumb">Comprobación de lectura</div>
-                        <div class="caption"><strong>Unidad I · Lectura</strong>Verificación de comprensión de teorías administrativas y su evolución.</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="thumb">Primer parcial</div>
-                        <div class="caption"><strong>Unidad I · Evaluación</strong>Dominio conceptual de enfoques y tipos de administración.</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="thumb">Estudio de caso Burnout</div>
-                        <div class="caption"><strong>Unidad I · Caso</strong>Aplicación de administración de personal y liderazgo a una problemática real.</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="thumb">Foro de debate</div>
-                        <div class="caption"><strong>Unidad I · Debate</strong>Discusión grupal sobre gestión del burnout y estrategias institucionales.</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="thumb">Videoensayo</div>
-                        <div class="caption"><strong>Unidad I · Videoensayo</strong>Reflexión audiovisual sobre liderazgo adaptativo en equipos sociales.</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="thumb">Diagnóstico Guatemala</div>
-                        <div class="caption"><strong>Unidad II · Diagnóstico</strong>Análisis de servicios sociales en Guatemala: fortalezas, debilidades y desafíos.</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="thumb">Segundo parcial</div>
-                        <div class="caption"><strong>Unidad II · Evaluación</strong>Servicios sociales, características y contexto guatemalteco.</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="thumb">Intercambio profesional</div>
-                        <div class="caption"><strong>Unidad III · Diálogo</strong>Conversación con profesionales del Trabajo Social y la gerencia social.</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="thumb">Revista digital</div>
-                        <div class="caption"><strong>Producto final</strong>Integración editorial de contenidos, experiencias y reflexiones del semestre.</div>
-                    </div>
-                </div>
-
-                <h2 class="section-h">Aprender conectados</h2>
-                <p>El curso se desarrolló bajo un enfoque metodológico que articuló el constructivismo, el conectivismo y las tecnologías digitales. Este enfoque permitió que el aprendizaje no fuera recepción pasiva de contenidos, sino un proceso activo, colaborativo y conectado con la realidad.</p>
-
-                <div class="services-grid">
-                    <div class="service-block">
-                        <h5>Constructivismo</h5>
-                        <p>El conocimiento se construye activamente a partir de experiencias, saberes previos y reflexión. Se aplicó mediante glosarios colaborativos, estudios de caso, videoensayos y foros.</p>
-                    </div>
-                    <div class="service-block">
-                        <h5>Conectivismo</h5>
-                        <p>El conocimiento circula en redes: personas, instituciones, plataformas. Se aplicó mediante plataformas virtuales, foros, videos y documentos compartidos.</p>
-                    </div>
-                    <div class="service-block">
-                        <h5>TIC</h5>
-                        <p>Tecnologías de la información y la comunicación. Soportaron la entrega de tareas, foros, lecturas y comunicación constante.</p>
-                    </div>
-                    <div class="service-block">
-                        <h5>TAC</h5>
-                        <p>Tecnologías para el aprendizaje y el conocimiento. Se usaron para investigar, sintetizar y producir materiales propios como esta revista.</p>
-                    </div>
-                    <div class="service-block">
-                        <h5>TEP</h5>
-                        <p>Tecnologías para el empoderamiento y la participación. Se orientaron a difundir información sobre derechos y promover participación social.</p>
-                    </div>
-                    <div class="service-block">
-                        <h5>Producto digital</h5>
-                        <p>Esta revista constituye una evidencia concreta de cómo los enfoques pedagógicos y las tecnologías se articulan en un aprendizaje significativo.</p>
-                    </div>
-                </div>
-
-                <h2 class="section-h">Anexos</h2>
-                <p>En este espacio se encuentran los documentos, evidencias y materiales complementarios que respaldan las actividades realizadas durante el curso.</p>
-                <a href="https://drive.google.com/drive/folders/1fuX7ob7psQ-AX-rdnhAO7oKxKlCn106I?usp=drive_link" target="_blank" class="btn-anexos">Consultar carpeta de anexos →</a>
+            <h3 class="subsection-title">Cierre</h3>
+            <div class="card card-accent">
+                <p>Esta revista digital es el resultado de un proceso de aprendizaje que integró teoría, práctica y reflexión crítica. A lo largo del curso, se construyó una mirada de la administración de servicios sociales desde el Trabajo Social, reconociendo la importancia de gestionar recursos, coordinar actores y orientar las instituciones hacia la garantía de derechos y el bienestar de la población.</p>
+                <p style="margin-top:0.8rem;"><strong>Mi mirada final:</strong> La administración no es un fin en sí misma, sino un medio para que las instituciones sociales cumplan su misión con pertinencia, equidad y sostenibilidad. Como futuros profesionales del Trabajo Social, tenemos la responsabilidad de contribuir a que los servicios sociales sean accesibles, oportunos y orientados a las necesidades reales de las personas.</p>
             </div>
         </section>
 
-        <!-- =========================================
-             05 · MI BITÁCORA DE APRENDIZAJE
-             ========================================= -->
-        <section id="bitacora" class="page">
-            <div class="inner">
-                <header class="page-header">
-                    <p class="page-kicker">05 · Reflexión personal</p>
-                    <h2 class="page-title">Mi bitácora de aprendizaje</h2>
-                    <p class="page-lead">Tres reflexiones sobre el recorrido del semestre: qué comprendí, qué cuestioné y cómo aplicar lo aprendido.</p>
-                </header>
+        <!-- ================= BIBLIOGRAFÍA ================= -->
+        <section id="bibliografia" class="page">
+            <h2 class="section-title">Bibliografía, Egrafía y Lecturas Complementarias</h2>
 
-                <div class="bitacora">
-                    <div class="bitacora-item">
-                        <div class="num">01</div>
-                        <h5>Lo que comprendí</h5>
-                        <p>Comprendí que la administración no es un ejercicio neutral: cada decisión sobre recursos, tiempos y prioridades impacta directamente en la vida de las personas. Aprendí que el Trabajo Social puede y debe participar en esos espacios, aportando una mirada ética y humana a la gestión institucional.</p>
-                    </div>
-                    <div class="bitacora-item">
-                        <div class="num">02</div>
-                        <h5>Lo que cuestioné</h5>
-                        <p>Cuestioné la idea de que eficiencia y dignidad son opuestas. También cuestioné la burocracia que se vuelve un fin en sí misma y la fragmentación institucional que desaprovecha recursos mientras las necesidades crecen. Y cuestioné mi propio rol: no basta con conocer la teoría, hay que transformar la práctica.</p>
-                    </div>
-                    <div class="bitacora-item">
-                        <div class="num">03</div>
-                        <h5>Cómo lo aplicaré</h5>
-                        <p>Como futura trabajadora social, llevaré esta mirada a los espacios donde me toque intervenir: instituciones públicas, organizaciones sociales o proyectos comunitarios. Buscaré gestionar con pertinencia cultural, coordinar con otros actores, evaluar con rigor y no perder nunca de vista que detrás de cada servicio hay una persona con derechos.</p>
-                    </div>
-                </div>
+            <div class="card card-accent">
+                <p>En este espacio se presentan las fuentes teóricas y documentales que sustentaron el desarrollo de los contenidos abordados en la presente revista, así como las lecturas complementarias sugeridas para profundizar en los temas de administración, servicios sociales y gerencia social.</p>
+            </div>
 
-                <div class="pull-quote">
-                    Aprender administración desde el Trabajo Social es aprender a gestionar con ética, con criterio y con vocación de servicio.
+            <h3 class="subsection-title">Bibliografía (Libros y Artículos)</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>Unidad I: Administración</h4>
+                    <ul style="font-size:0.95rem;">
+                        <li style="margin-bottom:0.8rem;">
+                            <strong>Chiavenato, I. (2006).</strong> <em>Introducción a la Teoría General de la Administración</em>. McGraw-Hill.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Obra fundamental que aborda la evolución del pensamiento administrativo, desde Taylor y Fayol hasta los enfoques contemporáneos. Esencial para comprender las bases teóricas de la administración.</span>
+                        </li>
+                        <li style="margin-bottom:0.8rem;">
+                            <strong>Fayol, H. (1916).</strong> <em>Administración Industrial y General</em>. Ediciones varias.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Texto clásico que establece los principios de la administración y las funciones básicas: planear, organizar, dirigir, coordinar y controlar.</span>
+                        </li>
+                        <li style="margin-bottom:0.8rem;">
+                            <strong>Taylor, F. W. (1911).</strong> <em>Principios de la Administración Científica</em>. Ediciones varias.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Obra pionera que introduce el estudio de tiempos y movimientos para mejorar la eficiencia en las organizaciones.</span>
+                        </li>
+                        <li style="margin-bottom:0.8rem;">
+                            <strong>Weber, M. (1922).</strong> <em>Economía y Sociedad</em>. Fondo de Cultura Económica.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Análisis de la burocracia como forma de organización racional y legal, fundamental para entender las estructuras institucionales.</span>
+                        </li>
+                        <li>
+                            <strong>Mayo, E. (1933).</strong> <em>Problemas humanos de una civilización industrial</em>. Ediciones varias.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Estudio que dio origen a la teoría de las relaciones humanas, destacando la importancia del factor social y psicológico en el trabajo.</span>
+                        </li>
+                    </ul>
                 </div>
+                <div class="card">
+                    <h4>Unidad II: Servicios Sociales y Trabajo Social</h4>
+                    <ul style="font-size:0.95rem;">
+                        <li style="margin-bottom:0.8rem;">
+                            <strong>Kisnerman, N. (1998).</strong> <em>Pensar el Trabajo Social: Una introducción desde el construccionismo</em>. Lumen.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Reflexión sobre los fundamentos del Trabajo Social y su intervención en contextos institucionales complejos.</span>
+                        </li>
+                        <li style="margin-bottom:0.8rem;">
+                            <strong>Carballeda, A. (2002).</strong> <em>La intervención en lo social: Exclusión e integración en los nuevos escenarios sociales</em>. Paidós.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Análisis de los desafíos de la intervención social frente a la exclusión y las nuevas problemáticas sociales.</span>
+                        </li>
+                        <li style="margin-bottom:0.8rem;">
+                            <strong>MIDES. (2023).</strong> <em>Políticas de Protección Social en Guatemala</em>. Gobierno de Guatemala.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Documento oficial que describe los programas y políticas de protección social implementados en el país.</span>
+                        </li>
+                        <li>
+                            <strong>PNUD. (2022).</strong> <em>Informe sobre Desarrollo Humano en Guatemala</em>.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Informe que analiza los indicadores de desarrollo humano, desigualdad y pobreza en Guatemala.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Unidad III: Gerencia Social</h4>
+                    <ul style="font-size:0.95rem;">
+                        <li style="margin-bottom:0.8rem;">
+                            <strong>Kliksberg, B. (1990).</strong> <em>Gerencia Social: Un enfoque para el desarrollo</em>. Fondo de Cultura Económica.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Obra clave que introduce el concepto de gerencia social y su importancia para el desarrollo de políticas públicas eficaces.</span>
+                        </li>
+                        <li style="margin-bottom:0.8rem;">
+                            <strong>Sulbrandt, J. (1999).</strong> <em>Gerencia social y políticas sociales</em>. INDES-BID.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Análisis de la relación entre gerencia social y políticas sociales, con énfasis en la implementación de programas.</span>
+                        </li>
+                        <li>
+                            <strong>BID. (2021).</strong> <em>Fortalecimiento institucional en América Latina</em>. Banco Interamericano de Desarrollo.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Estudio sobre las estrategias de fortalecimiento institucional y su impacto en la gestión de servicios sociales.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Lecturas Complementarias</h4>
+                    <ul style="font-size:0.95rem;">
+                        <li style="margin-bottom:0.8rem;">
+                            <strong>Freire, P. (1970).</strong> <em>Pedagogía del Oprimido</em>. Siglo XXI.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Obra fundamental para comprender la educación como práctica de libertad y la importancia de la participación social.</span>
+                        </li>
+                        <li style="margin-bottom:0.8rem;">
+                            <strong>Sen, A. (1999).</strong> <em>Desarrollo y Libertad</em>. Planeta.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Enfoque que vincula el desarrollo con la expansión de las libertades y capacidades humanas, esencial para la gerencia social.</span>
+                        </li>
+                        <li>
+                            <strong>Max-Neef, M. (1993).</strong> <em>Desarrollo a Escala Humana</em>. Icaria.<br>
+                            <span style="font-size:0.85rem;color:#4a5654;">Propuesta que prioriza la satisfacción de las necesidades humanas fundamentales en los procesos de desarrollo.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Egrafía (Fuentes Web)</h3>
+            <div class="card">
+                <ul style="font-size:0.95rem;">
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Ministerio de Desarrollo Social (MIDES).</strong> <em>Programas Sociales</em>. Recuperado de: <a href="https://www.mides.gob.gt" target="_blank">https://www.mides.gob.gt</a><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Portal oficial que contiene información sobre los programas de protección social, atención a la niñez, mujeres y adultos mayores.</span>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Ministerio de Salud Pública y Asistencia Social (MSPAS).</strong> <em>Servicios de Salud</em>. Recuperado de: <a href="https://www.mspas.gob.gt" target="_blank">https://www.mspas.gob.gt</a><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Información sobre la red de servicios de salud, programas de atención primaria y cobertura nacional.</span>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Instituto Guatemalteco de Seguridad Social (IGSS).</strong> <em>Cobertura Social</em>. Recuperado de: <a href="https://www.igssgt.org" target="_blank">https://www.igssgt.org</a><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Datos sobre afiliación, prestaciones y servicios de seguridad social para trabajadores guatemaltecos.</span>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Ministerio de Educación (MINEDUC).</strong> <em>Programas Educativos</em>. Recuperado de: <a href="https://www.mineduc.gob.gt" target="_blank">https://www.mineduc.gob.gt</a><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Información sobre el sistema educativo nacional, programas de becas, alimentación escolar y educación bilingüe.</span>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Banco Interamericano de Desarrollo (BID).</strong> <em>Proyectos de Desarrollo Social</em>. Recuperado de: <a href="https://www.iadb.org/es" target="_blank">https://www.iadb.org/es</a><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Publicaciones y proyectos sobre gerencia social, fortalecimiento institucional y políticas sociales en América Latina.</span>
+                    </li>
+                    <li>
+                        <strong>Programa de las Naciones Unidas para el Desarrollo (PNUD).</strong> <em>Informes sobre Desarrollo Humano</em>. Recuperado de: <a href="https://www.undp.org/es/guatemala" target="_blank">https://www.undp.org/es/guatemala</a><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Informes y estadísticas sobre desarrollo humano, pobreza y desigualdad en Guatemala.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <h3 class="subsection-title">Videos</h3>
+            <div class="card">
+                <p>Recursos audiovisuales complementarios que refuerzan los contenidos teóricos del curso y permiten una mejor comprensión de los temas abordados en cada unidad.</p>
+                <ul style="font-size:0.95rem;">
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Administración y Trabajo Social</strong><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Video que explica la relación entre la administración y el Trabajo Social, destacando cómo los procesos institucionales influyen en la intervención profesional.</span><br>
+                        <a href="https://youtu.be/c_BB5WEJ6w8" target="_blank">https://youtu.be/c_BB5WEJ6w8</a>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Buen liderazgo</strong><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Video que presenta las características y prácticas de un buen liderazgo, aplicable a equipos de trabajo en instituciones sociales.</span><br>
+                        <a href="https://youtu.be/16z28DjRTAA" target="_blank">https://youtu.be/16z28DjRTAA</a>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Fundamentos de la Gerencia Social</strong><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Video introductorio sobre los fundamentos y principios de la gerencia social, su origen y su importancia en la gestión de políticas sociales.</span><br>
+                        <a href="https://youtu.be/a-85thq_3qE" target="_blank">https://youtu.be/a-85thq_3qE</a>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Gerencia Social</strong><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Video que profundiza en el concepto de gerencia social, sus características y su aplicación en el ámbito de los servicios sociales.</span><br>
+                        <a href="https://youtu.be/ihz4RdPkxRs" target="_blank">https://youtu.be/ihz4RdPkxRs</a>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Importancia de la Administración</strong><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Video que explica por qué la administración es fundamental en cualquier organización, incluyendo las instituciones sociales.</span><br>
+                        <a href="https://youtu.be/kL4h2vfZTWw" target="_blank">https://youtu.be/kL4h2vfZTWw</a>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Inteligencia Emocional</strong><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Video sobre la importancia de la inteligencia emocional en el ámbito laboral y su influencia en el clima organizacional y el bienestar del personal.</span><br>
+                        <a href="https://youtu.be/se62UwCxUrI" target="_blank">https://youtu.be/se62UwCxUrI</a>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Principios de la administración Henry Fayol</strong><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Video explicativo sobre los 14 principios de la administración propuestos por Henry Fayol, base de la teoría clásica administrativa.</span><br>
+                        <a href="https://youtu.be/c9j4tpd3UR4" target="_blank">https://youtu.be/c9j4tpd3UR4</a>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Servicios Sociales</strong><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Video que aborda el concepto de servicios sociales, sus características, tipos y su importancia en la respuesta a las necesidades de la población.</span><br>
+                        <a href="https://youtu.be/yHSZ3M0DYpc" target="_blank">https://youtu.be/yHSZ3M0DYpc</a>
+                    </li>
+                    <li style="margin-bottom:0.8rem;">
+                        <strong>Trabajo colaborativo</strong><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Video que explica las características del trabajo colaborativo y su importancia para el logro de objetivos comunes en equipos de trabajo.</span><br>
+                        <a href="https://youtu.be/nDenVCpHWGM" target="_blank">https://youtu.be/nDenVCpHWGM</a>
+                    </li>
+                    <li>
+                        <strong>Trabajo cooperativo</strong><br>
+                        <span style="font-size:0.85rem;color:#4a5654;">Video que diferencia el trabajo cooperativo del colaborativo y explica cómo ambos contribuyen al fortalecimiento de los equipos sociales.</span><br>
+                        <a href="https://youtu.be/qoPVOd1BBVo" target="_blank">https://youtu.be/qoPVOd1BBVo</a>
+                    </li>
+                </ul>
             </div>
         </section>
 
-        <!-- =========================================
-             06 · FUENTES Y ARCHIVO ACADÉMICO
-             ========================================= -->
-        <section id="fuentes" class="page">
-            <div class="inner">
-                <header class="page-header">
-                    <p class="page-kicker">06 · Rigor académico</p>
-                    <h2 class="page-title">Fuentes y archivo académico</h2>
-                    <p class="page-lead">Bibliografía, egografía, lecturas complementarias y videos consultados durante el curso.</p>
-                </header>
+        <!-- ================= ACTIVIDADES ELABORADAS ================= -->
+        <section id="actividades" class="page">
+            <h2 class="section-title">Actividades Elaboradas</h2>
 
-                <h2 class="section-h">Bibliografía · Unidad I</h2>
-                <ul class="biblio-list">
-                    <li><strong>Chiavenato, I. (2006).</strong> <em>Introducción a la Teoría General de la Administración.</em> McGraw-Hill.<span class="desc">Obra fundamental sobre evolución del pensamiento administrativo, desde Taylor y Fayol hasta enfoques contemporáneos.</span></li>
-                    <li><strong>Fayol, H. (1916).</strong> <em>Administración Industrial y General.</em><span class="desc">Texto clásico que establece principios y funciones básicas de la administración.</span></li>
-                    <li><strong>Taylor, F. W. (1911).</strong> <em>Principios de la Administración Científica.</em><span class="desc">Obra pionera del estudio de tiempos y movimientos.</span></li>
-                    <li><strong>Weber, M. (1922).</strong> <em>Economía y Sociedad.</em> Fondo de Cultura Económica.<span class="desc">Análisis de la burocracia como forma de organización racional y legal.</span></li>
-                    <li><strong>Mayo, E. (1933).</strong> <em>Problemas humanos de una civilización industrial.</em><span class="desc">Origen de la teoría de las relaciones humanas.</span></li>
-                </ul>
-
-                <h2 class="section-h">Bibliografía · Unidad II</h2>
-                <ul class="biblio-list">
-                    <li><strong>Kisnerman, N. (1998).</strong> <em>Pensar el Trabajo Social: Una introducción desde el construccionismo.</em> Lumen.<span class="desc">Reflexión sobre los fundamentos del Trabajo Social y su intervención institucional.</span></li>
-                    <li><strong>Carballeda, A. (2002).</strong> <em>La intervención en lo social: Exclusión e integración en los nuevos escenarios sociales.</em> Paidós.<span class="desc">Análisis de los desafíos de la intervención social frente a la exclusión.</span></li>
-                    <li><strong>MIDES. (2023).</strong> <em>Políticas de Protección Social en Guatemala.</em> Gobierno de Guatemala.<span class="desc">Programas y políticas de protección social en el país.</span></li>
-                    <li><strong>PNUD. (2022).</strong> <em>Informe sobre Desarrollo Humano en Guatemala.</em><span class="desc">Indicadores de desarrollo humano, desigualdad y pobreza.</span></li>
-                </ul>
-
-                <h2 class="section-h">Bibliografía · Unidad III</h2>
-                <ul class="biblio-list">
-                    <li><strong>Kliksberg, B. (1990).</strong> <em>Gerencia Social: Un enfoque para el desarrollo.</em> Fondo de Cultura Económica.<span class="desc">Introducción al concepto de gerencia social y su papel en el desarrollo.</span></li>
-                    <li><strong>Sulbrandt, J. (1999).</strong> <em>Gerencia social y políticas sociales.</em> INDES-BID.<span class="desc">Relación entre gerencia social y políticas sociales.</span></li>
-                    <li><strong>BID. (2021).</strong> <em>Fortalecimiento institucional en América Latina.</em><span class="desc">Estrategias de fortalecimiento institucional en la región.</span></li>
-                </ul>
-
-                <h2 class="section-h">Lecturas complementarias</h2>
-                <ul class="biblio-list">
-                    <li><strong>Freire, P. (1970).</strong> <em>Pedagogía del Oprimido.</em> Siglo XXI.<span class="desc">La educación como práctica de libertad y participación social.</span></li>
-                    <li><strong>Sen, A. (1999).</strong> <em>Desarrollo y Libertad.</em> Planeta.<span class="desc">Desarrollo como expansión de libertades y capacidades humanas.</span></li>
-                    <li><strong>Max-Neef, M. (1993).</strong> <em>Desarrollo a Escala Humana.</em> Icaria.<span class="desc">Prioridad a las necesidades humanas fundamentales.</span></li>
-                </ul>
-
-                <h2 class="section-h">Egografía · Fuentes web</h2>
-                <ul class="biblio-list">
-                    <li><strong>MIDES · Programas Sociales.</strong> <a href="https://www.mides.gob.gt" target="_blank">https://www.mides.gob.gt</a></li>
-                    <li><strong>MSPAS · Servicios de Salud.</strong> <a href="https://www.mspas.gob.gt" target="_blank">https://www.mspas.gob.gt</a></li>
-                    <li><strong>IGSS · Cobertura Social.</strong> <a href="https://www.igssgt.org" target="_blank">https://www.igssgt.org</a></li>
-                    <li><strong>MINEDUC · Programas Educativos.</strong> <a href="https://www.mineduc.gob.gt" target="_blank">https://www.mineduc.gob.gt</a></li>
-                    <li><strong>BID · Proyectos de Desarrollo Social.</strong> <a href="https://www.iadb.org/es" target="_blank">https://www.iadb.org/es</a></li>
-                    <li><strong>PNUD · Informes sobre Desarrollo Humano.</strong> <a href="https://www.undp.org/es/guatemala" target="_blank">https://www.undp.org/es/guatemala</a></li>
-                </ul>
-
-                <h2 class="section-h">Videos seleccionados</h2>
-                <ul class="biblio-list">
-                    <li><strong>Administración y Trabajo Social.</strong> <a href="https://youtu.be/c_BB5WEJ6w8" target="_blank">https://youtu.be/c_BB5WEJ6w8</a></li>
-                    <li><strong>Buen liderazgo.</strong> <a href="https://youtu.be/16z28DjRTAA" target="_blank">https://youtu.be/16z28DjRTAA</a></li>
-                    <li><strong>Fundamentos de la Gerencia Social.</strong> <a href="https://youtu.be/a-85thq_3qE" target="_blank">https://youtu.be/a-85thq_3qE</a></li>
-                    <li><strong>Gerencia Social.</strong> <a href="https://youtu.be/ihz4RdPkxRs" target="_blank">https://youtu.be/ihz4RdPkxRs</a></li>
-                    <li><strong>Importancia de la Administración.</strong> <a href="https://youtu.be/kL4h2vfZTWw" target="_blank">https://youtu.be/kL4h2vfZTWw</a></li>
-                    <li><strong>Inteligencia Emocional.</strong> <a href="https://youtu.be/se62UwCxUrI" target="_blank">https://youtu.be/se62UwCxUrI</a></li>
-                    <li><strong>Principios de la administración Henry Fayol.</strong> <a href="https://youtu.be/c9j4tpd3UR4" target="_blank">https://youtu.be/c9j4tpd3UR4</a></li>
-                    <li><strong>Servicios Sociales.</strong> <a href="https://youtu.be/yHSZ3M0DYpc" target="_blank">https://youtu.be/yHSZ3M0DYpc</a></li>
-                    <li><strong>Trabajo colaborativo.</strong> <a href="https://youtu.be/nDenVCpHWGM" target="_blank">https://youtu.be/nDenVCpHWGM</a></li>
-                    <li><strong>Trabajo cooperativo.</strong> <a href="https://youtu.be/qoPVOd1BBVo" target="_blank">https://youtu.be/qoPVOd1BBVo</a></li>
-                </ul>
+            <div class="card card-accent">
+                <p>A continuación se presenta un detalle de las actividades académicas desarrolladas durante el curso, organizadas por unidad. Estas actividades permitieron aplicar los conocimientos teóricos a contextos prácticos y reflexionar sobre la realidad social guatemalteca.</p>
             </div>
-        </section>
 
-        <!-- =========================================
-             07 · CIERRE EDITORIAL
-             ========================================= -->
-        <section id="cierre" class="page">
-            <div class="inner">
-                <header class="page-header">
-                    <p class="page-kicker">07 · Cierre</p>
-                    <h2 class="page-title">Cierre editorial</h2>
-                </header>
-
-                <div class="closing">
-                    <h2>Administrar es un acto de responsabilidad pública</h2>
-                    <p>Esta revista digital es el resultado de un proceso de aprendizaje que integró teoría, práctica y reflexión crítica. A lo largo del curso se construyó una mirada de la administración de servicios sociales desde el Trabajo Social, reconociendo la importancia de gestionar recursos, coordinar actores y orientar las instituciones hacia la garantía de derechos y el bienestar de la población.</p>
-                    <p>La administración no es un fin en sí misma, sino un medio para que las instituciones sociales cumplan su misión con pertinencia, equidad y sostenibilidad. Como futuros profesionales del Trabajo Social, tenemos la responsabilidad de contribuir a que los servicios sociales sean accesibles, oportunos y orientados a las necesidades reales de las personas.</p>
-                    <p class="signature">— Denisse Parada · Licenciatura en Trabajo Social</p>
+            <h3 class="subsection-title">Unidad I: Enfoque de la Administración</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>Glosario Colaborativo</h4>
+                    <p><strong>Descripción:</strong> Construcción colectiva de un glosario con los principales conceptos de la administración (planeación, organización, dirección, evaluación, estructura organizacional).</p>
+                    <p><strong>Propósito:</strong> Afianzar el vocabulario técnico de la administración y su aplicación en el Trabajo Social.</p>
                 </div>
+                <div class="card">
+                    <h4>Comprobación de Lectura</h4>
+                    <p><strong>Descripción:</strong> Evaluación de la comprensión de las lecturas asignadas sobre teorías administrativas y su evolución.</p>
+                    <p><strong>Propósito:</strong> Verificar el estudio autónomo y la capacidad de síntesis.</p>
+                </div>
+                <div class="card">
+                    <h4>Primer Parcial</h4>
+                    <p><strong>Descripción:</strong> Evaluación escrita de los contenidos de la Unidad I.</p>
+                    <p><strong>Propósito:</strong> Medir el dominio conceptual de los enfoques administrativos y los tipos de administración.</p>
+                </div>
+                <div class="card">
+                    <h4>Estudio de Caso: Burnout</h4>
+                    <p><strong>Descripción:</strong> Análisis de un caso práctico sobre el síndrome de burnout en equipos sociales.</p>
+                    <p><strong>Propósito:</strong> Aplicar los conocimientos de administración de personal y liderazgo a una problemática real.</p>
+                </div>
+                <div class="card">
+                    <h4>Foro de Debate</h4>
+                    <p><strong>Descripción:</strong> Discusión grupal sobre la gestión del burnout y las estrategias institucionales para prevenirlo.</p>
+                    <p><strong>Propósito:</strong> Fomentar el pensamiento crítico y la argumentación.</p>
+                </div>
+                <div class="card">
+                    <h4>Videoensayo: Liderazgo Adaptativo</h4>
+                    <p><strong>Descripción:</strong> Elaboración de un videoensayo individual sobre las características del liderazgo adaptativo en equipos sociales.</p>
+                    <p><strong>Propósito:</strong> Desarrollar habilidades de comunicación audiovisual y reflexión personal.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Unidad II: Servicios Sociales</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>Segundo Parcial</h4>
+                    <p><strong>Descripción:</strong> Evaluación escrita de los contenidos de la Unidad II.</p>
+                    <p><strong>Propósito:</strong> Medir el conocimiento sobre servicios sociales, sus características y contexto guatemalteco.</p>
+                </div>
+                <div class="card">
+                    <h4>Diagnóstico de Servicios Sociales en Guatemala</h4>
+                    <p><strong>Descripción:</strong> Investigación y análisis de los servicios sociales existentes en Guatemala, sus fortalezas, debilidades y desafíos.</p>
+                    <p><strong>Propósito:</strong> Vincular la teoría con la realidad nacional y desarrollar habilidades de diagnóstico social.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Unidad III: Gerencia Social</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>Plan de Fortalecimiento Institucional</h4>
+                    <p><strong>Descripción:</strong> Elaboración de un plan orientado a mejorar las capacidades de una institución social.</p>
+                    <p><strong>Propósito:</strong> Aplicar los conceptos de gerencia social y fortalecimiento institucional a un caso concreto.</p>
+                </div>
+                <div class="card">
+                    <h4>Intercambio de Experiencias Profesionales</h4>
+                    <p><strong>Descripción:</strong> Espacio de diálogo con profesionales del Trabajo Social y la gerencia social.</p>
+                    <p><strong>Propósito:</strong> Conocer experiencias reales y reflexionar sobre el ejercicio profesional en instituciones sociales.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Aprender conectados</h3>
+            <div class="card card-success">
+                <p>El curso de Administración de Servicios Sociales se desarrolló bajo un enfoque metodológico que articuló el constructivismo, el conectivismo y el uso de tecnologías digitales. Este enfoque permitió que el aprendizaje no fuera solo la recepción pasiva de contenidos, sino un proceso activo, colaborativo y conectado con la realidad. A continuación se presentan los principales enfoques y su aplicación concreta en el curso.</p>
+
+                <div class="grid-2" style="margin-top:1.2rem;">
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>Constructivismo</h4>
+                        <p style="font-size:0.95rem;"><strong>¿Qué es?</strong> Es un enfoque pedagógico que sostiene que el conocimiento no se transmite de manera pasiva, sino que cada persona lo construye activamente a partir de sus experiencias, saberes previos y reflexiones. El estudiante es el protagonista de su propio aprendizaje.</p>
+                        <p style="font-size:0.95rem;"><strong>¿Cómo se aplicó en el curso?</strong> A través de la elaboración de glosarios colaborativos, estudios de caso, videoensayos y foros de debate, donde cada estudiante aportó su perspectiva y construyó su comprensión de los temas a partir del diálogo y la reflexión.</p>
+                        <p style="font-size:0.9rem; color:#173F3A;"><strong>Ejemplo común:</strong> Cuando un grupo de estudiantes discute un caso de burnout en un equipo social y, a partir de sus propias experiencias y lecturas, construye colectivamente una propuesta de intervención, está aplicando el constructivismo. El conocimiento no viene solo del docente, sino que se construye entre todos.</p>
+                    </div>
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>Conectivismo</h4>
+                        <p style="font-size:0.95rem;"><strong>¿Qué es?</strong> Es una teoría del aprendizaje para la era digital que sostiene que el conocimiento se distribuye en redes: personas, instituciones, plataformas y entornos virtuales. Aprender implica saber conectarse, filtrar información y construir conocimiento en red.</p>
+                        <p style="font-size:0.95rem;"><strong>¿Cómo se aplicó en el curso?</strong> Mediante el uso de plataformas virtuales, foros, videos, documentos compartidos y enlaces a fuentes externas. El aprendizaje no se limitó al aula, sino que se extendió a las redes digitales y a las conexiones entre compañeros, docentes y recursos externos.</p>
+                        <p style="font-size:0.9rem; color:#173F3A;"><strong>Ejemplo común:</strong> Cuando un estudiante busca un video en YouTube sobre gerencia social, lo comparte con sus compañeros en un foro y juntos discuten cómo aplicarlo a un caso guatemalteco, está aprendiendo de manera conectivista. El conocimiento circula en red y se enriquece con los aportes de todos.</p>
+                    </div>
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>TIC — Tecnologías de la Información y la Comunicación</h4>
+                        <p style="font-size:0.95rem;"><strong>¿Qué son?</strong> Son todas aquellas herramientas tecnológicas que permiten acceder, producir, almacenar y compartir información: computadoras, internet, plataformas digitales, correo electrónico, redes sociales, entre otras.</p>
+                        <p style="font-size:0.95rem;"><strong>¿Cómo se aplicaron en el curso?</strong> A través del uso de plataformas virtuales para entregar tareas, participar en foros, acceder a lecturas y compartir documentos. Las TIC fueron el soporte material que hizo posible el aprendizaje a distancia y la comunicación constante entre los participantes.</p>
+                        <p style="font-size:0.9rem; color:#173F3A;"><strong>Ejemplo común:</strong> Cuando un estudiante sube su videoensayo a una plataforma digital, comparte el enlace con sus compañeros y recibe comentarios en línea, está usando las TIC para comunicar y difundir su aprendizaje.</p>
+                    </div>
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>TAC — Tecnologías para el Aprendizaje y el Conocimiento</h4>
+                        <p style="font-size:0.95rem;"><strong>¿Qué son?</strong> Son el uso de las tecnologías con un propósito específicamente formativo. No se trata solo de usar la tecnología, sino de usarla para aprender mejor: buscar información confiable, analizarla, sintetizarla y transformarla en conocimiento.</p>
+                        <p style="font-size:0.95rem;"><strong>¿Cómo se aplicaron en el curso?</strong> Mediante la elaboración de la presente revista digital, la búsqueda de fuentes académicas, el análisis de documentos oficiales (MIDES, MSPAS, etc.) y la producción de materiales propios (infografías, ensayos, videos).</p>
+                        <p style="font-size:0.9rem; color:#173F3A;"><strong>Ejemplo común:</strong> Cuando un estudiante investiga en línea sobre los servicios sociales en Guatemala, selecciona fuentes confiables, las analiza y elabora un resumen propio para compartirlo con sus compañeros, está usando las TAC para aprender y producir conocimiento.</p>
+                    </div>
+                    <div class="card card-accent" style="margin-bottom:0;">
+                        <h4>TEP — Tecnologías para el Empoderamiento y la Participación</h4>
+                        <p style="font-size:0.95rem;"><strong>¿Qué son?</strong> Son el uso de las tecnologías para la participación ciudadana, la organización social y la transformación. No se trata solo de aprender, sino de usar lo aprendido para incidir en la realidad y empoderar a las personas y comunidades.</p>
+                        <p style="font-size:0.95rem;"><strong>¿Cómo se aplicaron en el curso?</strong> A través de la creación de espacios de diálogo virtual, la difusión de información sobre derechos sociales, la elaboración de propuestas de fortalecimiento institucional y la reflexión sobre el rol del Trabajo Social en la transformación social.</p>
+                        <p style="font-size:0.9rem; color:#173F3A;"><strong>Ejemplo común:</strong> Cuando un estudiante comparte en sus redes sociales información sobre los programas del MIDES para que más personas conozcan sus derechos, o cuando organiza una campaña virtual para promover la participación comunitaria, está usando las TEP para empoderar y transformar.</p>
+                    </div>
+                </div>
+
+                <div class="quote" style="margin-top:1.2rem;">
+                    La revista digital constituye una expresión del proceso de aprendizaje desarrollado mediante herramientas tecnológicas, integrando contenidos teóricos, experiencias, actividades y reflexiones construidas durante el curso. Este producto es, en sí mismo, una evidencia de cómo el constructivismo, el conectivismo y las TIC-TAC-TEP pueden articularse para generar aprendizajes significativos y socialmente pertinentes.
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Anexos</h3>
+            <div class="card card-success">
+                <p>En este espacio se encuentran los documentos, evidencias y materiales complementarios que respaldan las actividades realizadas durante el curso. Puedes acceder a ellos a través del siguiente enlace:</p>
+                <p style="margin-top:1rem;">
+                    <a href="https://drive.google.com/drive/folders/1fuX7ob7psQ-AX-rdnhAO7oKxKlCn106I?usp=drive_link" target="_blank" style="display:inline-block; background:#173F3A; color:#F5F0E6; padding:0.85rem 1.8rem; border-radius:3px; text-decoration:none; font-weight:600; font-family:'Inter',sans-serif; font-size:0.9rem; letter-spacing:0.5px; transition: background 0.25s;">
+                        Consultar carpeta de anexos →
+                    </a>
+                </p>
+                <p style="margin-top:1rem; font-size:0.9rem; color:#4a5654;">En esta carpeta se incluyen los documentos completos, presentaciones, fotografías y demás evidencias del proceso de aprendizaje desarrollado durante el curso.</p>
             </div>
         </section>
 
