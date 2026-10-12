@@ -158,10 +158,16 @@
         }
         .cover-top span:first-child { color: var(--terracota); font-weight: 600; }
 
-        .cover-center {
-            max-width: 900px;
+        /* Layout portada con foto */
+        .cover-layout {
+            display: grid;
+            grid-template-columns: 1.7fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
             padding: 3rem 0;
+            position: relative;
         }
+
         .cover-kicker {
             font-family: 'Inter', sans-serif;
             font-size: 0.85rem;
@@ -174,7 +180,7 @@
         .cover-title {
             font-family: 'Lora', serif;
             font-weight: 800;
-            font-size: 4.6rem;
+            font-size: 4.4rem;
             line-height: 1.02;
             letter-spacing: -1.5px;
             color: var(--marfil);
@@ -187,44 +193,45 @@
         }
         .cover-subtitle {
             font-family: 'Lora', serif;
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             font-weight: 400;
             font-style: italic;
             color: rgba(245,240,230,0.85);
-            max-width: 720px;
+            max-width: 640px;
             line-height: 1.5;
             padding-left: 1.5rem;
             border-left: 2px solid var(--terracota);
         }
 
-        .cover-bottom {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
-            border-top: 1px solid rgba(245,240,230,0.18);
-            padding-top: 1.8rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
+        /* Fotografía editorial en portada */
+        .cover-photo {
+            position: relative;
+            border: 1px solid rgba(199,121,91,0.5);
+            padding: 0.9rem;
+            border-radius: 2px;
+            background: rgba(245,240,230,0.04);
         }
-        .cover-bottom .ficha-item span {
+        .cover-photo img {
+            width: 100%;
+            height: auto;
             display: block;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--terracota);
-            margin-bottom: 0.35rem;
-            font-weight: 600;
+            border-radius: 2px;
+            filter: saturate(0.92) contrast(1.02);
         }
-        .cover-bottom .ficha-item strong {
-            font-family: 'Lora', serif;
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--marfil);
+        .cover-photo .photo-caption {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(245,240,230,0.65);
+            margin-top: 0.8rem;
+            text-align: center;
         }
 
         /* Índice visual */
         .cover-index {
             padding: 2.5rem 0 0;
+            position: relative;
         }
         .cover-index h4 {
             font-family: 'Inter', sans-serif;
@@ -261,6 +268,32 @@
             font-size: 1.02rem;
             font-weight: 600;
             line-height: 1.3;
+        }
+
+        .cover-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            border-top: 1px solid rgba(245,240,230,0.18);
+            padding-top: 1.8rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            position: relative;
+        }
+        .cover-bottom .ficha-item span {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--terracota);
+            margin-bottom: 0.35rem;
+            font-weight: 600;
+        }
+        .cover-bottom .ficha-item strong {
+            font-family: 'Lora', serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--marfil);
         }
 
         /* =========================================
@@ -323,7 +356,7 @@
         p { margin-bottom: 1rem; color: var(--carbon); }
         p + p { text-indent: 1.5em; }
 
-        /* LECTURA CRÍTICA (reemplaza “Mi mirada”) */
+        /* LECTURA CRÍTICA */
         .lectura-critica {
             margin: 2rem 0;
             padding: 0 0 0 1.5rem;
@@ -440,7 +473,7 @@
             line-height: 1.65;
         }
 
-        /* Tabla comparativa de teorías */
+        /* Tabla comparativa */
         .table-wrap { overflow-x: auto; margin: 2rem 0; }
         table {
             width: 100%;
@@ -747,8 +780,10 @@
             .menu-toggle { display: block; }
 
             .cover { padding: 2.5rem 1.5rem; }
+            .cover-layout { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 0; }
             .cover-title { font-size: 2.8rem; letter-spacing: -1px; }
             .cover-subtitle { font-size: 1.1rem; }
+            .cover-photo { max-width: 320px; margin: 0 auto; }
             .cover-bottom { grid-template-columns: 1fr; gap: 1rem; }
             .cover-index-grid { grid-template-columns: 1fr 1fr; }
 
@@ -793,26 +828,34 @@
             <div class="cover">
                 <div class="cover-top">
                     <span>Revista Académica</span>
-                    <span>Trabajo Social · 2025</span>
+                    <span>Trabajo Social · 2026</span>
                 </div>
 
-                <div class="cover-center">
-                    <p class="cover-kicker">Administración de Servicios Sociales</p>
-                    <h1 class="cover-title">Administrar para <em>transformar</em></h1>
-                    <p class="cover-subtitle">Instituciones, derechos y realidad social: un recorrido crítico por la administración, los servicios sociales y la gerencia social desde el Trabajo Social guatemalteco.</p>
+                <div class="cover-layout">
+                    <div class="cover-center">
+                        <p class="cover-kicker">Administración de Servicios Sociales</p>
+                        <h1 class="cover-title">Administrar para <em>transformar</em></h1>
+                        <p class="cover-subtitle">Instituciones, derechos y realidad social: un recorrido crítico por la administración, los servicios sociales y la gerencia social desde el Trabajo Social guatemalteco.</p>
+                    </div>
 
-                    <div class="cover-index">
-                        <h4>Índice</h4>
-                        <div class="cover-index-grid">
-                            <a href="#unidad-1" class="cover-index-item"><span class="num">01</span><span class="name">Administración de las organizaciones</span></a>
-                            <a href="#unidad-2" class="cover-index-item"><span class="num">02</span><span class="name">Servicios sociales y realidad guatemalteca</span></a>
-                            <a href="#unidad-3" class="cover-index-item"><span class="num">03</span><span class="name">Gerencia social y transformación</span></a>
-                            <a href="#practica" class="cover-index-item"><span class="num">04</span><span class="name">Del aprendizaje a la práctica</span></a>
-                            <a href="#bitacora" class="cover-index-item"><span class="num">05</span><span class="name">Mi bitácora de aprendizaje</span></a>
-                            <a href="#fuentes" class="cover-index-item"><span class="num">06</span><span class="name">Fuentes y archivo académico</span></a>
-                            <a href="#cierre" class="cover-index-item"><span class="num">07</span><span class="name">Cierre editorial</span></a>
-                            <a href="#portada" class="cover-index-item"><span class="num">00</span><span class="name">Editorial</span></a>
-                        </div>
+                    <!-- Fotografía de la autora -->
+                    <div class="cover-photo">
+                        <img src="denisse.jpg" alt="Denisse Parada">
+                        <p class="photo-caption">Denisse Parada · Autora</p>
+                    </div>
+                </div>
+
+                <div class="cover-index">
+                    <h4>Índice</h4>
+                    <div class="cover-index-grid">
+                        <a href="#unidad-1" class="cover-index-item"><span class="num">01</span><span class="name">Administración de las organizaciones</span></a>
+                        <a href="#unidad-2" class="cover-index-item"><span class="num">02</span><span class="name">Servicios sociales y realidad guatemalteca</span></a>
+                        <a href="#unidad-3" class="cover-index-item"><span class="num">03</span><span class="name">Gerencia social y transformación</span></a>
+                        <a href="#practica" class="cover-index-item"><span class="num">04</span><span class="name">Del aprendizaje a la práctica</span></a>
+                        <a href="#bitacora" class="cover-index-item"><span class="num">05</span><span class="name">Mi bitácora de aprendizaje</span></a>
+                        <a href="#fuentes" class="cover-index-item"><span class="num">06</span><span class="name">Fuentes y archivo académico</span></a>
+                        <a href="#cierre" class="cover-index-item"><span class="num">07</span><span class="name">Cierre editorial</span></a>
+                        <a href="#portada" class="cover-index-item"><span class="num">00</span><span class="name">Editorial</span></a>
                     </div>
                 </div>
 
