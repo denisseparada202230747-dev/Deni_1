@@ -4,35 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrar para transformar | Revista Académica de Trabajo Social</title>
+    <meta name="description" content="Revista académica de Administración de Servicios Sociales desde el Trabajo Social guatemalteco: administración, servicios sociales, gerencia social, casos prácticos y bitácora de aprendizaje.">
+    <meta name="author" content="Denisse Parada">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           PALETA VERDE EDITORIAL
-           Verde #173F3A · Marfil #F5F0E6 · Terracota #C7795B
-           Salvia #D9E2D8 · Carbón #252B2A
+           1. IDENTIDAD VISUAL — SISTEMA DE DISEÑO
            ========================================= */
         :root {
-            --verde: #173F3A;
-            --marfil: #F5F0E6;
-            --terracota: #C7795B;
-            --salvia: #D9E2D8;
-            --carbon: #252B2A;
+            /* Paleta cromática */
+            --verde:        #173F3A;
+            --verde-oscuro: #0F2D29;
+            --verde-medio:  #1F5A52;
+            --marfil:       #F5F0E6;
             --marfil-claro: #FAF7F0;
-            --linea: #E4DCCC;
+            --terracota:    #C7795B;
+            --terracota-hover: #A86146;
+            --salvia:       #D9E2D8;
+            --carbon:       #252B2A;
+            --texto-sec:    #4A5654;
+            --texto-ter:    #6B7A77;
+            --linea:        #E4DCCC;
+            --blanco:       #FFFFFF;
+
+            /* Tipografía — escala */
+            --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+            --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            --fs-display: clamp(2.6rem, 6vw, 4.6rem);
+            --fs-h1:      clamp(2rem, 4.2vw, 3rem);
+            --fs-h2:      clamp(1.5rem, 2.6vw, 1.9rem);
+            --fs-h3:      clamp(1.15rem, 1.8vw, 1.3rem);
+            --fs-h4:      clamp(1rem, 1.4vw, 1.12rem);
+            --fs-body:    1.04rem;
+            --fs-small:   0.9rem;
+            --fs-micro:   0.72rem;
+
+            /* Espaciado */
+            --sp-xs: 0.5rem;
+            --sp-sm: 0.85rem;
+            --sp-md: 1.4rem;
+            --sp-lg: 2.2rem;
+            --sp-xl: 3.5rem;
+
+            /* Layout */
+            --max-read: 68ch;
+            --max-content: 1080px;
+            --topbar-h: 64px;
+
+            /* Radios y sombras */
+            --radius-sm: 3px;
+            --radius-md: 6px;
+            --shadow-soft: 0 6px 22px rgba(23, 63, 58, 0.06);
+            --shadow-hover: 0 10px 28px rgba(23, 63, 58, 0.10);
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: var(--font-sans);
             background: var(--marfil);
             color: var(--carbon);
             line-height: 1.7;
@@ -42,57 +77,83 @@
             overflow: hidden;
             display: flex;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Accesibilidad: foco visible */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--terracota);
+            outline-offset: 3px;
+            border-radius: 2px;
         }
 
         /* =========================================
-           NAVEGACIÓN SUPERIOR EDITORIAL
+           3. NAVEGACIÓN SUPERIOR
            ========================================= */
         .topbar {
             position: fixed;
             top: 0; left: 0; right: 0;
-            height: 62px;
+            height: var(--topbar-h);
             background: rgba(23, 63, 58, 0.97);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             color: var(--marfil);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2rem;
+            padding: 0 1.8rem;
             z-index: 1000;
             border-bottom: 1px solid rgba(199, 121, 91, 0.35);
         }
         .topbar-brand {
-            font-family: 'Lora', serif;
+            font-family: var(--font-serif);
             font-weight: 700;
-            font-size: 1.02rem;
-            letter-spacing: 0.5px;
+            font-size: 1rem;
+            letter-spacing: 0.4px;
             color: var(--marfil);
             text-decoration: none;
+            white-space: nowrap;
         }
-        .topbar-brand span {
-            color: var(--terracota);
-        }
+        .topbar-brand span { color: var(--terracota); }
+
         .topbar-nav {
             display: flex;
-            gap: 0.2rem;
-            flex-wrap: wrap;
+            gap: 0.15rem;
+            align-items: center;
         }
         .topbar-nav a {
+            position: relative;
             color: rgba(245, 240, 230, 0.78);
             text-decoration: none;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-sans);
             font-size: 0.82rem;
             font-weight: 500;
-            letter-spacing: 0.4px;
-            padding: 0.4rem 0.75rem;
-            border-radius: 4px;
-            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
+            padding: 0.45rem 0.8rem;
+            border-radius: 3px;
+            transition: var(--transition);
         }
-        .topbar-nav a:hover { color: var(--terracota); }
+        .topbar-nav a:hover {
+            color: var(--marfil);
+            background: rgba(199, 121, 91, 0.15);
+        }
         .topbar-nav a.active {
             color: var(--marfil);
             background: rgba(199, 121, 91, 0.22);
         }
+        .topbar-nav a.active::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -1px;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 2px;
+            background: var(--terracota);
+            border-radius: 2px;
+        }
+
         .menu-toggle {
             display: none;
             background: none;
@@ -100,7 +161,10 @@
             color: var(--marfil);
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.4rem 0.6rem;
+            border-radius: 3px;
         }
+        .menu-toggle:hover { background: rgba(255,255,255,0.08); }
 
         /* =========================================
            CONTENIDO PRINCIPAL
@@ -109,27 +173,31 @@
             flex: 1;
             height: 100vh;
             overflow-y: auto;
-            padding-top: 62px;
+            padding-top: var(--topbar-h);
         }
 
-        .page { display: none; animation: fadeUp 0.55s ease; }
+        .page {
+            display: none;
+            animation: fadeUp 0.55s ease;
+            scroll-margin-top: var(--topbar-h);
+        }
         .page:target { display: block; }
         body:not(:has(.page:target)) #portada { display: block; }
         body:has(.page:target:not(#portada)) #portada { display: none; }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(14px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* =========================================
-           PORTADA EDITORIAL
+           2. PORTADA EDITORIAL
            ========================================= */
         .cover {
             min-height: 100vh;
             background: var(--verde);
             color: var(--marfil);
-            padding: 4rem 4rem 3rem;
+            padding: 3.2rem 4rem 2.6rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -143,48 +211,50 @@
             width: 420px; height: 420px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(199,121,91,0.18), transparent 70%);
+            pointer-events: none;
         }
+
         .cover-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(245,240,230,0.18);
-            padding-bottom: 1.2rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
+            padding-bottom: 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: rgba(245,240,230,0.72);
         }
         .cover-top span:first-child { color: var(--terracota); font-weight: 600; }
 
-        /* Layout portada con foto */
         .cover-layout {
             display: grid;
             grid-template-columns: 1.7fr 1fr;
-            gap: 3.5rem;
+            gap: 3rem;
             align-items: center;
-            padding: 3rem 0;
+            padding: 2.4rem 0 2rem;
             position: relative;
         }
 
         .cover-kicker {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--terracota);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.3rem;
             font-weight: 600;
         }
         .cover-title {
-            font-family: 'Lora', serif;
+            font-family: var(--font-serif);
             font-weight: 800;
-            font-size: 4.4rem;
-            line-height: 1.02;
+            font-size: var(--fs-display);
+            line-height: 1.03;
             letter-spacing: -1.5px;
             color: var(--marfil);
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-wrap: balance;
         }
         .cover-title em {
             font-style: italic;
@@ -192,240 +262,290 @@
             color: var(--terracota);
         }
         .cover-subtitle {
-            font-family: 'Lora', serif;
-            font-size: 1.3rem;
+            font-family: var(--font-serif);
+            font-size: 1.22rem;
             font-weight: 400;
             font-style: italic;
-            color: rgba(245,240,230,0.85);
-            max-width: 640px;
+            color: rgba(245,240,230,0.86);
+            max-width: 620px;
             line-height: 1.5;
-            padding-left: 1.5rem;
+            padding-left: 1.4rem;
             border-left: 2px solid var(--terracota);
+            text-wrap: pretty;
         }
 
-        /* Fotografía editorial en portada */
+        /* Entrada al contenido */
+        .cover-cta {
+            margin-top: 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            color: var(--marfil);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(199,121,91,0.6);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+        .cover-cta:hover {
+            background: var(--terracota);
+            border-color: var(--terracota);
+            color: var(--marfil);
+        }
+        .cover-cta::after {
+            content: "→";
+            transition: transform var(--transition);
+        }
+        .cover-cta:hover::after { transform: translateX(4px); }
+
+        /* Retrato editorial */
         .cover-photo {
             position: relative;
             border: 1px solid rgba(199,121,91,0.5);
-            padding: 0.9rem;
-            border-radius: 2px;
+            padding: 0.85rem;
+            border-radius: var(--radius-sm);
             background: rgba(245,240,230,0.04);
+            max-width: 340px;
+            justify-self: end;
         }
         .cover-photo img {
             width: 100%;
             height: auto;
             display: block;
             border-radius: 2px;
-            filter: saturate(0.92) contrast(1.02);
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: saturate(0.94) contrast(1.02);
         }
         .cover-photo .photo-caption {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: rgba(245,240,230,0.65);
-            margin-top: 0.8rem;
+            color: rgba(245,240,230,0.62);
+            margin-top: 0.75rem;
             text-align: center;
         }
 
-        /* Índice visual */
+        /* Índice */
         .cover-index {
-            padding: 2.5rem 0 0;
+            padding: 1.8rem 0 0;
             position: relative;
         }
         .cover-index h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: rgba(245,240,230,0.6);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             font-weight: 600;
         }
         .cover-index-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            gap: 0.9rem;
         }
         .cover-index-item {
             border-top: 1px solid rgba(245,240,230,0.2);
-            padding-top: 0.8rem;
+            padding-top: 0.7rem;
             color: var(--marfil);
             text-decoration: none;
-            transition: all 0.25s ease;
+            transition: var(--transition);
         }
-        .cover-index-item:hover { border-top-color: var(--terracota); }
+        .cover-index-item:hover,
+        .cover-index-item:focus-visible {
+            border-top-color: var(--terracota);
+            transform: translateY(-2px);
+        }
         .cover-index-item .num {
-            font-family: 'Lora', serif;
-            font-size: 0.85rem;
+            font-family: var(--font-serif);
+            font-size: 0.82rem;
             font-weight: 600;
             color: var(--terracota);
             display: block;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.25rem;
         }
         .cover-index-item .name {
-            font-family: 'Lora', serif;
-            font-size: 1.02rem;
+            font-family: var(--font-serif);
+            font-size: 1rem;
             font-weight: 600;
             line-height: 1.3;
         }
 
+        /* Ficha académica */
         .cover-bottom {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
             border-top: 1px solid rgba(245,240,230,0.18);
-            padding-top: 1.8rem;
-            font-family: 'Inter', sans-serif;
+            padding-top: 1.5rem;
+            font-family: var(--font-sans);
             font-size: 0.85rem;
             position: relative;
         }
         .cover-bottom .ficha-item span {
             display: block;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--terracota);
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.3rem;
             font-weight: 600;
         }
         .cover-bottom .ficha-item strong {
-            font-family: 'Lora', serif;
+            font-family: var(--font-serif);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--marfil);
+            line-height: 1.3;
         }
 
         /* =========================================
            PÁGINAS INTERIORES
            ========================================= */
         .inner {
-            max-width: 1080px;
+            max-width: var(--max-content);
             margin: 0 auto;
-            padding: 4rem 3.5rem 5rem;
+            padding: 3.5rem 3.2rem 4.5rem;
         }
         .page-header {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
+            margin-bottom: 2.6rem;
+            padding-bottom: 1.8rem;
             border-bottom: 1px solid var(--linea);
         }
         .page-kicker {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
             letter-spacing: 3.5px;
             text-transform: uppercase;
             color: var(--terracota);
             font-weight: 600;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.7rem;
         }
         .page-title {
-            font-family: 'Lora', serif;
+            font-family: var(--font-serif);
             font-weight: 800;
-            font-size: 3rem;
+            font-size: var(--fs-h1);
             line-height: 1.08;
             color: var(--verde);
             letter-spacing: -0.8px;
+            text-wrap: balance;
         }
         .page-lead {
-            font-family: 'Lora', serif;
-            font-size: 1.2rem;
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
             font-style: italic;
-            color: #4a5654;
-            margin-top: 1rem;
-            max-width: 760px;
+            color: var(--texto-sec);
+            margin-top: 0.9rem;
+            max-width: 70ch;
             line-height: 1.55;
+            text-wrap: pretty;
         }
 
         h2.section-h {
-            font-family: 'Lora', serif;
+            font-family: var(--font-serif);
             font-weight: 700;
-            font-size: 1.85rem;
+            font-size: var(--fs-h2);
             color: var(--verde);
-            margin: 3rem 0 1.2rem;
+            margin: 2.8rem 0 1.1rem;
             letter-spacing: -0.4px;
-            line-height: 1.2;
+            line-height: 1.22;
+            text-wrap: balance;
         }
         h3.sub-h {
-            font-family: 'Lora', serif;
+            font-family: var(--font-serif);
             font-weight: 600;
-            font-size: 1.25rem;
+            font-size: var(--fs-h3);
             color: var(--verde);
-            margin: 2rem 0 0.8rem;
+            margin: 1.8rem 0 0.7rem;
             letter-spacing: -0.2px;
         }
-        p { margin-bottom: 1rem; color: var(--carbon); }
+        p {
+            margin-bottom: 1rem;
+            color: var(--carbon);
+            max-width: var(--max-read);
+        }
         p + p { text-indent: 1.5em; }
 
-        /* LECTURA CRÍTICA */
+        /* 8. LECTURA CRÍTICA — identidad visual constante */
         .lectura-critica {
             margin: 2rem 0;
-            padding: 0 0 0 1.5rem;
+            padding: 0 0 0 1.4rem;
             border-left: 3px solid var(--terracota);
-            font-family: 'Lora', serif;
+            font-family: var(--font-serif);
             font-style: italic;
-            font-size: 1.08rem;
+            font-size: 1.06rem;
             color: var(--verde);
-            line-height: 1.6;
+            line-height: 1.65;
+            max-width: 70ch;
         }
         .lectura-critica::before {
             content: "LECTURA CRÍTICA";
             display: block;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-sans);
             font-style: normal;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             letter-spacing: 3px;
             color: var(--terracota);
             font-weight: 700;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.55rem;
         }
 
-        /* Cita destacada */
         .pull-quote {
-            font-family: 'Lora', serif;
-            font-size: 1.6rem;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
             font-weight: 500;
             font-style: italic;
-            line-height: 1.35;
+            line-height: 1.4;
             color: var(--verde);
-            padding: 1.5rem 0;
-            margin: 2.5rem 0;
+            padding: 1.4rem 0;
+            margin: 2.4rem 0;
             border-top: 1px solid var(--linea);
             border-bottom: 1px solid var(--linea);
             text-align: center;
             letter-spacing: -0.3px;
+            max-width: none;
         }
-        .pull-quote::before { content: "“"; color: var(--terracota); font-size: 2.4rem; vertical-align: -0.2em; margin-right: 0.15em; }
-        .pull-quote::after { content: "”"; color: var(--terracota); font-size: 2.4rem; vertical-align: -0.2em; margin-left: 0.15em; }
+        .pull-quote::before { content: "“"; color: var(--terracota); font-size: 2.2rem; vertical-align: -0.2em; margin-right: 0.15em; }
+        .pull-quote::after { content: "”"; color: var(--terracota); font-size: 2.2rem; vertical-align: -0.2em; margin-left: 0.15em; }
 
         /* Columna lateral */
         .layout-side {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-            margin: 2rem 0;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+            gap: 2.6rem;
+            margin: 1.8rem 0;
             align-items: start;
         }
+        .layout-side > div > p { max-width: none; }
         .side-note {
             background: var(--marfil-claro);
             border: 1px solid var(--linea);
             border-top: 3px solid var(--verde);
-            padding: 1.5rem;
-            border-radius: 2px;
+            padding: 1.4rem 1.5rem;
+            border-radius: var(--radius-sm);
+            align-self: start;
         }
         .side-note h5 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
             letter-spacing: 2.5px;
             text-transform: uppercase;
             color: var(--terracota);
             font-weight: 700;
-            margin-bottom: 0.7rem;
+            margin-bottom: 0.65rem;
         }
         .side-note p {
-            font-family: 'Lora', serif;
-            font-size: 0.98rem;
+            font-family: var(--font-serif);
+            font-size: 0.96rem;
             line-height: 1.6;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.7rem;
+            max-width: none;
         }
         .side-note p:last-child { margin-bottom: 0; }
 
@@ -433,334 +553,392 @@
         .theory-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
+            gap: 1.4rem;
+            margin: 1.8rem 0;
         }
         .theory-card {
-            background: #FFFFFF;
+            background: var(--blanco);
             border: 1px solid var(--linea);
-            padding: 1.8rem;
-            border-radius: 3px;
-            position: relative;
+            padding: 1.6rem 1.7rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+        .theory-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
         }
         .theory-card .theory-num {
-            font-family: 'Lora', serif;
-            font-size: 0.85rem;
+            font-family: var(--font-serif);
+            font-size: 0.82rem;
             font-weight: 700;
             color: var(--terracota);
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.45rem;
         }
         .theory-card h4 {
-            font-family: 'Lora', serif;
-            font-size: 1.15rem;
+            font-family: var(--font-serif);
+            font-size: 1.12rem;
             font-weight: 700;
             color: var(--verde);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.25rem;
             line-height: 1.3;
         }
         .theory-card .author {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            letter-spacing: 1.5px;
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            letter-spacing: 1.4px;
             text-transform: uppercase;
-            color: #6b7a77;
+            color: var(--texto-ter);
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.9rem;
         }
         .theory-card p {
-            font-size: 0.95rem;
+            font-size: 0.94rem;
             line-height: 1.65;
+            max-width: none;
         }
 
         /* Tabla comparativa */
-        .table-wrap { overflow-x: auto; margin: 2rem 0; }
+        .table-wrap { overflow-x: auto; margin: 1.8rem 0; -webkit-overflow-scrolling: touch; }
         table {
             width: 100%;
             border-collapse: collapse;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.88rem;
-            background: #FFFFFF;
+            font-family: var(--font-sans);
+            font-size: 0.87rem;
+            background: var(--blanco);
             border: 1px solid var(--linea);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
         }
         th {
             background: var(--verde);
             color: var(--marfil);
             text-align: left;
-            padding: 0.9rem 1rem;
-            font-family: 'Lora', serif;
+            padding: 0.85rem 1rem;
+            font-family: var(--font-serif);
             font-weight: 600;
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             letter-spacing: 0.2px;
         }
         td {
-            padding: 0.85rem 1rem;
+            padding: 0.8rem 1rem;
             border-bottom: 1px solid var(--linea);
             vertical-align: top;
             line-height: 1.55;
         }
         tr:last-child td { border-bottom: none; }
         tbody tr:nth-child(even) { background: var(--marfil-claro); }
-        td strong { color: var(--verde); font-family: 'Lora', serif; }
+        td strong { color: var(--verde); font-family: var(--font-serif); font-weight: 600; }
 
         /* Mapa de servicios */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.2rem;
-            margin: 2rem 0;
+            gap: 1.1rem;
+            margin: 1.8rem 0;
         }
         .service-block {
-            background: #FFFFFF;
+            background: var(--blanco);
             border: 1px solid var(--linea);
             border-left: 3px solid var(--verde);
-            padding: 1.4rem 1.5rem;
-            border-radius: 2px;
+            padding: 1.3rem 1.4rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
         }
+        .service-block:hover { box-shadow: var(--shadow-soft); }
         .service-block h5 {
-            font-family: 'Lora', serif;
-            font-size: 1.05rem;
+            font-family: var(--font-serif);
+            font-size: 1.02rem;
             font-weight: 700;
             color: var(--verde);
-            margin-bottom: 0.7rem;
+            margin-bottom: 0.6rem;
         }
         .service-block .lbl {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.68rem;
+            font-family: var(--font-sans);
+            font-size: 0.66rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--terracota);
             font-weight: 700;
             display: block;
-            margin: 0.6rem 0 0.2rem;
+            margin: 0.55rem 0 0.15rem;
         }
         .service-block p {
-            font-size: 0.88rem;
+            font-size: 0.87rem;
             line-height: 1.5;
             margin: 0;
+            max-width: none;
         }
 
         /* Casos prácticos */
         .case-block {
             background: var(--verde);
             color: var(--marfil);
-            padding: 2rem 2.2rem;
-            margin: 2.5rem 0;
-            border-radius: 3px;
+            padding: 1.9rem 2.1rem;
+            margin: 2.2rem 0;
+            border-radius: var(--radius-sm);
             position: relative;
         }
         .case-block::before {
             content: "CASO PRÁCTICO";
-            font-family: 'Inter', sans-serif;
-            font-size: 0.68rem;
+            font-family: var(--font-sans);
+            font-size: 0.66rem;
             letter-spacing: 3px;
             color: var(--terracota);
             font-weight: 700;
             display: block;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.7rem;
         }
         .case-block h4 {
-            font-family: 'Lora', serif;
-            font-size: 1.3rem;
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--marfil);
-            margin-bottom: 1rem;
+            margin-bottom: 0.9rem;
             line-height: 1.3;
         }
         .case-block p {
             color: rgba(245,240,230,0.92);
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            font-size: 0.98rem;
+            margin-bottom: 0.9rem;
+            max-width: none;
         }
         .case-block .question {
-            margin-top: 1.2rem;
-            padding-top: 1.2rem;
+            margin-top: 1.1rem;
+            padding-top: 1.1rem;
             border-top: 1px solid rgba(245,240,230,0.2);
-            font-family: 'Lora', serif;
+            font-family: var(--font-serif);
             font-style: italic;
             color: var(--terracota);
-            font-size: 1.02rem;
+            font-size: 1rem;
         }
 
         /* Indicadores */
         .indicators {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
+            gap: 0.9rem;
+            margin: 1.8rem 0;
         }
         .indicator {
-            background: #FFFFFF;
+            background: var(--blanco);
             border: 1px solid var(--linea);
-            padding: 1.3rem 1.2rem;
-            text-align: left;
-            border-radius: 2px;
+            padding: 1.2rem 1.1rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
         }
+        .indicator:hover { box-shadow: var(--shadow-soft); }
         .indicator .level {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.68rem;
+            font-family: var(--font-sans);
+            font-size: 0.66rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--terracota);
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
         .indicator h5 {
-            font-family: 'Lora', serif;
-            font-size: 1rem;
+            font-family: var(--font-serif);
+            font-size: 0.98rem;
             font-weight: 700;
             color: var(--verde);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
         .indicator p {
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             line-height: 1.5;
-            color: #4a5654;
+            color: var(--texto-sec);
             margin: 0;
+            max-width: none;
         }
 
         /* Bitácora */
         .bitacora {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
+            gap: 1.4rem;
+            margin: 1.8rem 0;
         }
         .bitacora-item {
             background: var(--marfil-claro);
             border: 1px solid var(--linea);
-            padding: 1.8rem 1.5rem;
-            border-radius: 2px;
+            padding: 1.7rem 1.4rem;
+            border-radius: var(--radius-sm);
             border-top: 3px solid var(--terracota);
         }
         .bitacora-item .num {
-            font-family: 'Lora', serif;
-            font-size: 2rem;
+            font-family: var(--font-serif);
+            font-size: 1.9rem;
             font-weight: 700;
             color: var(--terracota);
             line-height: 1;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.7rem;
         }
         .bitacora-item h5 {
-            font-family: 'Lora', serif;
-            font-size: 1.05rem;
+            font-family: var(--font-serif);
+            font-size: 1.02rem;
             font-weight: 700;
             color: var(--verde);
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.7rem;
         }
         .bitacora-item p {
-            font-size: 0.95rem;
+            font-size: 0.94rem;
             line-height: 1.6;
+            max-width: none;
         }
 
-        /* Evidencias galería */
+        /* Galería de evidencias */
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.2rem;
-            margin: 2rem 0;
+            gap: 1.1rem;
+            margin: 1.8rem 0;
         }
         .gallery-item {
             border: 1px solid var(--linea);
-            background: #FFFFFF;
-            border-radius: 2px;
+            background: var(--blanco);
+            border-radius: var(--radius-sm);
             overflow: hidden;
+            transition: var(--transition);
         }
+        .gallery-item:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
         .gallery-item .thumb {
             background: var(--salvia);
-            height: 130px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Lora', serif;
+            font-family: var(--font-serif);
             font-style: italic;
             color: var(--verde);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
+            text-align: center;
+            padding: 0 1rem;
         }
         .gallery-item .caption {
-            padding: 0.9rem 1rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.82rem;
+            padding: 0.85rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
             line-height: 1.45;
+            color: var(--texto-sec);
         }
         .gallery-item .caption strong {
             display: block;
-            font-family: 'Lora', serif;
-            font-size: 0.95rem;
+            font-family: var(--font-serif);
+            font-size: 0.93rem;
             color: var(--verde);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.15rem;
+            font-weight: 700;
         }
 
         /* Bibliografía */
         .biblio-list { list-style: none; padding: 0; }
         .biblio-list li {
-            padding: 1rem 0;
+            padding: 0.95rem 0;
             border-bottom: 1px solid var(--linea);
-            font-size: 0.95rem;
+            font-size: 0.94rem;
             line-height: 1.65;
         }
         .biblio-list li:last-child { border-bottom: none; }
-        .biblio-list strong { font-family: 'Lora', serif; color: var(--verde); }
-        .biblio-list em { color: #4a5654; }
+        .biblio-list strong { font-family: var(--font-serif); color: var(--verde); font-weight: 600; }
+        .biblio-list em { color: var(--texto-sec); }
         .biblio-list .desc {
             display: block;
-            font-size: 0.85rem;
-            color: #6b7a77;
-            margin-top: 0.3rem;
-            font-family: 'Inter', sans-serif;
+            font-size: 0.83rem;
+            color: var(--texto-ter);
+            margin-top: 0.25rem;
+            font-family: var(--font-sans);
         }
         .biblio-list a {
             color: var(--terracota);
             text-decoration: none;
             word-break: break-all;
-            font-size: 0.88rem;
+            font-size: 0.87rem;
+            transition: var(--transition);
         }
-        .biblio-list a:hover { text-decoration: underline; }
+        .biblio-list a:hover { color: var(--terracota-hover); text-decoration: underline; }
 
         /* Cierre */
         .closing {
             background: var(--verde);
             color: var(--marfil);
-            padding: 3rem 3rem;
-            margin: 3rem 0 0;
-            border-radius: 3px;
+            padding: 2.7rem 2.8rem;
+            margin: 2.6rem 0 0;
+            border-radius: var(--radius-sm);
         }
         .closing h2 {
-            font-family: 'Lora', serif;
-            font-size: 1.9rem;
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--marfil);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.1rem;
+            line-height: 1.25;
         }
         .closing p {
             color: rgba(245,240,230,0.92);
-            font-size: 1.02rem;
+            font-size: 1rem;
             line-height: 1.75;
+            max-width: none;
         }
         .closing .signature {
-            margin-top: 2rem;
-            font-family: 'Lora', serif;
+            margin-top: 1.8rem;
+            font-family: var(--font-serif);
             font-style: italic;
             color: var(--terracota);
-            font-size: 1.05rem;
+            font-size: 1.02rem;
         }
 
-        /* Enlace a Anexos */
+        /* Botón anexos */
         .btn-anexos {
             display: inline-block;
-            margin-top: 1.2rem;
-            padding: 0.9rem 2rem;
+            margin-top: 1rem;
+            padding: 0.85rem 1.7rem;
             background: var(--terracota);
             color: var(--marfil);
             text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.88rem;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 1px;
-            border-radius: 2px;
-            transition: background 0.25s ease;
+            letter-spacing: 0.8px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
         }
-        .btn-anexos:hover { background: #a86146; }
+        .btn-anexos:hover { background: var(--terracota-hover); transform: translateY(-1px); }
+
+        /* 3.6 Navegación al final de cada unidad */
+        .unit-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid var(--linea);
+            flex-wrap: wrap;
+        }
+        .unit-nav a {
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--verde);
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--linea);
+            border-radius: var(--radius-sm);
+            background: var(--marfil-claro);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .unit-nav a:hover {
+            background: var(--verde);
+            color: var(--marfil);
+            border-color: var(--verde);
+        }
+        .unit-nav .nav-center { color: var(--terracota); border-color: transparent; background: transparent; }
+        .unit-nav .nav-center:hover { background: var(--terracota); color: var(--marfil); border-color: var(--terracota); }
 
         /* =========================================
            RESPONSIVE
@@ -770,44 +948,73 @@
             .topbar-nav {
                 display: none;
                 position: absolute;
-                top: 62px; left: 0; right: 0;
+                top: var(--topbar-h);
+                left: 0; right: 0;
                 background: var(--verde);
                 flex-direction: column;
-                padding: 1rem;
+                align-items: stretch;
+                padding: 0.8rem;
+                gap: 0.2rem;
                 border-bottom: 1px solid var(--terracota);
             }
             .topbar-nav.open { display: flex; }
+            .topbar-nav a { padding: 0.7rem 1rem; font-size: 0.9rem; }
+            .topbar-nav a.active::after { display: none; }
             .menu-toggle { display: block; }
 
-            .cover { padding: 2.5rem 1.5rem; }
-            .cover-layout { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 0; }
-            .cover-title { font-size: 2.8rem; letter-spacing: -1px; }
-            .cover-subtitle { font-size: 1.1rem; }
-            .cover-photo { max-width: 320px; margin: 0 auto; }
-            .cover-bottom { grid-template-columns: 1fr; gap: 1rem; }
+            .cover { padding: 2rem 1.4rem 2rem; }
+            .cover-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 1.8rem 0;
+            }
+            .cover-title { font-size: clamp(2rem, 8vw, 2.8rem); letter-spacing: -0.8px; }
+            .cover-subtitle { font-size: 1.05rem; }
+            .cover-photo { max-width: 280px; justify-self: center; }
+            .cover-bottom { grid-template-columns: 1fr 1fr; gap: 1rem; }
             .cover-index-grid { grid-template-columns: 1fr 1fr; }
 
-            .inner { padding: 2.5rem 1.4rem 3.5rem; }
-            .page-title { font-size: 2.1rem; }
-            .page-lead { font-size: 1.05rem; }
+            .inner { padding: 2.2rem 1.3rem 3rem; }
+            .page-title { font-size: clamp(1.6rem, 6vw, 2.1rem); }
+            .page-lead { font-size: 1rem; }
 
-            .layout-side, .theory-grid, .services-grid,
-            .indicators, .bitacora, .gallery {
+            .layout-side,
+            .theory-grid,
+            .services-grid,
+            .indicators,
+            .bitacora,
+            .gallery {
                 grid-template-columns: 1fr;
             }
-            .pull-quote { font-size: 1.25rem; }
+            .pull-quote { font-size: 1.2rem; }
+            .unit-nav { flex-direction: column; align-items: stretch; }
+            .unit-nav a { justify-content: center; }
+        }
+
+        @media (max-width: 520px) {
+            .cover-bottom { grid-template-columns: 1fr; }
+            .cover-index-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Impresión */
+        @media print {
+            .topbar, .unit-nav, .cover-cta { display: none; }
+            body { height: auto; overflow: visible; display: block; }
+            .magazine { height: auto; overflow: visible; padding-top: 0; }
+            .page { display: block !important; page-break-after: always; }
+            .cover { min-height: auto; }
         }
     </style>
 </head>
 <body>
 
     <!-- =========================================
-         NAVEGACIÓN SUPERIOR
+         3. NAVEGACIÓN SUPERIOR
          ========================================= -->
     <header class="topbar">
         <a href="#portada" class="topbar-brand">Revista <span>ASS</span> · Trabajo Social</a>
-        <button class="menu-toggle" onclick="document.querySelector('.topbar-nav').classList.toggle('open')">☰</button>
-        <nav class="topbar-nav">
+        <button class="menu-toggle" aria-label="Abrir menú" onclick="document.querySelector('.topbar-nav').classList.toggle('open')">☰</button>
+        <nav class="topbar-nav" aria-label="Navegación principal">
             <a href="#portada">Portada</a>
             <a href="#unidad-1">01 Administración</a>
             <a href="#unidad-2">02 Servicios Sociales</a>
@@ -832,15 +1039,15 @@
                 </div>
 
                 <div class="cover-layout">
-                    <div class="cover-center">
+                    <div>
                         <p class="cover-kicker">Administración de Servicios Sociales</p>
                         <h1 class="cover-title">Administrar para <em>transformar</em></h1>
                         <p class="cover-subtitle">Instituciones, derechos y realidad social: un recorrido crítico por la administración, los servicios sociales y la gerencia social desde el Trabajo Social guatemalteco.</p>
+                        <a href="#unidad-1" class="cover-cta">Explorar la revista</a>
                     </div>
 
-                    <!-- Fotografía de la autora -->
                     <div class="cover-photo">
-                        <img src="denisse.jpg" alt="Denisse Parada">
+                        <img src="denisse.jpg" alt="Retrato de Denisse Parada, autora de la revista">
                         <p class="photo-caption">Denisse Parada · Autora</p>
                     </div>
                 </div>
@@ -872,6 +1079,10 @@
                         <span>Curso</span>
                         <strong>Administración de Servicios Sociales</strong>
                     </div>
+                    <div class="ficha-item">
+                        <span>Ciclo académico</span>
+                        <strong>2026</strong>
+                    </div>
                 </div>
             </div>
 
@@ -890,6 +1101,12 @@
 
                 <div class="lectura-critica">
                     Como estudiante de la Licenciatura en Trabajo Social, asumo la administración de servicios sociales no como un simple ejercicio técnico, sino como un acto profundamente humano. Detrás de cada recurso, cada programa y cada decisión institucional hay personas cuyas vidas y derechos están en juego. Por ello, valoro al ser humano en su dignidad, su contexto y su capacidad de transformación, y me proyecto profesionalmente desde principios de justicia social, equidad, respeto a la diversidad y compromiso ético con quienes más lo necesitan.
+                </div>
+
+                <div class="unit-nav">
+                    <span></span>
+                    <a href="#unidad-1" class="nav-center">Ir a la Unidad I →</a>
+                    <a href="#cierre">Cierre editorial →</a>
                 </div>
             </div>
         </section>
@@ -917,9 +1134,10 @@
                     </div>
                     <aside class="side-note">
                         <h5>Del recurso al impacto</h5>
-                        <p>Recursos humanos, materiales, financieros y tecnológicos.</p>
-                        <p>Administración: planificación, organización, dirección y evaluación.</p>
-                        <p>Resultados institucionales y respuesta a las necesidades sociales.</p>
+                        <p><strong>Recursos</strong> · humanos, materiales, financieros y tecnológicos.</p>
+                        <p><strong>Actividades</strong> · planificación, organización, dirección y evaluación.</p>
+                        <p><strong>Productos y resultados</strong> · servicios entregados y cambios observables.</p>
+                        <p><strong>Impacto</strong> · mejoras sostenidas en las condiciones de vida de la población.</p>
                     </aside>
                 </div>
 
@@ -1116,6 +1334,13 @@
                     <p>Un equipo de cinco profesionales atiende a más de 80 familias en una institución pública. La carga es desigual, dos integrantes muestran signos de agotamiento y las respuestas se vuelven lentas. La coordinación debe reorganizar el trabajo sin perder cobertura ni calidad.</p>
                     <p class="question">¿Cómo redistribuirías las responsabilidades aplicando principios de administración de personal y liderazgo adaptativo? ¿Qué indicadores usarías para verificar que la medida funcionó?</p>
                 </div>
+
+                <!-- Navegación de unidad -->
+                <div class="unit-nav">
+                    <a href="#portada">← Volver a la portada</a>
+                    <a href="#unidad-2" class="nav-center">Siguiente: Unidad II →</a>
+                    <a href="#fuentes">Ver fuentes</a>
+                </div>
             </div>
         </section>
 
@@ -1234,6 +1459,12 @@
                     <p>Una comunidad rural de Quetzaltenango solicita atención del programa de seguridad alimentaria. El centro de salud más cercano está a dos horas, el personal habla únicamente español y las familias no cuentan con documentos actualizados. El servicio existe, pero no llega.</p>
                     <p class="question">¿Qué barreras de acceso identificas? ¿Cómo podrías, desde Trabajo Social y administración, intervenir para reducirlas sin alterar la política pública vigente?</p>
                 </div>
+
+                <div class="unit-nav">
+                    <a href="#unidad-1">← Unidad I</a>
+                    <a href="#unidad-3" class="nav-center">Siguiente: Unidad III →</a>
+                    <a href="#fuentes">Ver fuentes</a>
+                </div>
             </div>
         </section>
 
@@ -1326,6 +1557,12 @@
                     <h4>Caso práctico · Priorizar cuando los recursos son limitados</h4>
                     <p>Un programa de protección social cuenta con presupuesto para atender a 200 familias, pero hay 600 en lista de espera. Tres grupos compiten: niñez en riesgo, mujeres víctimas de violencia y adultos mayores en abandono. Todos son prioritarios.</p>
                     <p class="question">¿Qué criterios usarías para priorizar? ¿Cómo comunicarías la decisión sin vulnerar la dignidad de quienes quedan fuera? ¿Qué indicadores usarías para evaluar los resultados?</p>
+                </div>
+
+                <div class="unit-nav">
+                    <a href="#unidad-2">← Unidad II</a>
+                    <a href="#practica" class="nav-center">Siguiente: Práctica →</a>
+                    <a href="#fuentes">Ver fuentes</a>
                 </div>
             </div>
         </section>
@@ -1425,6 +1662,12 @@
                 <h2 class="section-h">Anexos</h2>
                 <p>En este espacio se encuentran los documentos, evidencias y materiales complementarios que respaldan las actividades realizadas durante el curso.</p>
                 <a href="https://drive.google.com/drive/folders/1fuX7ob7psQ-AX-rdnhAO7oKxKlCn106I?usp=drive_link" target="_blank" class="btn-anexos">Consultar carpeta de anexos →</a>
+
+                <div class="unit-nav">
+                    <a href="#unidad-3">← Unidad III</a>
+                    <a href="#bitacora" class="nav-center">Siguiente: Bitácora →</a>
+                    <a href="#portada">Volver al inicio</a>
+                </div>
             </div>
         </section>
 
@@ -1459,6 +1702,12 @@
 
                 <div class="pull-quote">
                     Aprender administración desde el Trabajo Social es aprender a gestionar con ética, con criterio y con vocación de servicio.
+                </div>
+
+                <div class="unit-nav">
+                    <a href="#practica">← Práctica</a>
+                    <a href="#fuentes" class="nav-center">Siguiente: Fuentes →</a>
+                    <a href="#portada">Volver al inicio</a>
                 </div>
             </div>
         </section>
@@ -1507,27 +1756,33 @@
 
                 <h2 class="section-h">Egografía · Fuentes web</h2>
                 <ul class="biblio-list">
-                    <li><strong>MIDES · Programas Sociales.</strong> <a href="https://www.mides.gob.gt" target="_blank">https://www.mides.gob.gt</a></li>
-                    <li><strong>MSPAS · Servicios de Salud.</strong> <a href="https://www.mspas.gob.gt" target="_blank">https://www.mspas.gob.gt</a></li>
-                    <li><strong>IGSS · Cobertura Social.</strong> <a href="https://www.igssgt.org" target="_blank">https://www.igssgt.org</a></li>
-                    <li><strong>MINEDUC · Programas Educativos.</strong> <a href="https://www.mineduc.gob.gt" target="_blank">https://www.mineduc.gob.gt</a></li>
-                    <li><strong>BID · Proyectos de Desarrollo Social.</strong> <a href="https://www.iadb.org/es" target="_blank">https://www.iadb.org/es</a></li>
-                    <li><strong>PNUD · Informes sobre Desarrollo Humano.</strong> <a href="https://www.undp.org/es/guatemala" target="_blank">https://www.undp.org/es/guatemala</a></li>
+                    <li><strong>MIDES · Programas Sociales.</strong> <a href="https://www.mides.gob.gt" target="_blank" rel="noopener">https://www.mides.gob.gt</a></li>
+                    <li><strong>MSPAS · Servicios de Salud.</strong> <a href="https://www.mspas.gob.gt" target="_blank" rel="noopener">https://www.mspas.gob.gt</a></li>
+                    <li><strong>IGSS · Cobertura Social.</strong> <a href="https://www.igssgt.org" target="_blank" rel="noopener">https://www.igssgt.org</a></li>
+                    <li><strong>MINEDUC · Programas Educativos.</strong> <a href="https://www.mineduc.gob.gt" target="_blank" rel="noopener">https://www.mineduc.gob.gt</a></li>
+                    <li><strong>BID · Proyectos de Desarrollo Social.</strong> <a href="https://www.iadb.org/es" target="_blank" rel="noopener">https://www.iadb.org/es</a></li>
+                    <li><strong>PNUD · Informes sobre Desarrollo Humano.</strong> <a href="https://www.undp.org/es/guatemala" target="_blank" rel="noopener">https://www.undp.org/es/guatemala</a></li>
                 </ul>
 
                 <h2 class="section-h">Videos seleccionados</h2>
                 <ul class="biblio-list">
-                    <li><strong>Administración y Trabajo Social.</strong> <a href="https://youtu.be/c_BB5WEJ6w8" target="_blank">https://youtu.be/c_BB5WEJ6w8</a></li>
-                    <li><strong>Buen liderazgo.</strong> <a href="https://youtu.be/16z28DjRTAA" target="_blank">https://youtu.be/16z28DjRTAA</a></li>
-                    <li><strong>Fundamentos de la Gerencia Social.</strong> <a href="https://youtu.be/a-85thq_3qE" target="_blank">https://youtu.be/a-85thq_3qE</a></li>
-                    <li><strong>Gerencia Social.</strong> <a href="https://youtu.be/ihz4RdPkxRs" target="_blank">https://youtu.be/ihz4RdPkxRs</a></li>
-                    <li><strong>Importancia de la Administración.</strong> <a href="https://youtu.be/kL4h2vfZTWw" target="_blank">https://youtu.be/kL4h2vfZTWw</a></li>
-                    <li><strong>Inteligencia Emocional.</strong> <a href="https://youtu.be/se62UwCxUrI" target="_blank">https://youtu.be/se62UwCxUrI</a></li>
-                    <li><strong>Principios de la administración Henry Fayol.</strong> <a href="https://youtu.be/c9j4tpd3UR4" target="_blank">https://youtu.be/c9j4tpd3UR4</a></li>
-                    <li><strong>Servicios Sociales.</strong> <a href="https://youtu.be/yHSZ3M0DYpc" target="_blank">https://youtu.be/yHSZ3M0DYpc</a></li>
-                    <li><strong>Trabajo colaborativo.</strong> <a href="https://youtu.be/nDenVCpHWGM" target="_blank">https://youtu.be/nDenVCpHWGM</a></li>
-                    <li><strong>Trabajo cooperativo.</strong> <a href="https://youtu.be/qoPVOd1BBVo" target="_blank">https://youtu.be/qoPVOd1BBVo</a></li>
+                    <li><strong>Administración y Trabajo Social.</strong> <a href="https://youtu.be/c_BB5WEJ6w8" target="_blank" rel="noopener">https://youtu.be/c_BB5WEJ6w8</a></li>
+                    <li><strong>Buen liderazgo.</strong> <a href="https://youtu.be/16z28DjRTAA" target="_blank" rel="noopener">https://youtu.be/16z28DjRTAA</a></li>
+                    <li><strong>Fundamentos de la Gerencia Social.</strong> <a href="https://youtu.be/a-85thq_3qE" target="_blank" rel="noopener">https://youtu.be/a-85thq_3qE</a></li>
+                    <li><strong>Gerencia Social.</strong> <a href="https://youtu.be/ihz4RdPkxRs" target="_blank" rel="noopener">https://youtu.be/ihz4RdPkxRs</a></li>
+                    <li><strong>Importancia de la Administración.</strong> <a href="https://youtu.be/kL4h2vfZTWw" target="_blank" rel="noopener">https://youtu.be/kL4h2vfZTWw</a></li>
+                    <li><strong>Inteligencia Emocional.</strong> <a href="https://youtu.be/se62UwCxUrI" target="_blank" rel="noopener">https://youtu.be/se62UwCxUrI</a></li>
+                    <li><strong>Principios de la administración Henry Fayol.</strong> <a href="https://youtu.be/c9j4tpd3UR4" target="_blank" rel="noopener">https://youtu.be/c9j4tpd3UR4</a></li>
+                    <li><strong>Servicios Sociales.</strong> <a href="https://youtu.be/yHSZ3M0DYpc" target="_blank" rel="noopener">https://youtu.be/yHSZ3M0DYpc</a></li>
+                    <li><strong>Trabajo colaborativo.</strong> <a href="https://youtu.be/nDenVCpHWGM" target="_blank" rel="noopener">https://youtu.be/nDenVCpHWGM</a></li>
+                    <li><strong>Trabajo cooperativo.</strong> <a href="https://youtu.be/qoPVOd1BBVo" target="_blank" rel="noopener">https://youtu.be/qoPVOd1BBVo</a></li>
                 </ul>
+
+                <div class="unit-nav">
+                    <a href="#bitacora">← Bitácora</a>
+                    <a href="#cierre" class="nav-center">Siguiente: Cierre →</a>
+                    <a href="#portada">Volver al inicio</a>
+                </div>
             </div>
         </section>
 
@@ -1546,6 +1801,12 @@
                     <p>Esta revista digital es el resultado de un proceso de aprendizaje que integró teoría, práctica y reflexión crítica. A lo largo del curso se construyó una mirada de la administración de servicios sociales desde el Trabajo Social, reconociendo la importancia de gestionar recursos, coordinar actores y orientar las instituciones hacia la garantía de derechos y el bienestar de la población.</p>
                     <p>La administración no es un fin en sí misma, sino un medio para que las instituciones sociales cumplan su misión con pertinencia, equidad y sostenibilidad. Como futuros profesionales del Trabajo Social, tenemos la responsabilidad de contribuir a que los servicios sociales sean accesibles, oportunos y orientados a las necesidades reales de las personas.</p>
                     <p class="signature">— Denisse Parada · Licenciatura en Trabajo Social</p>
+                </div>
+
+                <div class="unit-nav">
+                    <a href="#fuentes">← Fuentes</a>
+                    <a href="#portada" class="nav-center">Volver a la portada →</a>
+                    <span></span>
                 </div>
             </div>
         </section>
