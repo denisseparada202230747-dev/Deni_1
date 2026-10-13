@@ -11,26 +11,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           1. IDENTIDAD VISUAL — PALETA TRABAJO SOCIAL
+           1. IDENTIDAD VISUAL — PALETA BORGOÑA
            ========================================= */
         :root {
-            /* Paleta propia del Trabajo Social */
-            --verde:        #2F5D50;
-            --verde-oscuro: #1F4238;
-            --verde-medio:  #3E7263;
-            --azul:         #3A6B8F;
-            --azul-claro:   #D6E1EB;
-            --mostaza:      #C99A3F;
-            --mostaza-hover:#A87F2F;
-            --terracota:    #B26A4F;
-            --terracota-hover:#8F4F38;
-            --arena:        #F3EDE2;
-            --arena-clara:  #FAF6EE;
-            --salvia:       #DDE5D9;
-            --carbon:       #2B2F2E;
-            --texto-sec:    #4F5553;
-            --texto-ter:    #797E7B;
-            --linea:        #E2D9C9;
+            --verde:        #5C1F2E;
+            --verde-oscuro: #3E1220;
+            --verde-medio:  #7A2F41;
+            --azul:         #7A2F41;
+            --azul-claro:   #E5CBD2;
+            --mostaza:      #C0A062;
+            --mostaza-hover:#A3843F;
+            --terracota:    #B8735A;
+            --terracota-hover:#965540;
+            --arena:        #F2E9DF;
+            --arena-clara:  #FAF4EC;
+            --salvia:       #DDD6CB;
+            --carbon:       #2B2426;
+            --texto-sec:    #4F4548;
+            --texto-ter:    #7A6E70;
+            --linea:        #E3D6C8;
             --blanco:       #FFFFFF;
 
             --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
@@ -57,8 +56,8 @@
 
             --radius-sm: 3px;
             --radius-md: 6px;
-            --shadow-soft: 0 6px 22px rgba(47, 93, 80, 0.06);
-            --shadow-hover: 0 10px 28px rgba(47, 93, 80, 0.10);
+            --shadow-soft: 0 6px 22px rgba(92, 31, 46, 0.08);
+            --shadow-hover: 0 10px 28px rgba(92, 31, 46, 0.12);
             --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -94,7 +93,7 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             height: var(--topbar-h);
-            background: rgba(47, 93, 80, 0.97);
+            background: rgba(92, 31, 46, 0.97);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: var(--arena-clara);
@@ -103,7 +102,7 @@
             justify-content: space-between;
             padding: 0 1.8rem;
             z-index: 1000;
-            border-bottom: 1px solid rgba(201, 154, 63, 0.4);
+            border-bottom: 1px solid rgba(192, 160, 98, 0.45);
         }
         .topbar-brand {
             font-family: var(--font-serif);
@@ -124,7 +123,7 @@
         }
         .topbar-nav a {
             position: relative;
-            color: rgba(250, 246, 238, 0.78);
+            color: rgba(250, 244, 236, 0.78);
             text-decoration: none;
             font-family: var(--font-sans);
             font-size: 0.78rem;
@@ -136,11 +135,11 @@
         }
         .topbar-nav a:hover {
             color: var(--arena-clara);
-            background: rgba(201, 154, 63, 0.18);
+            background: rgba(192, 160, 98, 0.20);
         }
         .topbar-nav a.active {
             color: var(--arena-clara);
-            background: rgba(201, 154, 63, 0.25);
+            background: rgba(192, 160, 98, 0.28);
         }
         .topbar-nav a.active::after {
             content: "";
@@ -210,7 +209,7 @@
             top: -120px; right: -120px;
             width: 420px; height: 420px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(201,154,63,0.20), transparent 70%);
+            background: radial-gradient(circle, rgba(192,160,98,0.22), transparent 70%);
             pointer-events: none;
         }
 
@@ -218,13 +217,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(250,246,238,0.18);
+            border-bottom: 1px solid rgba(250,244,236,0.18);
             padding-bottom: 1rem;
             font-family: var(--font-sans);
             font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: rgba(250,246,238,0.72);
+            color: rgba(250,244,236,0.72);
         }
         .cover-top span:first-child { color: var(--mostaza); font-weight: 600; }
 
@@ -268,7 +267,7 @@
             font-size: 1.22rem;
             font-weight: 400;
             font-style: italic;
-            color: rgba(250,246,238,0.86);
+            color: rgba(250,244,236,0.86);
             max-width: 620px;
             line-height: 1.5;
             padding-left: 1.4rem;
@@ -289,7 +288,7 @@
             color: var(--arena-clara);
             text-decoration: none;
             padding: 0.75rem 1.5rem;
-            border: 1px solid rgba(201,154,63,0.65);
+            border: 1px solid rgba(192,160,98,0.65);
             border-radius: var(--radius-sm);
             transition: var(--transition);
         }
@@ -306,10 +305,10 @@
 
         .cover-photo {
             position: relative;
-            border: 1px solid rgba(201,154,63,0.5);
+            border: 1px solid rgba(192,160,98,0.55);
             padding: 0.85rem;
             border-radius: var(--radius-sm);
-            background: rgba(250,246,238,0.04);
+            background: rgba(250,244,236,0.05);
             max-width: 340px;
             justify-self: end;
         }
@@ -327,7 +326,7 @@
             font-size: 0.7rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: rgba(250,246,238,0.62);
+            color: rgba(250,244,236,0.62);
             margin-top: 0.75rem;
             text-align: center;
         }
@@ -341,7 +340,7 @@
             font-size: 0.72rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: rgba(250,246,238,0.6);
+            color: rgba(250,244,236,0.6);
             margin-bottom: 1rem;
             font-weight: 600;
             text-align: justify;
@@ -352,7 +351,7 @@
             gap: 0.9rem;
         }
         .cover-index-item {
-            border-top: 1px solid rgba(250,246,238,0.2);
+            border-top: 1px solid rgba(250,244,236,0.2);
             padding-top: 0.7rem;
             color: var(--arena-clara);
             text-decoration: none;
@@ -383,7 +382,7 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
-            border-top: 1px solid rgba(250,246,238,0.18);
+            border-top: 1px solid rgba(250,244,236,0.18);
             padding-top: 1.5rem;
             font-family: var(--font-sans);
             font-size: 0.85rem;
@@ -736,7 +735,7 @@
             text-align: justify;
         }
         .case-block p {
-            color: rgba(250,246,238,0.92);
+            color: rgba(250,244,236,0.92);
             font-size: 0.98rem;
             margin-bottom: 0.9rem;
             max-width: none;
@@ -745,7 +744,7 @@
         .case-block .question {
             margin-top: 1.1rem;
             padding-top: 1.1rem;
-            border-top: 1px solid rgba(250,246,238,0.2);
+            border-top: 1px solid rgba(250,244,236,0.2);
             font-family: var(--font-serif);
             font-style: italic;
             color: var(--mostaza);
@@ -921,7 +920,7 @@
             text-align: justify;
         }
         .closing p {
-            color: rgba(250,246,238,0.92);
+            color: rgba(250,244,236,0.92);
             font-size: 1rem;
             line-height: 1.75;
             max-width: none;
