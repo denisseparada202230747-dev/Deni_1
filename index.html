@@ -236,6 +236,25 @@
             position: relative;
         }
 
+        /* Datos institucionales en portada (lado izquierdo) */
+        .cover-institucion {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--mostaza);
+            font-weight: 600;
+            line-height: 1.9;
+            margin-bottom: 1.6rem;
+            text-align: left;
+        }
+        .cover-institucion span {
+            display: block;
+            color: rgba(250,244,236,0.75);
+            font-weight: 500;
+            font-size: 0.72rem;
+        }
+
         .cover-kicker {
             font-family: var(--font-sans);
             font-size: 0.82rem;
@@ -1273,6 +1292,11 @@
 
                 <div class="cover-layout">
                     <div>
+                        <div class="cover-institucion">
+                            Universidad de San Carlos de Guatemala
+                            <span>Centro Universitario de Occidente</span>
+                            <span>Licenciatura en Trabajo Social</span>
+                        </div>
                         <p class="cover-kicker">Administración de Servicios Sociales</p>
                         <h1 class="cover-title">Administrar para <em>transformar</em></h1>
                         <p class="cover-subtitle">Instituciones, derechos y realidad social: un recorrido crítico por la administración, los servicios sociales, la auditoría social y la gerencia social desde el Trabajo Social guatemalteco.</p>
